@@ -1,0 +1,13 @@
+# Configuration Netlify — Atelier Givre
+# Site statique (index.html à la racine) + une fonction serverless pour Stripe.
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# Alias plus court optionnel : /api/create-checkout → la fonction.
+# (Le site appelle /.netlify/functions/create-checkout, qui marche déjà sans ça.)
+[[redirects]]
+  from = "/api/create-checkout"
+  to = "/.netlify/functions/create-checkout"
+  status = 200

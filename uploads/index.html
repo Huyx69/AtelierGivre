@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:'DM Sans',sans-serif;color:#1A2C3D;background:#FFFFFF;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  ::selection{background:#C9A84C;color:#fff;}
+  input,select,textarea,button{font-family:inherit;}
+  @keyframes ag-cardIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes ag-fadeIn{from{opacity:0;}to{opacity:1;}}
+  img{max-width:100%;}
+  /* ════════════ RESPONSIVE ════════════ */
+  .ag-burger{display:none;}
+  @media (max-width: 880px){
+    .ag-hero{grid-template-columns:1fr !important;gap:42px !important;}
+    .ag-hero-img{justify-self:center !important;max-width:420px !important;width:100% !important;max-height:60vh !important;}
+    .ag-contact{grid-template-columns:1fr !important;gap:36px !important;}
+    .ag-footer{grid-template-columns:1fr 1fr !important;gap:34px !important;}
+    .ag-modal-grid{grid-template-columns:1fr !important;}
+    .ag-modal-img{min-height:220px !important;height:52vw !important;max-height:300px !important;}
+    .ag-nav{display:none !important;}
+    .ag-burger{display:flex !important;}
+  }
+  select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238a98a5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 12px center;}
+  @media (max-width: 560px){
+    .ag-headwrap{padding:0 18px !important;}
+    .ag-nc-grid{grid-template-columns:1fr !important;}
+    #accueil{padding:100px 20px 54px !important;}
+    #creations,#galerie,#contact{padding:64px 18px !important;}
+    .ag-form{padding:24px !important;}
+    .ag-form-row{grid-template-columns:1fr !important;}
+    .ag-footer{grid-template-columns:1fr !important;gap:28px !important;}
+    .ag-modal-info{padding:26px 22px !important;gap:16px !important;}
+    .ag-creations-grid{grid-template-columns:1fr !important;}
+    .ag-gallery-grid{grid-template-columns:1fr 1fr !important;}
+  }
+</style>
+<!-- Stripe.js — chargé depuis le CDN officiel (intégration : voir initStripe() dans la logique). -->
+<script src="https://js.stripe.com/v3/"></script>
+</helmet>
+
+<div ref="{{ setRoot }}" style="position:relative;overflow-x:hidden;">
+
+  <!-- ════════════════ HEADER ════════════════ -->
+  <header ref="{{ setHeader }}" style="position:fixed;top:0;left:0;right:0;z-index:60;height:74px;background:rgba(255,255,255,0.92);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid transparent;transition:border-color .35s ease,box-shadow .35s ease;">
+    <div class="ag-headwrap" style="max-width:1240px;margin:0 auto;height:100%;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+      <a href="#accueil" style="display:flex;align-items:center;gap:11px;text-decoration:none;color:#1A2C3D;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;letter-spacing:.5px;">Atelier Givre</span>
+      </a>
+      <nav class="ag-nav" style="display:flex;align-items:center;gap:30px;">
+        <a href="#accueil" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Accueil</a>
+        <a href="#creations" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Nos créations</a>
+        <a href="#number-cake" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Number Cake</a>
+        <a href="#devis" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Devis</a>
+        <a href="#galerie" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Galerie</a>
+        <a href="#contact" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Contact</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <button onClick="{{ openCart }}" aria-label="Panier" style="position:relative;background:none;border:none;cursor:pointer;padding:8px;display:flex;align-items:center;color:#1A2C3D;">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:0;right:0;min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:#C9A84C;color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;">{{ cartCount }}</span></sc-if>
+        </button>
+        <button onClick="{{ toggleMenu }}" aria-label="Menu" class="ag-burger" style="background:none;border:none;cursor:pointer;padding:8px;color:#1A2C3D;align-items:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ════════════════ MENU MOBILE ════════════════ -->
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeMenu }}" style="position:fixed;inset:0;z-index:55;background:rgba(13,22,31,.35);animation:ag-fadeIn .25s ease;"></div>
+    <div style="position:fixed;top:74px;left:0;right:0;z-index:58;background:#fff;border-bottom:1px solid #E8E8E8;box-shadow:0 14px 32px -18px rgba(26,44,61,.45);display:flex;flex-direction:column;padding:6px 0;animation:ag-fadeIn .25s ease;">
+      <a onClick="{{ closeMenu }}" href="#accueil" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Accueil</a>
+      <a onClick="{{ closeMenu }}" href="#creations" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Nos créations</a>
+      <a onClick="{{ closeMenu }}" href="#number-cake" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Number Cake</a>
+      <a onClick="{{ closeMenu }}" href="#devis" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Devis</a>
+      <a onClick="{{ closeMenu }}" href="#galerie" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Galerie</a>
+      <a onClick="{{ closeMenu }}" href="#contact" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;">Contact</a>
+    </div>
+  </sc-if>
+
+  <!-- ════════════════ ACCUEIL · PRÉSENTATION ════════════════ -->
+  <section id="accueil" style="position:relative;min-height:100vh;display:flex;align-items:center;padding:118px 28px 72px;background:radial-gradient(120% 90% at 50% 0%,#FFFFFF 0%,#F5F7FA 72%,#EEF3F8 100%);overflow:hidden;">
+    <svg viewBox="0 0 24 24" width="560" height="560" fill="none" stroke="#C8D8E8" stroke-width="0.3" stroke-linecap="round" style="position:absolute;top:-8%;right:-7%;opacity:.4;pointer-events:none;"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg>
+    <div class="ag-hero" style="position:relative;max-width:1180px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.08fr .92fr;gap:72px;align-items:center;">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;color:#C9A84C;margin-bottom:22px;flex-wrap:wrap;"><span style="height:1px;width:34px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">Pâtisserie · Chocolaterie · Number cakes — Artemare, Ain</span></div>
+        <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(46px,6.4vw,88px);line-height:1;letter-spacing:-.5px;margin:0 0 30px;color:#1A2C3D;">L'art du givre<br>et du chocolat</h1>
+        <p style="font-size:17px;line-height:1.8;color:#566571;margin:0 0 26px;max-width:46ch;">Chaque création est entièrement réalisée à la main, des pralinés maison aux finitions — pensée comme une œuvre&nbsp;: travaillée, équilibrée, signature.</p>
+        <a onClick="{{ openStory }}" style="display:inline-flex;align-items:center;gap:9px;cursor:pointer;color:#1A2C3D;font-size:14px;letter-spacing:.5px;font-weight:600;border-bottom:1px solid #C9A84C;padding-bottom:4px;transition:gap .25s ease,color .25s ease;margin-bottom:34px;" style-hover="gap:14px;color:#C9A84C;">Lire l'histoire complète <span style="font-size:17px;">→</span></a>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;color:#1A2C3D;margin:0 0 30px;">Kylian Givre <span style="font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;letter-spacing:1px;color:#C9A84C;text-transform:uppercase;display:block;margin-top:4px;">Pâtissier-chocolatier · seul aux commandes</span></p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;">
+          <a href="#creations" style="display:inline-flex;align-items:center;gap:10px;background:#C9A84C;color:#fff;text-decoration:none;font-size:14px;letter-spacing:1.2px;text-transform:uppercase;padding:16px 32px;border-radius:2px;transition:background .3s ease,transform .3s ease,box-shadow .3s ease;box-shadow:0 8px 24px rgba(201,168,76,.25);" style-hover="background:#1A2C3D;transform:translateY(-2px);box-shadow:0 14px 32px rgba(26,44,61,.2);">Découvrir nos créations</a>
+          <a onClick="{{ openNC }}" style="display:inline-flex;align-items:center;gap:10px;cursor:pointer;background:transparent;color:#1A2C3D;text-decoration:none;font-size:14px;letter-spacing:1.2px;text-transform:uppercase;padding:16px 32px;border:1px solid #1A2C3D;border-radius:2px;transition:background .3s ease,color .3s ease;" style-hover="background:#1A2C3D;color:#fff;">Composer un Number Cake</a>
+        </div>
+      </div>
+      <div class="ag-hero-img" style="position:relative;justify-self:end;width:100%;max-width:430px;aspect-ratio:3/4;max-height:78vh;border-radius:10px;overflow:hidden;box-shadow:0 36px 70px -30px rgba(26,44,61,.4);background:linear-gradient(155deg,#F5F7FA 0%,#E9EFF5 55%,#DEE7F0 100%);">
+        <img src="images/vanille-pistache-1.jpg" alt="Tarte vanille & pistache de l'Atelier Givre" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ NOS CRÉATIONS ════════════════ -->
+  <section id="creations" style="scroll-margin-top:80px;padding:104px 28px;background:#F5F7FA;">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);text-align:center;margin-bottom:18px;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:12px;color:#C9A84C;margin-bottom:16px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">La carte</span><span style="height:1px;width:30px;background:#C9A84C;"></span></div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(36px,5vw,58px);margin:0;color:#1A2C3D;">Nos créations</h2>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:34px 0 48px;">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+          <button onClick="{{ t.onPick }}" style="{{ t.style }}">{{ t.label }}</button>
+        </sc-for>
+      </div>
+      <div class="ag-creations-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:30px;">
+        <sc-for list="{{ visibleProducts }}" as="p" hint-placeholder-count="6">
+          <article onClick="{{ p.onOpen }}" style="background:#fff;border:1px solid #E8E8E8;border-radius:13px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;animation:ag-cardIn .5s ease both;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;" style-hover="transform:translateY(-6px);box-shadow:0 24px 44px -26px rgba(26,44,61,.4);border-color:#C9A84C;">
+            <div style="position:relative;height:215px;overflow:hidden;background:linear-gradient(150deg,#F5F7FA 0%,#EAF0F6 55%,#E2EAF2 100%);">
+              <img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;" style-hover="transform:scale(1.04);">
+            </div>
+            <div style="padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;">
+              <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:21px;margin:0 0 8px;color:#1A2C3D;">{{ p.name }}</h3>
+              <p style="font-size:13.5px;line-height:1.65;color:#728290;margin:0 0 20px;flex:1;">{{ p.desc }}</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#C9A84C;">{{ p.priceLabel }}</span>
+                <span style="background:#C9A84C;color:#fff;border:1px solid #C9A84C;font-size:12px;letter-spacing:.8px;text-transform:uppercase;padding:10px 18px;border-radius:2px;transition:background .28s ease,color .28s ease;" style-hover="background:#fff;color:#C9A84C;">Voir</span>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ NUMBER CAKE ════════════════ -->
+  <section id="number-cake" style="scroll-margin-top:80px;padding:104px 28px;background:#1A2C3D;color:#fff;overflow:hidden;">
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);max-width:920px;margin:0 auto;text-align:center;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;color:#C9A84C;margin-bottom:16px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">Sur-mesure</span><span style="height:1px;width:30px;background:#C9A84C;"></span></div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,5vw,56px);margin:0 0 20px;color:#fff;">Composez votre Number Cake</h2>
+      <p style="font-size:16px;line-height:1.85;color:#c4d0dc;margin:0 auto 34px;max-width:56ch;">Un chiffre, une lettre, une date… et une composition entièrement libre : choisissez votre base, votre croustillant, votre crémeux, vos inserts fruités, votre ganache montée et vos décors. Ou partez d'une de nos six recettes signature.</p>
+      <button onClick="{{ openNC }}" style="display:inline-flex;align-items:center;gap:10px;background:#C9A84C;color:#fff;border:none;font-size:14px;letter-spacing:1.2px;text-transform:uppercase;padding:16px 36px;border-radius:2px;cursor:pointer;transition:background .3s ease,transform .3s ease;" style-hover="background:#fff;color:#1A2C3D;transform:translateY(-2px);">Composer mon Number Cake</button>
+    </div>
+  </section>
+
+  <!-- ════════════════ DEVIS · GRANDES OCCASIONS ════════════════ -->
+  <section id="devis" style="scroll-margin-top:80px;padding:104px 28px;background:#F5F7FA;">
+    <div data-reveal class="ag-contact" style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);max-width:1080px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start;">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;color:#C9A84C;margin-bottom:16px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">Sur-mesure</span></div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,4vw,48px);margin:0 0 22px;line-height:1.1;color:#1A2C3D;">Devis &amp; grandes occasions</h2>
+        <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 18px;">Un anniversaire, un mariage, un baptême, une communion ou un événement d'entreprise&nbsp;? Je réalise des pièces sur-mesure et des grands formats, pensés avec vous.</p>
+        <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 24px;">Décrivez-moi votre projet — occasion, nombre de personnes, saveurs, thème et date — et je reviens vers vous avec une proposition et un devis personnalisé, sans engagement.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;gap:12px;color:#1A2C3D;font-size:14.5px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Wedding cakes &amp; pièces montées</div>
+          <div style="display:flex;align-items:center;gap:12px;color:#1A2C3D;font-size:14.5px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Number cakes géants &amp; grands formats</div>
+          <div style="display:flex;align-items:center;gap:12px;color:#1A2C3D;font-size:14.5px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Buffets sucrés &amp; commandes événementielles</div>
+        </div>
+      </div>
+      <form onSubmit="{{ onDevisSubmit }}" class="ag-form" style="background:#fff;border:1px solid #E8E8E8;border-radius:13px;padding:34px;display:flex;flex-direction:column;gap:18px;">
+        <div class="ag-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Occasion<select required="true" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 24px 9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;cursor:pointer;"><option value="anniversaire">Anniversaire</option><option value="mariage">Mariage</option><option value="bapteme">Baptême / Communion</option><option value="baby-shower">Baby shower</option><option value="entreprise">Événement d'entreprise</option><option value="autre">Autre</option></select></label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Nombre de personnes<input type="number" min="1" placeholder="ex. 40" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;transition:border-color .25s ease;" style-focus="border-bottom:1px solid #C9A84C;"></label>
+        </div>
+        <div class="ag-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Nom<input type="text" required="true" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;transition:border-color .25s ease;" style-focus="border-bottom:1px solid #C9A84C;"></label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Date souhaitée<input type="date" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;transition:border-color .25s ease;" style-focus="border-bottom:1px solid #C9A84C;"></label>
+        </div>
+        <div class="ag-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Email<input type="email" required="true" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;transition:border-color .25s ease;" style-focus="border-bottom:1px solid #C9A84C;"></label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Téléphone<input type="tel" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;transition:border-color .25s ease;" style-focus="border-bottom:1px solid #C9A84C;"></label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Votre projet<textarea required="true" rows="4" placeholder="Saveurs, thème, couleurs, inspirations… et si vous avez coché « Autre », précisez-moi votre idée." style="border:1px solid #E8E8E8;border-radius:6px;padding:12px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;resize:vertical;transition:border-color .25s ease;" style-focus="border:1px solid #C9A84C;"></textarea></label>
+        <sc-if value="{{ devisSent }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:14px;color:#1A2C3D;background:#F5F7FA;border-left:2px solid #C9A84C;padding:12px 16px;animation:ag-fadeIn .4s ease;">Merci, votre demande de devis a bien été envoyée. Je reviens vers vous rapidement.</p></sc-if>
+        <button type="submit" style="align-self:flex-start;background:#1A2C3D;color:#fff;border:none;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;padding:15px 32px;border-radius:2px;cursor:pointer;transition:background .3s ease;" style-hover="background:#C9A84C;">Demander un devis</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ════════════════ GALERIE ════════════════ -->
+  <section id="galerie" style="scroll-margin-top:90px;padding:104px 28px;background:#FFFFFF;">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);text-align:center;margin-bottom:46px;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:12px;color:#C9A84C;margin-bottom:16px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">L'atelier en images</span><span style="height:1px;width:30px;background:#C9A84C;"></span></div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(36px,5vw,58px);margin:0;color:#1A2C3D;">Galerie</h2>
+      </div>
+      <div class="ag-gallery-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;">
+        <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="8">
+          <button onClick="{{ g.onOpen }}" style="position:relative;aspect-ratio:1/1;border:none;padding:0;cursor:pointer;overflow:hidden;border-radius:8px;background:linear-gradient(150deg,#F5F7FA 0%,#E8EFF6 55%,#DFE8F1 100%);" style-hover="filter:brightness(.97);">
+            <img src="{{ g.src }}" alt="{{ g.caption }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <span style="position:absolute;bottom:0;left:0;right:0;padding:10px;font-size:12px;letter-spacing:.5px;color:#fff;text-align:left;background:linear-gradient(transparent,rgba(26,44,61,.62));opacity:0;transition:opacity .3s ease;" style-hover="opacity:1;">{{ g.caption }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ CONTACT ════════════════ -->
+  <section id="contact" style="scroll-margin-top:90px;padding:104px 28px;background:#F5F7FA;">
+    <div data-reveal class="ag-contact" style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);max-width:1080px;margin:0 auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start;">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;color:#C9A84C;margin-bottom:16px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">Contact</span></div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,4vw,46px);margin:0 0 24px;line-height:1.1;color:#1A2C3D;">Une question, une commande&nbsp;?</h2>
+        <p style="font-size:15px;line-height:1.8;color:#566571;margin:0 0 30px;">Écrivez-nous, nous répondons sous 24&nbsp;h ouvrées.</p>
+        <div style="font-size:14.5px;line-height:1.9;color:#1A2C3D;">
+          <p style="margin:0 0 4px;font-weight:600;">Atelier Givre</p>
+          <p style="margin:0;color:#566571;">Artemare, 01300 — Ain</p>
+          <p style="margin:14px 0 0;color:#566571;">Livraison dans un rayon de 30&nbsp;km<br>Click &amp; collect disponible</p>
+        </div>
+      </div>
+      <form onSubmit="{{ onContactSubmit }}" class="ag-form" style="background:#fff;border:1px solid #E8E8E8;border-radius:13px;padding:34px;display:flex;flex-direction:column;gap:18px;">
+        <div class="ag-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Nom<input type="text" required="true" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;transition:border-color .25s ease;" style-focus="border-bottom:1px solid #C9A84C;"></label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Email<input type="email" required="true" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;transition:border-color .25s ease;" style-focus="border-bottom:1px solid #C9A84C;"></label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Objet<select required="true" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;cursor:pointer;"><option value="commande">Commande</option><option value="question">Question</option><option value="partenariat">Partenariat</option></select></label>
+        <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Message<textarea required="true" rows="4" style="border:1px solid #E8E8E8;border-radius:6px;padding:12px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;resize:vertical;transition:border-color .25s ease;" style-focus="border:1px solid #C9A84C;"></textarea></label>
+        <sc-if value="{{ contactSent }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:14px;color:#1A2C3D;background:#F5F7FA;border-left:2px solid #C9A84C;padding:12px 16px;animation:ag-fadeIn .4s ease;">Merci, votre message a bien été envoyé.</p></sc-if>
+        <button type="submit" style="align-self:flex-start;background:#1A2C3D;color:#fff;border:none;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;padding:15px 32px;border-radius:2px;cursor:pointer;transition:background .3s ease;" style-hover="background:#C9A84C;">Envoyer</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <footer style="background:#1A2C3D;color:#dbe4ec;padding:70px 28px 36px;">
+    <div class="ag-footer" style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:18px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#fff;">Atelier Givre</span>
+        </div>
+        <p style="font-size:14px;line-height:1.75;color:#9fb0c0;margin:0;max-width:36ch;">Pâtisserie &amp; chocolaterie artisanale à Artemare, dans l'Ain. Livraison dans un rayon de 30&nbsp;km • Click &amp; collect disponible.</p>
+      </div>
+      <div>
+        <p style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin:0 0 16px;">Navigation</p>
+        <div style="display:flex;flex-direction:column;gap:11px;">
+          <a href="#accueil" style="color:#dbe4ec;text-decoration:none;font-size:14px;transition:color .25s ease;" style-hover="color:#C9A84C;">Accueil</a>
+          <a href="#creations" style="color:#dbe4ec;text-decoration:none;font-size:14px;transition:color .25s ease;" style-hover="color:#C9A84C;">Nos créations</a>
+          <a href="#galerie" style="color:#dbe4ec;text-decoration:none;font-size:14px;transition:color .25s ease;" style-hover="color:#C9A84C;">Galerie</a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin:0 0 16px;">Suivez-nous</p>
+        <div style="display:flex;gap:12px;">
+          <a href="#" aria-label="Instagram" style="width:38px;height:38px;border:1px solid rgba(219,228,236,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#dbe4ec;text-decoration:none;font-size:12px;letter-spacing:.5px;transition:border-color .25s ease,color .25s ease;" style-hover="border-color:#C9A84C;color:#C9A84C;">IG</a>
+          <a href="#" aria-label="Facebook" style="width:38px;height:38px;border:1px solid rgba(219,228,236,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#dbe4ec;text-decoration:none;font-size:12px;letter-spacing:.5px;transition:border-color .25s ease,color .25s ease;" style-hover="border-color:#C9A84C;color:#C9A84C;">FB</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1180px;margin:48px auto 0;padding-top:24px;border-top:1px solid rgba(219,228,236,.14);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:12.5px;color:#7d8e9d;">
+      <span>© 2026 Atelier Givre — Tous droits réservés</span>
+      <span>Mentions légales · CGV · Confidentialité</span>
+    </div>
+  </footer>
+
+  <!-- ════════════════ PANIER (drawer) ════════════════ -->
+  <div onClick="{{ closeCart }}" style="{{ backdropStyle }}"></div>
+  <aside style="{{ cartPanelStyle }}">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:24px 26px;border-bottom:1px solid #E8E8E8;">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;margin:0;color:#1A2C3D;">Votre panier</h3>
+      <button onClick="{{ closeCart }}" aria-label="Fermer" style="background:none;border:none;cursor:pointer;color:#1A2C3D;padding:6px;line-height:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
+    </div>
+
+    <div style="flex:1;overflow-y:auto;padding:8px 26px;">
+      <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ true }}">
+        <sc-for list="{{ cartItems }}" as="it" hint-placeholder-count="2">
+          <div style="display:flex;gap:14px;padding:18px 0;border-bottom:1px solid #F0F0F0;align-items:center;">
+            <div style="width:58px;height:58px;flex-shrink:0;border-radius:7px;overflow:hidden;background:linear-gradient(150deg,#F5F7FA,#E3EAF2);"><img src="{{ it.img }}" alt="{{ it.name }}" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+            <div style="flex:1;min-width:0;">
+              <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;margin:0 0 2px;color:#1A2C3D;">{{ it.name }}</p>
+              <p style="font-size:12.5px;color:#8a98a5;margin:0 0 8px;">{{ it.unitLabel }}</p>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <button onClick="{{ it.onDec }}" style="width:26px;height:26px;border:1px solid #E8E8E8;background:#fff;border-radius:4px;cursor:pointer;color:#1A2C3D;font-size:16px;line-height:1;" style-hover="border-color:#C9A84C;color:#C9A84C;">−</button>
+                <span style="font-size:14px;min-width:18px;text-align:center;">{{ it.qty }}</span>
+                <button onClick="{{ it.onInc }}" style="width:26px;height:26px;border:1px solid #E8E8E8;background:#fff;border-radius:4px;cursor:pointer;color:#1A2C3D;font-size:16px;line-height:1;" style-hover="border-color:#C9A84C;color:#C9A84C;">+</button>
+              </div>
+            </div>
+            <div style="text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#1A2C3D;">{{ it.priceLabel }}</span>
+              <button onClick="{{ it.onRemove }}" style="background:none;border:none;cursor:pointer;color:#b3bfc9;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:0;" style-hover="color:#C9A84C;">Retirer</button>
+            </div>
+          </div>
+        </sc-for>
+
+        <div style="margin-top:24px;">
+          <p style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;margin:0 0 12px;">Livraison</p>
+          <label onClick="{{ setCollect }}" style="{{ collectOptStyle }}">
+            <span style="display:flex;flex-direction:column;gap:2px;"><strong style="font-size:14px;font-weight:600;">Click &amp; collect</strong><span style="font-size:12.5px;color:#8a98a5;">Retrait à l'Atelier Givre, Artemare</span></span>
+            <span style="font-size:13px;color:#C9A84C;font-weight:600;">Gratuit</span>
+          </label>
+          <label onClick="{{ setHome }}" style="{{ homeOptStyle }}">
+            <span style="display:flex;flex-direction:column;gap:2px;"><strong style="font-size:14px;font-weight:600;">Livraison à domicile</strong><span style="font-size:12.5px;color:#8a98a5;">Zone 30 km autour d'Artemare</span></span>
+            <span style="font-size:13px;color:#C9A84C;font-weight:600;">5,00 €</span>
+          </label>
+          <sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}">
+            <input ref="{{ setAddress }}" type="text" placeholder="Adresse de livraison" style="width:100%;margin-top:12px;border:1px solid #E8E8E8;border-radius:6px;padding:12px 14px;font-size:14px;color:#1A2C3D;outline:none;transition:border-color .25s ease;" style-focus="border-color:#C9A84C;">
+          </sc-if>
+        </div>
+      </sc-if>
+      <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:70px 20px;color:#8a98a5;">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#C8D8E8" stroke-width="0.9" stroke-linecap="round" style="margin-bottom:18px;"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#1A2C3D;margin:0 0 6px;">Votre panier est vide</p>
+          <p style="font-size:13.5px;margin:0;">Découvrez nos créations pour le garnir.</p>
+        </div>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ true }}">
+      <div style="border-top:1px solid #E8E8E8;padding:22px 26px;background:#FBFCFD;">
+        <div style="display:flex;justify-content:space-between;font-size:13.5px;color:#566571;margin-bottom:8px;"><span>Sous-total</span><span>{{ subtotalLabel }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13.5px;color:#566571;margin-bottom:14px;"><span>Livraison</span><span>{{ deliveryFeeLabel }}</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;"><span style="font-size:14px;font-weight:600;color:#1A2C3D;">Total</span><span style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#1A2C3D;">{{ totalLabel }}</span></div>
+        <button onClick="{{ checkout }}" style="width:100%;background:#C9A84C;color:#fff;border:none;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;padding:16px;border-radius:2px;cursor:pointer;transition:background .3s ease;" style-hover="background:#1A2C3D;">Procéder au paiement</button>
+        <p style="text-align:center;font-size:11px;color:#a7b6c5;margin:12px 0 0;letter-spacing:.3px;">Paiement sécurisé · Stripe</p>
+      </div>
+    </sc-if>
+  </aside>
+
+  <!-- ════════════════ LIGHTBOX ════════════════ -->
+  <sc-if value="{{ lightboxOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeLightbox }}" style="position:fixed;inset:0;z-index:90;background:rgba(13,22,31,.9);display:flex;align-items:center;justify-content:center;padding:40px;animation:ag-fadeIn .3s ease;">
+      <button onClick="{{ closeLightbox }}" aria-label="Fermer" style="position:absolute;top:24px;right:28px;background:none;border:none;cursor:pointer;color:#fff;padding:8px;line-height:0;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:16px;max-width:92vw;">
+        <img src="{{ lightboxSrc }}" alt="{{ lightboxCaption }}" style="max-width:min(760px,92vw);max-height:76vh;border-radius:10px;object-fit:contain;box-shadow:0 30px 80px -20px rgba(0,0,0,.6);">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#fff;">{{ lightboxCaption }}</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ════════════════ FICHE PRODUIT (popup) ════════════════ -->
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeProduct }}" style="position:fixed;inset:0;z-index:95;background:rgba(13,22,31,.62);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:24px;animation:ag-fadeIn .3s ease;">
+      <div onClick="{{ stopProp }}" style="position:relative;width:min(920px,96vw);max-height:92vh;overflow-y:auto;background:#fff;border-radius:16px;box-shadow:0 40px 90px -30px rgba(13,22,31,.6);animation:ag-cardIn .4s ease both;">
+        <button onClick="{{ closeProduct }}" aria-label="Fermer" style="position:absolute;top:16px;right:16px;z-index:2;width:38px;height:38px;border:none;border-radius:50%;background:rgba(255,255,255,.92);cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A2C3D;box-shadow:0 4px 14px rgba(26,44,61,.22);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
+        <div class="ag-modal-grid" style="display:grid;grid-template-columns:1fr 1fr;">
+          <div class="ag-modal-img" style="position:relative;min-height:360px;background:linear-gradient(150deg,#F5F7FA,#E3EAF2);">
+            <img onClick="{{ zoomMain }}" src="{{ modalImg }}" alt="{{ modalName }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:zoom-in;">
+            <button onClick="{{ zoomMain }}" aria-label="Agrandir la photo" style="position:absolute;top:14px;left:14px;z-index:1;width:34px;height:34px;border:none;border-radius:50%;background:rgba(255,255,255,.9);cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A2C3D;box-shadow:0 3px 12px rgba(13,22,31,.25);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></button>
+            <sc-if value="{{ modalHasThumbs }}" hint-placeholder-val="{{ true }}">
+              <div style="position:absolute;left:0;right:0;bottom:0;display:flex;gap:8px;padding:12px;overflow-x:auto;background:linear-gradient(transparent,rgba(13,22,31,.5));">
+                <sc-for list="{{ modalThumbs }}" as="th" hint-placeholder-count="3">
+                  <button onClick="{{ th.onPick }}" style="{{ th.style }}"><img src="{{ th.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"></button>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+          <div class="ag-modal-info" style="padding:38px 34px;display:flex;flex-direction:column;gap:18px;">
+            <div>
+              <div style="display:flex;align-items:center;gap:10px;color:#C9A84C;margin-bottom:10px;"><span style="height:1px;width:26px;background:#C9A84C;"></span><span style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;">{{ modalCat }}</span></div>
+              <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;line-height:1.1;margin:0;color:#1A2C3D;">{{ modalName }}</h3>
+            </div>
+            <p style="font-size:14.5px;line-height:1.7;color:#566571;margin:0;">{{ modalDesc }}</p>
+
+            <sc-if value="{{ modalHasChoices }}" hint-placeholder-val="{{ true }}">
+              <div>
+                <p style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;margin:0 0 10px;">Format</p>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                  <sc-for list="{{ modalSizes }}" as="sz" hint-placeholder-count="2">
+                    <button onClick="{{ sz.onPick }}" style="{{ sz.style }}">{{ sz.label }}</button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <div>
+              <p style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;margin:0 0 10px;">Ingrédients</p>
+              <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px;">
+                <sc-for list="{{ modalIngredients }}" as="ing" hint-placeholder-count="4">
+                  <li style="position:relative;padding-left:18px;font-size:13.5px;line-height:1.5;color:#1A2C3D;"><span style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#C9A84C;"></span>{{ ing.text }}</li>
+                </sc-for>
+              </ul>
+            </div>
+
+            <div style="border-top:1px solid #F0F0F0;padding-top:16px;">
+              <button onClick="{{ toggleAllergenes }}" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;cursor:pointer;padding:0;color:#1A2C3D;font-size:13px;letter-spacing:.8px;text-transform:uppercase;font-weight:600;">
+                <span style="display:flex;align-items:center;gap:9px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>Allergènes</span>
+                <svg style="{{ allergenesChevronStyle }}" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a98a5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div style="{{ allergenesPanelStyle }}">
+                <div style="display:flex;flex-wrap:wrap;gap:8px;padding-top:2px;">
+                  <sc-for list="{{ modalAllergenes }}" as="al" hint-placeholder-count="3">
+                    <span style="background:#FBF3E4;color:#8a6d1f;font-size:12.5px;padding:6px 12px;border-radius:20px;border:1px solid #EBD9AE;">{{ al.text }}</span>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:auto;border-top:1px solid #F0F0F0;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <span style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">{{ modalOptLabel }}</span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:#C9A84C;">{{ modalPriceLabel }}</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <button onClick="{{ modalDec }}" aria-label="Moins" style="width:32px;height:32px;border:1px solid #E8E8E8;background:#fff;border-radius:6px;cursor:pointer;color:#1A2C3D;font-size:18px;line-height:1;" style-hover="border-color:#C9A84C;color:#C9A84C;">−</button>
+                  <span style="font-size:15px;min-width:20px;text-align:center;">{{ modalQty }}</span>
+                  <button onClick="{{ modalInc }}" aria-label="Plus" style="width:32px;height:32px;border:1px solid #E8E8E8;background:#fff;border-radius:6px;cursor:pointer;color:#1A2C3D;font-size:18px;line-height:1;" style-hover="border-color:#C9A84C;color:#C9A84C;">+</button>
+                </div>
+                <button onClick="{{ modalAdd }}" style="background:#C9A84C;color:#fff;border:none;font-size:13px;letter-spacing:1px;text-transform:uppercase;padding:14px 24px;border-radius:2px;cursor:pointer;transition:background .3s ease;" style-hover="background:#1A2C3D;">Ajouter au panier</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ════════════════ ZOOM PHOTO (fiche produit) ════════════════ -->
+  <sc-if value="{{ zoomOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeZoom }}" style="position:fixed;inset:0;z-index:105;background:rgba(13,22,31,.92);display:flex;align-items:center;justify-content:center;padding:20px;animation:ag-fadeIn .25s ease;cursor:zoom-out;">
+      <button onClick="{{ closeZoom }}" aria-label="Fermer" style="position:absolute;top:20px;right:22px;background:none;border:none;cursor:pointer;color:#fff;padding:8px;line-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
+      <img src="{{ zoomSrc }}" alt="" style="max-width:96vw;max-height:92vh;object-fit:contain;border-radius:8px;box-shadow:0 30px 80px -20px rgba(0,0,0,.7);">
+    </div>
+  </sc-if>
+
+  <!-- ════════════════ COMPOSEUR NUMBER CAKE ════════════════ -->
+  <sc-if value="{{ ncOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeNC }}" style="position:fixed;inset:0;z-index:96;background:rgba(13,22,31,.62);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:20px;animation:ag-fadeIn .3s ease;">
+      <div onClick="{{ stopProp }}" style="position:relative;width:min(780px,96vw);max-height:92vh;overflow-y:auto;background:#fff;border-radius:16px;box-shadow:0 40px 90px -30px rgba(13,22,31,.6);animation:ag-cardIn .4s ease both;">
+        <button onClick="{{ closeNC }}" aria-label="Fermer" style="position:absolute;top:16px;right:16px;z-index:2;width:38px;height:38px;border:none;border-radius:50%;background:#F5F7FA;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A2C3D;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
+        <div style="padding:36px 30px 28px;display:flex;flex-direction:column;gap:24px;">
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;color:#C9A84C;margin-bottom:10px;"><span style="height:1px;width:26px;background:#C9A84C;"></span><span style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;">Sur-mesure</span></div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;line-height:1.1;margin:0;color:#1A2C3D;">Votre Number Cake</h3>
+          </div>
+
+          <div class="ag-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;">Votre chiffre / lettre / date
+              <input value="{{ ncText }}" onInput="{{ ncTextInput }}" placeholder="ex. 18, 30, L…" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:13px 14px;font-size:16px;color:#1A2C3D;outline:none;transition:border-color .25s ease;" style-focus="border-color:#C9A84C;">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;">Nombre de personnes
+              <select value="{{ ncPlevel }}" onChange="{{ ncPlevelCh }}" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:13px 34px 13px 14px;font-size:15px;color:#1A2C3D;background-color:#fff;cursor:pointer;outline:none;">
+                <sc-for list="{{ ncPersonsOpts }}" as="o" hint-placeholder-count="5"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+              </select>
+            </label>
+          </div>
+          <p style="margin:-12px 0 0;font-size:12px;color:#8a98a5;">Le nombre de personnes s'adapte au nombre de chiffres/lettres saisis.</p>
+
+          <div>
+            <p style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;margin:0 0 10px;">Recettes signature</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <sc-for list="{{ ncPresets }}" as="p" hint-placeholder-count="6">
+                <button onClick="{{ p.onApply }}" style="{{ p.style }}">{{ p.name }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="border-top:1px solid #F0F0F0;padding-top:22px;">
+            <p style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;margin:0 0 14px;">Composez la vôtre</p>
+            <div class="ag-nc-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">Base *
+                <select value="{{ ncBase }}" onChange="{{ ncBaseCh }}" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:12px 34px 12px 12px;font-size:14px;color:#1A2C3D;background-color:#fff;cursor:pointer;outline:none;">
+                  <sc-for list="{{ ncBaseOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                </select>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">Croustillant
+                <select value="{{ ncCroust }}" onChange="{{ ncCroustCh }}" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:12px 34px 12px 12px;font-size:14px;color:#1A2C3D;background-color:#fff;cursor:pointer;outline:none;">
+                  <sc-for list="{{ ncCroustOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                </select>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">Crémeux
+                <select value="{{ ncCremeux }}" onChange="{{ ncCremeuxCh }}" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:12px 34px 12px 12px;font-size:14px;color:#1A2C3D;background-color:#fff;cursor:pointer;outline:none;">
+                  <sc-for list="{{ ncCremeuxOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                </select>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">Compotée / Confit
+                <select value="{{ ncCompotee }}" onChange="{{ ncCompoteeCh }}" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:12px 34px 12px 12px;font-size:14px;color:#1A2C3D;background-color:#fff;cursor:pointer;outline:none;">
+                  <sc-for list="{{ ncCompoteeOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                </select>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">Gel
+                <select value="{{ ncGel }}" onChange="{{ ncGelCh }}" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:12px 34px 12px 12px;font-size:14px;color:#1A2C3D;background-color:#fff;cursor:pointer;outline:none;">
+                  <sc-for list="{{ ncGelOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                </select>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">Mousse / Ganache montée
+                <select value="{{ ncMousse }}" onChange="{{ ncMousseCh }}" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:12px 34px 12px 12px;font-size:14px;color:#1A2C3D;background-color:#fff;cursor:pointer;outline:none;">
+                  <sc-for list="{{ ncMousseOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <p style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;margin:0 0 10px;">{{ ncDecorSuppLabel }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <sc-for list="{{ ncDecors }}" as="d" hint-placeholder-count="6"><button onClick="{{ d.onToggle }}" style="{{ d.style }}">{{ d.name }}</button></sc-for>
+            </div>
+          </div>
+
+          <div>
+            <p style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;margin:0 0 10px;">{{ ncFruitsSecsSuppLabel }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <sc-for list="{{ ncFruitsSecs }}" as="d" hint-placeholder-count="6"><button onClick="{{ d.onToggle }}" style="{{ d.style }}">{{ d.name }}</button></sc-for>
+            </div>
+          </div>
+
+          <div style="border-top:1px solid #F0F0F0;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+            <div style="display:flex;flex-direction:column;gap:2px;">
+              <span style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">{{ ncPersonsLabel }}</span>
+              <span style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:#C9A84C;">{{ ncPriceLabel }}</span>
+              <sc-if value="{{ ncSuppShow }}" hint-placeholder-val="{{ true }}"><span style="font-size:12px;color:#8a98a5;">{{ ncSuppLabel }}</span></sc-if>
+            </div>
+            <button onClick="{{ addNC }}" style="background:#C9A84C;color:#fff;border:none;font-size:13px;letter-spacing:1px;text-transform:uppercase;padding:14px 24px;border-radius:2px;cursor:pointer;transition:background .3s ease;" style-hover="background:#1A2C3D;">Ajouter au panier</button>
+          </div>
+          <sc-if value="{{ ncInvalid }}" hint-placeholder-val="{{ true }}">
+            <p style="margin:0;font-size:12.5px;color:#b06a4f;background:#FBF1EC;border-left:2px solid #C9A84C;padding:10px 14px;border-radius:0 6px 6px 0;">Indiquez un chiffre / lettre et choisissez au moins une base pour ajouter au panier.</p>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ════════════════ PAGE HISTOIRE ════════════════ -->
+  <sc-if value="{{ storyOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:100;background:#FFFFFF;overflow-y:auto;animation:ag-fadeIn .4s ease;">
+      <div style="position:sticky;top:0;z-index:2;background:rgba(255,255,255,.9);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid #EEE;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;">
+        <span style="display:flex;align-items:center;gap:11px;color:#1A2C3D;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg><span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;">Atelier Givre</span></span>
+        <button onClick="{{ closeStory }}" style="display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid #E8E8E8;border-radius:40px;cursor:pointer;color:#1A2C3D;font-size:13px;letter-spacing:.5px;padding:9px 18px;transition:border-color .25s ease,color .25s ease;" style-hover="border-color:#C9A84C;color:#C9A84C;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>Retour</button>
+      </div>
+      <div style="position:relative;overflow:hidden;">
+        <svg viewBox="0 0 24 24" width="620" height="620" fill="none" stroke="#EEF3F8" stroke-width="0.3" stroke-linecap="round" style="position:absolute;top:-6%;right:-10%;pointer-events:none;"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg>
+        <article style="position:relative;max-width:720px;margin:0 auto;padding:76px 28px 104px;">
+          <div style="display:flex;align-items:center;gap:12px;color:#C9A84C;margin-bottom:20px;"><span style="height:1px;width:34px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">L'histoire</span></div>
+          <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(40px,6vw,68px);line-height:1.04;letter-spacing:-.5px;margin:0 0 40px;color:#1A2C3D;">Derrière l'Atelier Givre</h1>
+          <p style="font-size:18px;line-height:1.9;color:#3c4a57;margin:0 0 26px;"><span style="float:left;font-family:'Cormorant Garamond',serif;font-size:78px;line-height:.78;padding:8px 14px 0 0;color:#C9A84C;">J</span>e m'appelle Kylian Givre, né le 26 décembre 2006. Pâtissier et chocolatier diplômé, j'ai choisi de créer Atelier Givre avec une ambition simple&nbsp;: transformer ma passion en une entreprise reconnue pour son savoir-faire et son exigence.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 24px;">Après plusieurs années de formations en France et en Suisse, j'ai développé une approche où chaque détail compte. Ici, chaque création est entièrement réalisée à la main, des pralinés maison aux finitions, avec des ingrédients soigneusement sélectionnés.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 24px;">Je suis animé par une seule envie&nbsp;: faire grandir Atelier Givre, repousser mes limites chaque jour et proposer des pâtisseries qui marquent les esprits autant par leur goût que par leur élégance.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 40px;">Derrière chaque dessert, il y a des heures de travail, de recherche et une véritable passion. Merci de faire partie de cette aventure. Bienvenue chez Atelier Givre.</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:#1A2C3D;margin:0 0 44px;padding-top:28px;border-top:1px solid #EEE;">Kylian Givre <span style="font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;letter-spacing:1px;color:#C9A84C;text-transform:uppercase;display:block;margin-top:6px;">Pâtissier-chocolatier · seul aux commandes</span></p>
+          <a href="#creations" onClick="{{ closeStory }}" style="display:inline-flex;align-items:center;gap:10px;background:#C9A84C;color:#fff;text-decoration:none;font-size:14px;letter-spacing:1.2px;text-transform:uppercase;padding:16px 34px;border-radius:2px;transition:background .3s ease;" style-hover="background:#1A2C3D;">Découvrir les créations</a>
+        </article>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ════════════════ CONFIRMATION ════════════════ -->
+  <sc-if value="{{ isConfirmed }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:100;background:#FFFFFF;overflow-y:auto;animation:ag-fadeIn .4s ease;">
+      <div style="min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 28px;background:radial-gradient(120% 90% at 50% 0%,#FFFFFF 0%,#F5F7FA 80%);">
+        <div style="width:74px;height:74px;border-radius:50%;border:1.5px solid #C9A84C;display:flex;align-items:center;justify-content:center;margin-bottom:30px;"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
+        <div style="display:flex;align-items:center;gap:12px;color:#C9A84C;margin-bottom:14px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">Commande confirmée</span><span style="height:1px;width:30px;background:#C9A84C;"></span></div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,5vw,54px);margin:0 0 18px;color:#1A2C3D;">Merci pour votre commande</h2>
+        <p style="font-size:16px;line-height:1.8;color:#566571;margin:0 0 6px;max-width:46ch;">Chaque création est désormais entre les mains de l'Atelier. Vous recevrez un email de confirmation avec les détails de retrait ou de livraison.</p>
+        <p style="font-size:13px;letter-spacing:1px;color:#8a98a5;margin:0 0 34px;">Référence — <span style="color:#1A2C3D;font-weight:600;">{{ orderNumber }}</span></p>
+        <div style="width:min(440px,90vw);background:#fff;border:1px solid #E8E8E8;border-radius:13px;padding:26px 28px;text-align:left;margin-bottom:36px;">
+          <sc-for list="{{ orderItems }}" as="oi" hint-placeholder-count="2">
+            <div style="display:flex;justify-content:space-between;font-size:14px;padding:9px 0;border-bottom:1px solid #F2F2F2;color:#1A2C3D;"><span>{{ oi.label }}</span><span style="color:#566571;">{{ oi.priceLabel }}</span></div>
+          </sc-for>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding-top:16px;"><span style="font-size:14px;font-weight:600;">Total</span><span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#C9A84C;">{{ orderTotalLabel }}</span></div>
+        </div>
+        <button onClick="{{ backToShop }}" style="background:#1A2C3D;color:#fff;border:none;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;padding:15px 34px;border-radius:2px;cursor:pointer;transition:background .3s ease;" style-hover="background:#C9A84C;">Retour à la boutique</button>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  // ── Données produits (photos réelles de l'atelier) ──
+  // NOTE : ingrédients et allergènes sont des valeurs par défaut à VÉRIFIER.
+  //   Chaque produit a une ou plusieurs options { label, price } (format / lot).
+  CATEGORIES = ['Tartes & entremets', 'Cakes', 'Petits gâteaux'];
+  PRODUCTS = [
+    // ── Tartes & entremets ──
+    { id: 'trois-citrons', cat: 'Tartes & entremets', name: 'Tarte aux Trois Citrons', img: 'images/trois-citrons-1.jpg',
+      desc: "Crème onctueuse aux trois citrons, chantilly vanillée pochée, zestes frais et pointes de menthe.",
+      options: [{ label: "4/6 personnes", price: 26 }, { label: "8/10 personnes", price: 44 }],
+      ingredients: ["Pâte sablée (farine de blé, beurre, sucre, œufs)", "Crème aux trois citrons (citrons, œufs, beurre, sucre)", "Chantilly vanille", "Zestes de citron"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+    { id: 'peche-verveine', cat: 'Tartes & entremets', name: 'Tarte Pêche, Verveine & Vanille', img: 'images/peche-verveine-1.jpg',
+      desc: "Pêches et pêches de vigne fraîches en rosace, crème vanille infusée à la verveine, feuille d'or.",
+      options: [{ label: "4/6 personnes", price: 24 }, { label: "8/10 personnes", price: 42 }],
+      ingredients: ["Pâte sablée (farine de blé, beurre, sucre, œufs)", "Crème vanille-verveine", "Pêches fraîches", "Sucre"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+    { id: 'choco-cacahuete', cat: 'Tartes & entremets', name: 'Tarte Chocolat, Caramel & Cacahuète', img: 'images/choco-cacahuete-1.jpg',
+      desc: "Ganache chocolat, caramel tendre et cacahuètes torréfiées, sur fond sablé pur beurre.",
+      options: [{ label: "4/6 personnes", price: 24 }, { label: "8/10 personnes", price: 42 }],
+      ingredients: ["Pâte sablée (farine de blé, beurre, sucre, œufs)", "Ganache chocolat", "Caramel", "Cacahuètes torréfiées"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Arachides", "Soja"] },
+    { id: 'vanille-pistache', cat: 'Tartes & entremets', name: 'Tarte Vanille & Pistache', img: 'images/vanille-pistache-1.jpg',
+      desc: "Crème vanille dressée en spirale, cœur de pistaches caramélisées, biscuit pistache, feuille d'or.",
+      options: [{ label: "4/6 personnes", price: 26 }, { label: "8/10 personnes", price: 44 }],
+      ingredients: ["Pâte sablée (farine de blé, beurre, sucre, œufs)", "Crème vanille", "Pâte de pistache & pistaches", "Sucre"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (pistaches)"] },
+    { id: 'manguier', cat: 'Tartes & entremets', name: 'Le Manguier', img: 'images/manguier-1.jpg',
+      desc: "Entremets à la mangue : biscuit moelleux, mousse vanille et dés de mangue fraîche.",
+      options: [{ label: "4 personnes", price: 24 }, { label: "8 personnes", price: 42 }],
+      ingredients: ["Biscuit (farine de blé, œufs, sucre)", "Mousse vanille", "Mangue fraîche"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+    { id: 'flan-pecan', cat: 'Tartes & entremets', name: 'Flan Vanille & Pécan', img: 'images/flan-pecan-1.jpg',
+      desc: "Flan crémeux à la vanille sur base sablée, quenelles de crème et noix de pécan caramélisées.",
+      options: [{ label: "4 personnes", price: 22 }, { label: "8 personnes", price: 40 }],
+      ingredients: ["Pâte sablée (farine de blé, beurre, sucre, œufs)", "Appareil à flan (lait, œufs, vanille, sucre)", "Noix de pécan"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (pécan)"] },
+    // ── Cakes (25 cm) ──
+    { id: 'cake-citron-framboise', cat: 'Cakes', name: 'Cake Citron & Framboise', img: 'images/cake-citron-framboise-1.jpg',
+      desc: "Cake moelleux au citron, cœur de framboise, glaçage croquant aux amandes.",
+      options: [{ label: "Cake 25 cm", price: 22 }],
+      ingredients: ["Farine de blé", "Œufs", "Beurre", "Sucre", "Citron", "Framboise", "Amandes"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (amandes)"] },
+    { id: 'cake-vanille-pavot', cat: 'Cakes', name: 'Cake Vanille & Pavot', img: 'images/cake-vanille-pavot-1.jpg',
+      desc: "Cake vanille aux graines de pavot, glaçage croquant aux amandes.",
+      options: [{ label: "Cake 25 cm", price: 22 }],
+      ingredients: ["Farine de blé", "Œufs", "Beurre", "Sucre", "Vanille", "Graines de pavot", "Amandes"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (amandes)"] },
+    { id: 'cake-citron-nature', cat: 'Cakes', name: 'Cake Citron (nature)', img: 'images/cake-citron-framboise-1.jpg',
+      desc: "Cake moelleux au citron, sans glaçage. (Photo dédiée à venir)",
+      options: [{ label: "Cake 25 cm", price: 12 }],
+      ingredients: ["Farine de blé", "Œufs", "Beurre", "Sucre", "Citron"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+    { id: 'cake-vanille-pavot-nature', cat: 'Cakes', name: 'Cake Vanille-Pavot (nature)', img: 'images/cake-vanille-pavot-1.jpg',
+      desc: "Cake vanille aux graines de pavot, sans glaçage. (Photo dédiée à venir)",
+      options: [{ label: "Cake 25 cm", price: 14 }],
+      ingredients: ["Farine de blé", "Œufs", "Beurre", "Sucre", "Vanille", "Graines de pavot"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+    // ── Petits gâteaux ──
+    { id: 'cannele-nature', cat: 'Petits gâteaux', name: 'Cannelés Nature', img: 'images/cannele-1.jpg',
+      desc: "Cannelés bordelais, croûte caramélisée et cœur moelleux vanillé.",
+      options: [{ label: "À l'unité", price: 2.40 }, { label: "Lot de 3", price: 6.80 }, { label: "Lot de 6", price: 13.30 }],
+      ingredients: ["Lait", "Farine de blé", "Œufs", "Sucre", "Beurre", "Vanille"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+    { id: 'cannele-rhum', cat: 'Petits gâteaux', name: 'Cannelés au Rhum', img: 'images/cannele-1.jpg',
+      desc: "Cannelés bordelais parfumés au rhum, croûte caramélisée et cœur moelleux.",
+      options: [{ label: "À l'unité", price: 2.60 }, { label: "Lot de 3", price: 7.40 }, { label: "Lot de 6", price: 14.40 }],
+      ingredients: ["Lait", "Farine de blé", "Œufs", "Sucre", "Beurre", "Vanille", "Rhum"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Alcool (rhum)"] },
+    { id: 'cookies', cat: 'Petits gâteaux', name: 'Cookies Deux Chocolats – Pistache / Pécan', img: 'images/cookie-1.jpg',
+      desc: "Cookie aux deux chocolats, cœur coulant pistache ou pécan.",
+      options: [{ label: "À l'unité", price: 4.20 }, { label: "Lot de 2", price: 8 }, { label: "Lot de 4", price: 15.50 }],
+      ingredients: ["Farine de blé", "Beurre", "Sucre", "Œufs", "Chocolat noir & au lait", "Pistache ou pécan"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque", "Soja"] },
+    { id: 'financiers', cat: 'Petits gâteaux', name: 'Financiers Pistache / Noisette', img: 'images/financier-1.jpg',
+      desc: "Financiers moelleux à la poudre d'amande, parfum pistache ou noisette.",
+      options: [{ label: "À l'unité", price: 2.40 }, { label: "Lot de 2", price: 4.60 }, { label: "Lot de 4", price: 9.20 }, { label: "Lot de 6", price: 14 }],
+      ingredients: ["Blancs d'œufs", "Beurre noisette", "Sucre glace", "Poudre d'amande", "Farine de blé", "Pistache ou noisette"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque"] },
+    { id: 'madeleines', cat: 'Petits gâteaux', name: 'Madeleines Citron & Vanille', img: 'images/financier-1.jpg',
+      desc: "Madeleines moelleuses à la vanille et au citron, bosse dorée. (Photo dédiée à venir)",
+      options: [{ label: "À l'unité", price: 2 }, { label: "Lot de 3", price: 5.50 }, { label: "Lot de 6", price: 10.50 }],
+      ingredients: ["Farine de blé", "Œufs", "Beurre", "Sucre", "Citron", "Vanille"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+  ];
+  GALLERY = [
+    { src: 'images/trois-citrons-1.jpg', caption: 'Tarte aux trois citrons' },
+    { src: 'images/peche-verveine-1.jpg', caption: 'Tarte pêche, verveine & vanille' },
+    { src: 'images/vanille-pistache-1.jpg', caption: 'Tarte vanille & pistache' },
+    { src: 'images/choco-cacahuete-1.jpg', caption: 'Tarte chocolat, caramel & cacahuète' },
+    { src: 'images/manguier-1.jpg', caption: 'Le Manguier' },
+    { src: 'images/manguier-3.jpg', caption: 'Le Manguier · à la coupe' },
+    { src: 'images/flan-pecan-1.jpg', caption: 'Flan vanille & pécan' },
+    { src: 'images/vanille-pistache-3.jpg', caption: 'Tarte vanille & pistache · à la coupe' },
+    { src: 'images/cake-citron-framboise-1.jpg', caption: 'Cake citron & framboise' },
+    { src: 'images/cake-vanille-pavot-1.jpg', caption: 'Cake vanille & pavot' },
+    { src: 'images/cannele-1.jpg', caption: 'Cannelés' },
+    { src: 'images/cookie-1.jpg', caption: 'Cookie cœur pistache' },
+    { src: 'images/cookie-2.jpg', caption: 'Cookie cœur pécan' },
+    { src: 'images/financier-1.jpg', caption: 'Financiers' },
+    { src: 'images/peche-verveine-2.jpg', caption: 'Tarte pêche · dressage' },
+    { src: 'images/flan-pecan-3.jpg', caption: 'Flan · à la coupe' },
+  ];
+
+  // ── Photos supplémentaires par produit (miniatures dans la fiche) ──
+  PRODUCT_IMAGES = {
+    'trois-citrons': ['images/trois-citrons-1.jpg', 'images/trois-citrons-2.jpg', 'images/trois-citrons-3.jpg'],
+    'peche-verveine': ['images/peche-verveine-1.jpg', 'images/peche-verveine-2.jpg', 'images/peche-verveine-3.jpg', 'images/peche-verveine-4.jpg'],
+    'choco-cacahuete': ['images/choco-cacahuete-1.jpg', 'images/choco-cacahuete-2.jpg', 'images/choco-cacahuete-3.jpg'],
+    'vanille-pistache': ['images/vanille-pistache-1.jpg', 'images/vanille-pistache-2.jpg', 'images/vanille-pistache-3.jpg'],
+    'manguier': ['images/manguier-1.jpg', 'images/manguier-2.jpg', 'images/manguier-3.jpg'],
+    'flan-pecan': ['images/flan-pecan-1.jpg', 'images/flan-pecan-2.jpg', 'images/flan-pecan-3.jpg'],
+    'cake-citron-framboise': ['images/cake-citron-framboise-1.jpg', 'images/cake-citron-framboise-2.jpg', 'images/cake-citron-framboise-3.jpg'],
+    'cake-vanille-pavot': ['images/cake-vanille-pavot-1.jpg', 'images/cake-vanille-pavot-2.jpg', 'images/cake-vanille-pavot-3.jpg'],
+    'cannele-nature': ['images/cannele-1.jpg', 'images/cannele-2.jpg', 'images/cannele-3.jpg'],
+    'cannele-rhum': ['images/cannele-1.jpg', 'images/cannele-2.jpg', 'images/cannele-3.jpg'],
+    'cookies': ['images/cookie-1.jpg', 'images/cookie-2.jpg', 'images/cookie-3.jpg'],
+    'financiers': ['images/financier-1.jpg', 'images/financier-2.jpg', 'images/financier-3.jpg'],
+  };
+  imagesOf = (product) => (product && this.PRODUCT_IMAGES[product.id]) || (product ? [product.img] : []);
+
+  // ── Number Cake : options de composition (valeurs choisies par défaut, à ajuster) ──
+  NC_PRICE_PER_PERSON = 3.5;                 // prix par personne
+  NC_PORTIONS = [10, 15, 20, 25, 30];        // parts par chiffre/lettre (niveaux de taille)
+  NC_SUPP_DECOR = 2.5;                       // supplément par fruit de décoration
+  NC_SUPP_FRUITSEC = 1.5;                    // supplément par fruit sec
+  NC = {
+    bases: ['Pâte sucrée nature', 'Pâte sucrée cacao', 'Pâte sucrée citron', 'Pâte sucrée amande', 'Pâte sucrée noisette', 'Pâte sucrée pistache', 'Biscuit madeleine vanille', 'Biscuit madeleine citron', 'Biscuit madeleine chocolat', 'Biscuit joconde amande', 'Biscuit joconde pistache', 'Biscuit noisette', 'Biscuit chocolat', 'Biscuit financier', 'Biscuit pain de Gênes'],
+    croustillants: ['Praliné noisette', 'Praliné pistache', 'Praliné pécan', 'Praliné amande', 'Praliné cacahuète', 'Chocolat noir feuilletine', 'Chocolat au lait feuilletine', 'Chocolat blanc croustillant', 'Noix de coco torréfiée'],
+    cremeux: ['Vanille', 'Chocolat noir', 'Chocolat au lait', 'Chocolat blanc', 'Pistache', 'Noisette', 'Cacahuète', 'Café', 'Citron jaune', 'Citron vert', 'Yuzu', 'Framboise', 'Fraise', 'Mangue', 'Passion', 'Pêche', 'Abricot', 'Poire', 'Praliné', 'Noix de coco', 'Verveine'],
+    compotees: ['Fraise', 'Framboise', 'Mangue', 'Mangue-passion', 'Pêche', 'Abricot', 'Poire', 'Pomme', 'Cassis', 'Myrtille', 'Cerise', 'Ananas', 'Kiwi', 'Litchi'],
+    gels: ['Citron', 'Citron vert', 'Yuzu', 'Framboise', 'Fraise', 'Mangue', 'Passion', 'Abricot', 'Pêche', 'Cassis', 'Myrtille', 'Orange', 'Clémentine', 'Litchi'],
+    mousses: ['Vanille', 'Chocolat noir', 'Chocolat lait', 'Citron', 'Framboise', 'Fraise', 'Mangue', 'Passion', 'Coco', 'Verveine vanille', "Fleur d'oranger vanille", 'Tonka vanille'],
+    decors: ['Framboises', 'Fraises', 'Myrtilles', 'Mûres', 'Mangue', 'Pêche', 'Abricot', 'Kiwi', 'Fruit de la passion', 'Figue', 'Raisin', 'Citron', 'Citron vert'],
+    fruitsSecs: ['Pistaches', 'Noisettes', 'Amandes', 'Noix de pécan', 'Cacahuètes', 'Noix'],
+  };
+  NC_PRESETS = [
+    { name: 'Vanille & Pistache', base: 'Pâte sucrée nature', croustillant: 'Praliné pistache', cremeux: 'Vanille', compotee: '', gel: '', mousse: 'Vanille', decors: [], fruitsSecs: ['Pistaches'] },
+    { name: 'Chocolat praliné noisette', base: 'Pâte sucrée cacao', croustillant: 'Praliné noisette', cremeux: 'Chocolat noir', compotee: '', gel: '', mousse: 'Chocolat noir', decors: [], fruitsSecs: ['Cacahuètes'] },
+    { name: 'Citrons', base: 'Pâte sucrée citron', croustillant: '', cremeux: 'Citron jaune', compotee: '', gel: 'Citron vert', mousse: 'Citron', decors: ['Citron'], fruitsSecs: [] },
+    { name: 'Framboise & Vanille', base: 'Pâte sucrée nature', croustillant: '', cremeux: '', compotee: 'Framboise', gel: '', mousse: 'Vanille', decors: ['Framboises'], fruitsSecs: [] },
+    { name: 'Pêche & Verveine', base: 'Pâte sucrée nature', croustillant: '', cremeux: '', compotee: 'Pêche', gel: '', mousse: 'Verveine vanille', decors: ['Pêche'], fruitsSecs: [] },
+    { name: 'Mangue & Passion', base: 'Pâte sucrée nature', croustillant: '', cremeux: '', compotee: 'Mangue-passion', gel: '', mousse: 'Vanille', decors: ['Mangue'], fruitsSecs: [] },
+  ];
+
+  state = {
+    cart: [],
+    activeCat: 'Tartes & entremets',
+    nc: { open: false, text: '', plevel: 2, preset: -1, base: '', croustillant: '', cremeux: '', compotee: '', gel: '', mousse: '', decors: [], fruitsSecs: [] },
+    cartOpen: false,
+    delivery: 'collect',
+    view: 'shop',
+    lightboxIndex: -1,
+    contactSent: false,
+    devisSent: false,
+    order: null,
+    modalId: null,
+    modalOptIdx: 0,
+    modalImgIdx: 0,
+    modalQty: 1,
+    allergenesOpen: false,
+    menuOpen: false,
+    zoomSrc: null,
+    storyOpen: false,
+  };
+
+  // ── Cycle de vie ──
+  componentDidMount() {
+    try {
+      const saved = JSON.parse(localStorage.getItem('atelier-givre-cart') || '[]');
+      const known = this.PRODUCTS.map((p) => p.id);
+      const valid = (Array.isArray(saved) ? saved : [])
+        .filter((i) => i && i.key && i.opt && (known.includes(i.id) || i.id === 'number-cake'))
+        .map((i) => ({ key: i.key, id: i.id, name: i.name, opt: i.opt, price: i.price, qty: i.qty || 1, img: i.img }));
+      if (valid.length) this.setState({ cart: valid });
+    } catch (e) { /* panier corrompu : on ignore */ }
+
+    this._onScroll = () => {
+      const h = this._header;
+      if (!h) return;
+      const on = window.scrollY > 24;
+      h.style.borderBottomColor = on ? '#C9A84C' : 'transparent';
+      h.style.boxShadow = on ? '0 8px 28px -18px rgba(26,44,61,.5)' : 'none';
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+    this.initReveal();
+    this.syncScrollLock();
+  }
+  componentDidUpdate() { this.initReveal(); this.syncScrollLock(); }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    if (this._io) this._io.disconnect();
+    document.body.style.overflow = '';
+  }
+
+  // ── Blocage du défilement de l'arrière-plan quand un panneau est ouvert ──
+  syncScrollLock() {
+    const s = this.state;
+    const lock = !!(s.modalId || s.cartOpen || s.zoomSrc || s.menuOpen || s.storyOpen || (s.nc && s.nc.open) || s.lightboxIndex >= 0 || s.view === 'confirmation');
+    document.body.style.overflow = lock ? 'hidden' : '';
+  }
+
+  // ── Animations fade-in au scroll (Intersection Observer) ──
+  initReveal() {
+    if (!this._io) {
+      this._io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            en.target.style.opacity = '1';
+            en.target.style.transform = 'none';
+            this._io.unobserve(en.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
+    }
+    const root = this._root || document;
+    root.querySelectorAll('[data-reveal]:not([data-reveal-on])').forEach((el) => {
+      el.setAttribute('data-reveal-on', '1');
+      this._io.observe(el);
+    });
+  }
+
+  // ── Helpers ──
+  formatPrice = (n) => n.toFixed(2).replace('.', ',') + ' €';
+  persist = (cart) => {
+    try { localStorage.setItem('atelier-givre-cart', JSON.stringify(cart)); } catch (e) {}
+  };
+
+  // ── Panier ──
+  setRoot = (el) => { this._root = el; };
+  setHeader = (el) => { this._header = el; };
+  setAddress = (el) => { this._addr = el; };
+
+  setCat = (name) => this.setState({ activeCat: name });
+
+  openCart = () => this.setState({ cartOpen: true });
+  closeCart = () => this.setState({ cartOpen: false });
+
+  toggleMenu = () => this.setState((s) => ({ menuOpen: !s.menuOpen }));
+  closeMenu = () => this.setState({ menuOpen: false });
+
+  // ── Page Histoire ──
+  openStory = () => this.setState({ storyOpen: true, menuOpen: false });
+  closeStory = () => this.setState({ storyOpen: false });
+
+  // ── Number Cake (composeur) ──
+  openNC = () => this.setState((s) => ({ menuOpen: false, cartOpen: false, nc: { ...s.nc, open: true } }));
+  closeNC = () => this.setState((s) => ({ nc: { ...s.nc, open: false } }));
+  ncSetField = (f, v) => this.setState((s) => ({ nc: { ...s.nc, [f]: v, preset: -1 } }));
+  ncBaseCh = (e) => this.ncSetField('base', e.target.value);
+  ncCroustCh = (e) => this.ncSetField('croustillant', e.target.value);
+  ncCremeuxCh = (e) => this.ncSetField('cremeux', e.target.value);
+  ncCompoteeCh = (e) => this.ncSetField('compotee', e.target.value);
+  ncGelCh = (e) => this.ncSetField('gel', e.target.value);
+  ncMousseCh = (e) => this.ncSetField('mousse', e.target.value);
+  ncTextInput = (e) => { const v = e.target.value; this.setState((s) => ({ nc: { ...s.nc, text: v } })); };
+  ncPlevelCh = (e) => { const v = parseInt(e.target.value, 10) || 0; this.setState((s) => ({ nc: { ...s.nc, plevel: v } })); };
+  ncCharCount = () => Math.max(1, (this.state.nc.text || '').replace(/[^0-9A-Za-zÀ-ÿ]/g, '').length);
+  ncPersons = () => this.ncCharCount() * this.NC_PORTIONS[this.state.nc.plevel];
+  ncSupplements = () => this.state.nc.decors.length * this.NC_SUPP_DECOR + this.state.nc.fruitsSecs.length * this.NC_SUPP_FRUITSEC;
+  ncToggle = (kind, name) => this.setState((s) => {
+    const arr = s.nc[kind];
+    const next = arr.indexOf(name) >= 0 ? arr.filter((x) => x !== name) : [...arr, name];
+    return { nc: { ...s.nc, [kind]: next, preset: -1 } };
+  });
+  applyPreset = (i) => this.setState((s) => {
+    const p = this.NC_PRESETS[i];
+    return { nc: { ...s.nc, preset: i, base: p.base, croustillant: p.croustillant, cremeux: p.cremeux, compotee: p.compotee, gel: p.gel, mousse: p.mousse, decors: [...p.decors], fruitsSecs: [...p.fruitsSecs] } };
+  });
+  ncPrice = () => this.ncPersons() * this.NC_PRICE_PER_PERSON + this.ncSupplements();
+  addNC = () => {
+    const nc = this.state.nc;
+    if (!nc.text.trim() || !nc.base) return;
+    const parts = [this.ncPersons() + ' personnes'];
+    parts.push('Base : ' + nc.base);
+    if (nc.croustillant) parts.push('Croustillant : ' + nc.croustillant);
+    if (nc.cremeux) parts.push('Crémeux : ' + nc.cremeux);
+    if (nc.compotee) parts.push('Compotée : ' + nc.compotee);
+    if (nc.gel) parts.push('Gel : ' + nc.gel);
+    if (nc.mousse) parts.push('Mousse : ' + nc.mousse);
+    if (nc.decors.length) parts.push('Décor : ' + nc.decors.join(', '));
+    if (nc.fruitsSecs.length) parts.push('Fruits secs : ' + nc.fruitsSecs.join(', '));
+    const key = 'nc-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
+    const line = { key, id: 'number-cake', name: 'Number Cake « ' + nc.text.trim() + ' »', opt: parts.join(' · '), price: this.ncPrice(), qty: 1, img: 'images/vanille-pistache-1.jpg' };
+    this.setState((s) => {
+      const cart = [...s.cart, line];
+      this.persist(cart);
+      return { cart, cartOpen: true, nc: { ...s.nc, open: false } };
+    });
+  };
+
+  setCollect = () => this.setState({ delivery: 'collect' });
+  setHome = () => this.setState({ delivery: 'home' });
+
+  closeLightbox = () => this.setState({ lightboxIndex: -1 });
+  backToShop = () => this.setState({ view: 'shop', order: null });
+
+  // ── Fiche produit (popup détaillée) ──
+  productById = (id) => this.PRODUCTS.find((p) => p.id === id);
+
+  openProduct = (product) => this.setState({
+    modalId: product.id,
+    modalOptIdx: 0,
+    modalImgIdx: 0,
+    modalQty: 1,
+    allergenesOpen: false,
+    lightboxIndex: -1,
+    cartOpen: false,
+  });
+  closeProduct = () => this.setState({ modalId: null });
+  setModalOpt = (i) => this.setState({ modalOptIdx: i });
+  setModalImg = (i) => this.setState({ modalImgIdx: i });
+  setZoom = (src) => this.setState({ zoomSrc: src });
+  closeZoom = () => this.setState({ zoomSrc: null });
+  toggleAllergenes = () => this.setState((s) => ({ allergenesOpen: !s.allergenesOpen }));
+  modalInc = () => this.setState((s) => ({ modalQty: s.modalQty + 1 }));
+  modalDec = () => this.setState((s) => ({ modalQty: Math.max(1, s.modalQty - 1) }));
+  stopProp = (e) => { if (e && e.stopPropagation) e.stopPropagation(); };
+
+  // ── Panier (lignes identifiées par une clé produit + option) ──
+  addLine = (product, optIdx, qty) => {
+    if (!product) return;
+    const opt = product.options[optIdx] || product.options[0];
+    const key = product.id + '@' + opt.label;
+    this.setState((s) => {
+      const existing = s.cart.find((i) => i.key === key);
+      let cart;
+      if (existing) {
+        cart = s.cart.map((i) => i.key === key ? { ...i, qty: i.qty + qty } : i);
+      } else {
+        cart = [...s.cart, { key, id: product.id, name: product.name, opt: opt.label, price: opt.price, qty }];
+      }
+      this.persist(cart);
+      return { cart, cartOpen: true, modalId: null };
+    });
+  };
+  inc = (key) => this.setState((s) => {
+    const cart = s.cart.map((i) => i.key === key ? { ...i, qty: i.qty + 1 } : i);
+    this.persist(cart); return { cart };
+  });
+  dec = (key) => this.setState((s) => {
+    const cart = s.cart.map((i) => i.key === key ? { ...i, qty: Math.max(1, i.qty - 1) } : i);
+    this.persist(cart); return { cart };
+  });
+  removeItem = (key) => this.setState((s) => {
+    const cart = s.cart.filter((i) => i.key !== key);
+    this.persist(cart); return { cart };
+  });
+
+  // ── Paiement ──
+  // TODO Stripe : initialiser le PaymentElement ici une fois la clé publique fournie.
+  //   const stripe = Stripe('pk_live_XXXX');               // TODO: clé publique
+  //   const res = await fetch('/api/create-payment-intent') // TODO: endpoint backend
+  //   const { clientSecret } = await res.json();            // TODO: webhook de confirmation
+  //   const elements = stripe.elements({ clientSecret });
+  //   elements.create('payment').mount('#payment-element');
+  checkout = () => {
+    if (this.state.cart.length === 0) return;
+    const subtotal = this.state.cart.reduce((a, b) => a + b.price * b.qty, 0);
+    const deliveryFee = this.state.delivery === 'home' ? 5 : 0;
+    const total = subtotal + deliveryFee;
+    const order = {
+      number: 'AG-' + Math.floor(1000 + Math.random() * 9000),
+      items: this.state.cart.map((it) => ({ ...it })),
+      total,
+      delivery: this.state.delivery,
+    };
+    this.persist([]);
+    this.setState({ order, cart: [], view: 'confirmation', cartOpen: false });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  onContactSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ contactSent: true });
+    if (e.target && e.target.reset) e.target.reset();
+  };
+  onDevisSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ devisSent: true });
+    if (e.target && e.target.reset) e.target.reset();
+  };
+
+  // ── Styles dérivés de l'état (valeurs runtime) ──
+  tabStyle(active) {
+    return {
+      fontFamily: "'DM Sans',sans-serif",
+      fontSize: '13px',
+      letterSpacing: '1.4px',
+      textTransform: 'uppercase',
+      padding: '12px 28px',
+      borderRadius: '2px',
+      cursor: 'pointer',
+      transition: 'all .3s ease',
+      border: active ? '1px solid #C9A84C' : '1px solid #E8E8E8',
+      background: active ? '#C9A84C' : '#fff',
+      color: active ? '#fff' : '#566571',
+    };
+  }
+  optStyle(active) {
+    return {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      gap: '12px',
+      padding: '14px 16px',
+      marginBottom: '10px',
+      borderRadius: '8px',
+      cursor: 'pointer',
+      transition: 'border-color .25s ease,background .25s ease',
+      border: active ? '1px solid #C9A84C' : '1px solid #E8E8E8',
+      background: active ? '#FBF8EF' : '#fff',
+      color: '#1A2C3D',
+    };
+  }
+  sizeStyle(active) {
+    return {
+      minWidth: '62px',
+      padding: '11px 14px',
+      borderRadius: '9px',
+      cursor: 'pointer',
+      fontSize: '13.5px',
+      fontWeight: '600',
+      transition: 'all .25s ease',
+      border: active ? '1px solid #C9A84C' : '1px solid #E8E8E8',
+      background: active ? '#C9A84C' : '#fff',
+      color: active ? '#fff' : '#1A2C3D',
+    };
+  }
+  chipStyle(active) {
+    return {
+      padding: '8px 14px',
+      borderRadius: '20px',
+      cursor: 'pointer',
+      fontSize: '13px',
+      transition: 'all .2s ease',
+      border: active ? '1px solid #C9A84C' : '1px solid #E8E8E8',
+      background: active ? '#C9A84C' : '#fff',
+      color: active ? '#fff' : '#566571',
+    };
+  }
+  thumbStyle(active) {
+    return {
+      width: '52px',
+      height: '52px',
+      flexShrink: '0',
+      padding: '0',
+      borderRadius: '7px',
+      overflow: 'hidden',
+      cursor: 'pointer',
+      background: 'none',
+      lineHeight: '0',
+      border: active ? '2px solid #C9A84C' : '2px solid rgba(255,255,255,.75)',
+      boxShadow: '0 2px 10px rgba(13,22,31,.35)',
+      transition: 'border-color .2s ease, transform .2s ease',
+      opacity: active ? '1' : '.85',
+    };
+  }
+  ncSelectOptions(list, placeholder) {
+    return [{ v: '', label: placeholder }].concat(list.map((v) => ({ v, label: v })));
+  }
+
+  priceFromLabel = (p) => {
+    const min = Math.min.apply(null, p.options.map((o) => o.price));
+    return p.options.length > 1 ? 'dès ' + this.formatPrice(min) : this.formatPrice(min);
+  };
+
+  renderVals() {
+    const s = this.state;
+    const tabs = this.CATEGORIES.map((c) => ({
+      label: c,
+      style: this.tabStyle(c === s.activeCat),
+      onPick: () => this.setCat(c),
+    }));
+    const visibleProducts = this.PRODUCTS.filter((p) => p.cat === s.activeCat).map((p) => ({
+      id: p.id,
+      name: p.name,
+      desc: p.desc,
+      img: p.img,
+      priceLabel: this.priceFromLabel(p),
+      onOpen: () => this.openProduct(p),
+    }));
+
+    const cartItems = s.cart.map((it) => ({
+      ...it,
+      img: it.img || (this.productById(it.id) || {}).img || '',
+      unitLabel: it.opt,
+      priceLabel: this.formatPrice(it.price * it.qty),
+      onInc: () => this.inc(it.key),
+      onDec: () => this.dec(it.key),
+      onRemove: () => this.removeItem(it.key),
+    }));
+
+    // ── Valeurs de la fiche produit (popup) ──
+    const modalP = s.modalId ? this.productById(s.modalId) : null;
+    const modalImgs = this.imagesOf(modalP);
+    const imgIdx = modalP ? Math.min(Math.max(0, s.modalImgIdx), modalImgs.length - 1) : 0;
+    const modalThumbs = modalImgs.map((src, i) => ({
+      src,
+      style: this.thumbStyle(i === imgIdx),
+      onPick: () => this.setModalImg(i),
+    }));
+    const optIdx = modalP ? Math.min(s.modalOptIdx, modalP.options.length - 1) : 0;
+    const modalOpt = modalP ? modalP.options[optIdx] : null;
+    const modalTotal = modalOpt ? modalOpt.price * s.modalQty : 0;
+    const hasChoices = !!(modalP && modalP.options.length > 1);
+    const modalSizes = (modalP ? modalP.options : []).map((o, i) => ({
+      label: o.label,
+      style: this.sizeStyle(i === optIdx),
+      onPick: () => this.setModalOpt(i),
+    }));
+    const modalIngredients = modalP ? modalP.ingredients.map((t) => ({ text: t })) : [];
+    const modalAllergenes = modalP ? modalP.allergenes.map((t) => ({ text: t })) : [];
+
+    const cartCount = s.cart.reduce((a, b) => a + b.qty, 0);
+    const subtotal = s.cart.reduce((a, b) => a + b.price * b.qty, 0);
+    const isHome = s.delivery === 'home';
+    const deliveryFee = isHome ? 5 : 0;
+    const total = subtotal + deliveryFee;
+
+    const gallery = this.GALLERY.map((g, i) => ({
+      src: g.src,
+      caption: g.caption,
+      onOpen: () => this.setState({ lightboxIndex: i }),
+    }));
+
+    const order = s.order;
+    const orderItems = order ? order.items.map((it) => ({
+      label: it.name + (it.qty > 1 ? ' × ' + it.qty : ''),
+      priceLabel: this.formatPrice(it.price * it.qty),
+    })) : [];
+
+    return {
+      // tabs
+      tabs,
+      visibleProducts,
+      // gallery
+      gallery,
+      lightboxOpen: s.lightboxIndex >= 0,
+      lightboxSrc: s.lightboxIndex >= 0 ? this.GALLERY[s.lightboxIndex].src : '',
+      lightboxCaption: s.lightboxIndex >= 0 ? this.GALLERY[s.lightboxIndex].caption : '',
+      closeLightbox: this.closeLightbox,
+      // fiche produit (popup)
+      modalOpen: !!modalP,
+      modalHasChoices: hasChoices,
+      modalName: modalP ? modalP.name : '',
+      modalDesc: modalP ? modalP.desc : '',
+      modalImg: modalImgs[imgIdx] || (modalP ? modalP.img : ''),
+      modalThumbs,
+      modalHasThumbs: modalImgs.length > 1,
+      zoomMain: () => this.setZoom(modalImgs[imgIdx] || (modalP ? modalP.img : '')),
+      zoomOpen: !!s.zoomSrc,
+      zoomSrc: s.zoomSrc || '',
+      closeZoom: this.closeZoom,
+      modalCat: modalP ? modalP.cat : '',
+      modalSizes,
+      modalOptLabel: modalOpt ? modalOpt.label : '',
+      modalIngredients,
+      modalAllergenes,
+      modalPriceLabel: this.formatPrice(modalTotal),
+      modalQty: s.modalQty,
+      modalInc: this.modalInc,
+      modalDec: this.modalDec,
+      modalAdd: () => this.addLine(modalP, optIdx, s.modalQty),
+      closeProduct: this.closeProduct,
+      stopProp: this.stopProp,
+      // number cake (composeur)
+      openNC: this.openNC,
+      closeNC: this.closeNC,
+      ncOpen: s.nc.open,
+      ncText: s.nc.text,
+      ncTextInput: this.ncTextInput,
+      ncPresets: this.NC_PRESETS.map((p, i) => ({ name: p.name, style: this.chipStyle(i === s.nc.preset), onApply: () => this.applyPreset(i) })),
+      ncBase: s.nc.base, ncBaseCh: this.ncBaseCh, ncBaseOpts: this.ncSelectOptions(this.NC.bases, '— Choisir une base —'),
+      ncCroust: s.nc.croustillant, ncCroustCh: this.ncCroustCh, ncCroustOpts: this.ncSelectOptions(this.NC.croustillants, '— Aucun —'),
+      ncCremeux: s.nc.cremeux, ncCremeuxCh: this.ncCremeuxCh, ncCremeuxOpts: this.ncSelectOptions(this.NC.cremeux, '— Aucun —'),
+      ncCompotee: s.nc.compotee, ncCompoteeCh: this.ncCompoteeCh, ncCompoteeOpts: this.ncSelectOptions(this.NC.compotees, '— Aucune —'),
+      ncGel: s.nc.gel, ncGelCh: this.ncGelCh, ncGelOpts: this.ncSelectOptions(this.NC.gels, '— Aucun —'),
+      ncMousse: s.nc.mousse, ncMousseCh: this.ncMousseCh, ncMousseOpts: this.ncSelectOptions(this.NC.mousses, '— Aucune —'),
+      ncDecors: this.NC.decors.map((n) => ({ name: n, style: this.chipStyle(s.nc.decors.indexOf(n) >= 0), onToggle: () => this.ncToggle('decors', n) })),
+      ncFruitsSecs: this.NC.fruitsSecs.map((n) => ({ name: n, style: this.chipStyle(s.nc.fruitsSecs.indexOf(n) >= 0), onToggle: () => this.ncToggle('fruitsSecs', n) })),
+      ncCharCount: this.ncCharCount(),
+      ncPlevel: s.nc.plevel,
+      ncPlevelCh: this.ncPlevelCh,
+      ncPersonsOpts: this.NC_PORTIONS.map((p, i) => ({ v: i, label: (this.ncCharCount() * p) + ' personnes' })),
+      ncPersonsLabel: 'Pour ' + this.ncPersons() + ' personnes',
+      ncDecorSuppLabel: 'Décoration — fruits (+' + this.formatPrice(this.NC_SUPP_DECOR) + ' l\'unité)',
+      ncFruitsSecsSuppLabel: 'Fruits secs (+' + this.formatPrice(this.NC_SUPP_FRUITSEC) + ' l\'unité)',
+      ncSuppShow: this.ncSupplements() > 0,
+      ncSuppLabel: 'dont ' + this.formatPrice(this.ncSupplements()) + ' de suppléments',
+      ncPriceLabel: this.formatPrice(this.ncPrice()),
+      ncValid: !!(s.nc.text.trim() && s.nc.base),
+      ncInvalid: !(s.nc.text.trim() && s.nc.base),
+      addNC: this.addNC,
+      allergenesOpen: s.allergenesOpen,
+      toggleAllergenes: this.toggleAllergenes,
+      allergenesPanelStyle: {
+        overflow: 'hidden',
+        maxHeight: s.allergenesOpen ? '320px' : '0px',
+        opacity: s.allergenesOpen ? 1 : 0,
+        marginTop: s.allergenesOpen ? '12px' : '0px',
+        transition: 'max-height .4s ease, opacity .3s ease, margin-top .3s ease',
+      },
+      allergenesChevronStyle: {
+        display: 'inline-flex',
+        transition: 'transform .3s ease',
+        transform: s.allergenesOpen ? 'rotate(180deg)' : 'none',
+      },
+      // cart
+      cartItems,
+      cartCount,
+      hasItems: cartCount > 0,
+      cartEmpty: cartCount === 0,
+      subtotalLabel: this.formatPrice(subtotal),
+      deliveryFeeLabel: isHome ? this.formatPrice(5) : 'Gratuit',
+      totalLabel: this.formatPrice(total),
+      openCart: this.openCart,
+      closeCart: this.closeCart,
+      checkout: this.checkout,
+      // menu mobile
+      menuOpen: s.menuOpen,
+      toggleMenu: this.toggleMenu,
+      closeMenu: this.closeMenu,
+      // histoire
+      storyOpen: s.storyOpen,
+      openStory: this.openStory,
+      closeStory: this.closeStory,
+      // delivery
+      isHome,
+      setCollect: this.setCollect,
+      setHome: this.setHome,
+      setAddress: this.setAddress,
+      collectOptStyle: this.optStyle(!isHome),
+      homeOptStyle: this.optStyle(isHome),
+      // drawer chrome
+      backdropStyle: {
+        position: 'fixed', inset: 0, zIndex: 70, background: 'rgba(13,22,31,.42)',
+        opacity: s.cartOpen ? 1 : 0,
+        pointerEvents: s.cartOpen ? 'auto' : 'none',
+        transition: 'opacity .35s ease',
+      },
+      cartPanelStyle: {
+        position: 'fixed', top: 0, right: 0, bottom: 0, zIndex: 80,
+        width: 'min(420px,92vw)', background: '#fff',
+        display: 'flex', flexDirection: 'column',
+        boxShadow: '-24px 0 60px -30px rgba(26,44,61,.5)',
+        transform: s.cartOpen ? 'translateX(0)' : 'translateX(105%)',
+        transition: 'transform .4s cubic-bezier(.22,.61,.36,1)',
+      },
+      // contact
+      onContactSubmit: this.onContactSubmit,
+      contactSent: s.contactSent,
+      // devis
+      onDevisSubmit: this.onDevisSubmit,
+      devisSent: s.devisSent,
+      // confirmation
+      isConfirmed: s.view === 'confirmation',
+      orderNumber: order ? order.number : '',
+      orderItems,
+      orderTotalLabel: order ? this.formatPrice(order.total) : '',
+      backToShop: this.backToShop,
+      // refs
+      setRoot: this.setRoot,
+      setHeader: this.setHeader,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Atelier Givre — Pâtisserie & chocolaterie artisanale à Belley (Ain)</title>
+<meta name="description" content="Atelier Givre, pâtisserie et chocolaterie artisanale dans l'Ain. Tartes, entremets, cannelés, cookies et number cakes sur-mesure. Retrait à Belley et livraison dans un rayon de 20 km.">
+<meta name="keywords" content="Atelier Givre, pâtisserie Belley, chocolaterie Ain, number cake Ain, Kylian Givre, pâtissier Belley, tarte artisanale Bugey">
+<meta name="author" content="Kylian Givre">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://huyx69.github.io/Atelier-givre/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Atelier Givre">
+<meta property="og:title" content="Atelier Givre — Pâtisserie & chocolaterie artisanale à Belley">
+<meta property="og:description" content="Tartes, entremets, cannelés et number cakes entièrement réalisés à la main. Belley, Ain. Retrait gratuit et livraison 20 km.">
+<meta property="og:url" content="https://huyx69.github.io/Atelier-givre/">
+<meta property="og:image" content="https://huyx69.github.io/Atelier-givre/images/kylian.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Fiche établissement pour Google (données structurées schema.org). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Atelier Givre",
+  "description": "Pâtisserie et chocolaterie artisanale dans l'Ain. Tartes, entremets, cannelés et number cakes faits main. Retrait à Belley, livraison dans un rayon de 20 km.",
+  "image": "https://huyx69.github.io/Atelier-givre/images/kylian.jpg",
+  "url": "https://huyx69.github.io/Atelier-givre/",
+  "email": "ateliergivre.contact@gmail.com",
+  "telephone": "+33629368117",
+  "founder": { "@type": "Person", "name": "Kylian Givre", "jobTitle": "Pâtissier-chocolatier" },
+  "address": { "@type": "PostalAddress", "streetAddress": "196 rue du Promenoir", "addressLocality": "Belley", "postalCode": "01300", "addressRegion": "Ain", "addressCountry": "FR" },
+  "openingHours": ["Mo-Sa 09:00-19:00", "Su 09:00-13:00"],
+  "areaServed": { "@type": "GeoCircle", "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 45.7594, "longitude": 5.6889 }, "geoRadius": 20000 },
+  "servesCuisine": "Pâtisserie",
+  "priceRange": "€€",
+  "sameAs": [
+    "https://instagram.com/ateliergivre01",
+    "https://www.tiktok.com/@ateliergivre01",
+    "https://facebook.com/ateliergivre01"
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:'DM Sans',sans-serif;color:#1A2C3D;background:#FFFFFF;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  ::selection{background:#C9A84C;color:#fff;}
+  input,select,textarea,button{font-family:inherit;}
+  @keyframes ag-cardIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  @keyframes ag-fadeIn{from{opacity:0;}to{opacity:1;}}
+  @keyframes ag-heroUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:none;}}
+  @keyframes ag-heroImg{from{opacity:0;transform:scale(1.07);}to{opacity:1;transform:scale(1);}}
+  img{max-width:100%;}
+  /* ════════════ RESPONSIVE ════════════ */
+  .ag-burger{display:none;}
+  select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238a98a5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 12px center;}
+  /* Entre 880 et 1040px : on resserre la nav pour qu'elle tienne sur une ligne. */
+  @media (max-width: 1040px){
+    .ag-nav{gap:18px !important;}
+    .ag-nav a{font-size:12.5px !important;white-space:nowrap !important;}
+  }
+  /* ════════════ HEADER transparent sur la photo de garde ════════════ */
+  header.ag-top{background:transparent !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;}
+  header.ag-top a,header.ag-top span,header.ag-top button{color:#FFFFFF !important;}
+  /* ═══════════════════════════════════════════════════════════
+     RESPONSIVE — tablette & mobile (règles postérieures : prioritaires)
+     ═══════════════════════════════════════════════════════════ */
+  html,body{max-width:100%;overflow-x:hidden;}
+  img,svg,video{max-width:100%;height:auto;}
+
+  /* ── ≤ 880 px : passage en colonne unique ── */
+  @media (max-width: 880px){
+    a,button,select,label{-webkit-tap-highlight-color:rgba(201,168,76,.16);}
+    /* iOS n'auto-zoome plus sur les champs à partir de 16px */
+    input,select,textarea{font-size:16px !important;}
+
+    .ag-nav{display:none !important;}
+    .ag-burger{display:flex !important;}
+    .ag-headwrap{padding:0 18px !important;gap:12px !important;}
+
+    /* Accueil */
+    #accueil{min-height:88vh !important;min-height:88dvh !important;padding:0 !important;align-items:flex-end !important;}
+    .ag-hero-copy{padding:140px 26px 62px !important;}
+    .ag-hero-photo{object-position:66% 15% !important;}
+    .ag-scrim{background:linear-gradient(180deg,rgba(16,28,39,.58) 0%,rgba(16,28,39,.42) 34%,rgba(16,28,39,.82) 72%,rgba(16,28,39,.94) 100%) !important;}
+
+    /* Sections */
+    .ag-sec{padding:76px 20px !important;}
+    .ag-contact{grid-template-columns:1fr !important;gap:38px !important;}
+    .ag-footer{grid-template-columns:1fr 1fr !important;gap:34px !important;}
+    .ag-creations-grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr)) !important;gap:20px !important;}
+    .ag-gallery-grid{grid-template-columns:1fr 1fr !important;gap:14px !important;}
+    .ag-card-img{height:200px !important;}
+
+    /* Onglets : rail défilable plutôt qu'un pavé de boutons */
+    .ag-tabs{flex-wrap:nowrap !important;justify-content:flex-start !important;overflow-x:auto !important;margin:26px -20px 34px !important;padding:2px 20px 10px !important;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+    .ag-tabs::-webkit-scrollbar{display:none;}
+    .ag-tabs > button{flex:0 0 auto !important;min-height:42px;}
+
+    /* Modales plein écran */
+    .ag-modal-overlay,.ag-nc-overlay{padding:0 !important;align-items:stretch !important;justify-content:stretch !important;}
+    .ag-modal-shell,.ag-nc-shell{width:100% !important;max-width:100% !important;height:100vh !important;height:100dvh !important;max-height:none !important;border-radius:0 !important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
+    .ag-modal-grid{grid-template-columns:1fr !important;}
+    .ag-modal-img{min-height:0 !important;height:44vh !important;max-height:330px !important;}
+    .ag-modal-info{padding:26px 22px calc(30px + env(safe-area-inset-bottom)) !important;gap:18px !important;}
+    .ag-nc-body{padding:28px 20px calc(28px + env(safe-area-inset-bottom)) !important;gap:22px !important;}
+
+    /* Barres d'action : empilées, bouton pleine largeur */
+    .ag-modal-actions,.ag-nc-actions{flex-direction:column !important;align-items:stretch !important;gap:16px !important;}
+    .ag-modal-actions > div:last-child{justify-content:space-between !important;width:100%;}
+    .ag-modal-actions > div:last-child > button{flex:1;min-height:50px;}
+    .ag-nc-actions > button{width:100% !important;min-height:52px;}
+
+    /* Compteurs de quantité : cibles tactiles confortables */
+    .ag-qty > button{width:38px !important;height:38px !important;font-size:20px !important;}
+
+    /* Formulaires */
+    .ag-form{padding:26px 22px !important;}
+    .ag-form button[type="submit"]{align-self:stretch !important;width:100% !important;min-height:52px;}
+
+    /* Panier */
+    .ag-cart{width:min(420px,100vw) !important;}
+
+    /* Histoire & lightbox */
+    .ag-story-head{padding:14px 18px !important;}
+    .ag-story-article{padding:56px 22px 84px !important;}
+    .ag-lightbox{padding:18px !important;}
+  }
+
+  /* ── ≤ 620 px : téléphone ── */
+  @media (max-width: 620px){
+    header{height:64px !important;}
+    .ag-headwrap{padding:0 16px !important;}
+    .ag-headwrap > a span{font-size:21px !important;}
+    .ag-mobilemenu{top:64px !important;max-height:calc(100dvh - 64px);overflow-y:auto;}
+    .ag-sec{padding:64px 18px !important;scroll-margin-top:64px !important;}
+
+    .ag-hero-copy{padding:126px 20px 54px !important;}
+    .ag-hero-facts{grid-template-columns:repeat(3,1fr) !important;max-width:none !important;}
+    .ag-hero-facts > div{padding:0 10px !important;}
+    .ag-hero-facts > div:first-child{padding-left:0 !important;padding-right:10px !important;}
+    .ag-hero-facts > div:last-child{padding-right:0 !important;}
+    .ag-hero-facts p:first-child{font-size:20px !important;}
+    .ag-hero-facts p:last-child{font-size:9.5px !important;letter-spacing:.4px !important;}
+    .ag-hero-cta{flex-direction:column !important;align-items:stretch !important;gap:11px !important;}
+    .ag-hero-cta > *{justify-content:center !important;text-align:center;padding:16px 22px !important;}
+
+    .ag-creations-grid{grid-template-columns:1fr !important;}
+    .ag-gallery-grid{grid-template-columns:1fr !important;gap:16px !important;}
+    .ag-card-img{height:230px !important;}
+    .ag-nc-grid{grid-template-columns:1fr !important;}
+    .ag-form-row{grid-template-columns:1fr !important;}
+    .ag-footer{grid-template-columns:1fr !important;gap:30px !important;}
+    .ag-footer-bottom{flex-direction:column !important;gap:8px !important;}
+    .ag-cart{width:100% !important;}
+    .ag-story-article{padding:44px 20px 72px !important;}
+    .ag-modal-img{height:38vh !important;}
+  }
+
+  /* ── ≤ 400 px : petits écrans ── */
+  @media (max-width: 400px){
+    .ag-headwrap > a span{font-size:19px !important;}
+    #accueil h1{font-size:44px !important;}
+    .ag-hero-copy{padding:118px 18px 48px !important;}
+    .ag-sec{padding:56px 16px !important;}
+    .ag-form{padding:22px 16px !important;}
+    .ag-modal-info{padding:24px 18px calc(28px + env(safe-area-inset-bottom)) !important;}
+    .ag-nc-body{padding:26px 16px calc(26px + env(safe-area-inset-bottom)) !important;}
+  }
+
+  /* Écran bas (paysage téléphone) : l'accueil ne bloque plus le défilement */
+  @media (max-height: 520px) and (max-width: 900px){
+    #accueil{min-height:auto !important;}
+    .ag-hero-copy{padding-top:104px !important;padding-bottom:44px !important;}
+  }
+</style>
+<!-- Stripe.js — chargé depuis le CDN officiel (intégration : voir initStripe() dans la logique). -->
+<script src="https://js.stripe.com/v3/"></script>
+</helmet>
+
+<div ref="{{ setRoot }}" style="position:relative;overflow-x:hidden;">
+
+  <!-- ════════════════ HEADER ════════════════ -->
+  <header ref="{{ setHeader }}" style="position:fixed;top:0;left:0;right:0;z-index:60;height:74px;background:rgba(255,255,255,0.92);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid transparent;transition:border-color .35s ease,box-shadow .35s ease;">
+    <div class="ag-headwrap" style="max-width:1240px;margin:0 auto;height:100%;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+      <a href="#accueil" style="display:flex;align-items:center;gap:11px;text-decoration:none;color:#1A2C3D;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;letter-spacing:.5px;">Atelier Givre</span>
+      </a>
+      <nav class="ag-nav" style="display:flex;align-items:center;gap:30px;">
+        <a href="#accueil" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Accueil</a>
+        <a href="#creations" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Nos créations</a>
+        <a href="#number-cake" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Number Cake</a>
+        <a href="#devis" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Devis</a>
+        <a href="#galerie" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Galerie</a>
+        <a href="#contact" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Contact</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <button onClick="{{ openCart }}" aria-label="Panier" style="position:relative;background:none;border:none;cursor:pointer;padding:8px;display:flex;align-items:center;color:#1A2C3D;">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:0;right:0;min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:#C9A84C;color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;">{{ cartCount }}</span></sc-if>
+        </button>
+        <button onClick="{{ toggleMenu }}" aria-label="Menu" class="ag-burger" style="background:none;border:none;cursor:pointer;padding:8px;color:#1A2C3D;align-items:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ════════════════ MENU MOBILE ════════════════ -->
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeMenu }}" style="position:fixed;inset:0;z-index:55;background:rgba(13,22,31,.35);animation:ag-fadeIn .25s ease;"></div>
+    <div class="ag-mobilemenu" style="position:fixed;top:74px;left:0;right:0;z-index:58;background:#fff;border-bottom:1px solid #E8E8E8;box-shadow:0 14px 32px -18px rgba(26,44,61,.45);display:flex;flex-direction:column;padding:6px 0;animation:ag-fadeIn .25s ease;">
+      <a onClick="{{ closeMenu }}" href="#accueil" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Accueil</a>
+      <a onClick="{{ closeMenu }}" href="#creations" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Nos créations</a>
+      <a onClick="{{ closeMenu }}" href="#number-cake" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Number Cake</a>
+      <a onClick="{{ closeMenu }}" href="#devis" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Devis</a>
+      <a onClick="{{ closeMenu }}" href="#galerie" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Galerie</a>
+      <a onClick="{{ closeMenu }}" href="#contact" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;">Contact</a>
+    </div>
+  </sc-if>
+
+  <!-- ════════════════ ACCUEIL · PRÉSENTATION ════════════════ -->
+  <section id="accueil" class="ag-hero" style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:#101C27;">
+
+    <!-- photo plein écran -->
+    <img class="ag-hero-photo" src="images/kylian.jpg" alt="Kylian Givre, pâtissier-chocolatier, au travail à l'Atelier Givre" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 15%;display:block;animation:ag-heroImg 1.6s cubic-bezier(.22,.61,.36,1) both;">
+    <div class="ag-scrim" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(96deg,rgba(16,28,39,.95) 0%,rgba(16,28,39,.88) 24%,rgba(16,28,39,.62) 44%,rgba(16,28,39,.18) 68%,rgba(16,28,39,.06) 100%);"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(16,28,39,.5) 0%,rgba(16,28,39,0) 24%,rgba(16,28,39,0) 62%,rgba(16,28,39,.42) 100%);"></div>
+
+    <div class="ag-hero-copy" style="position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;padding:clamp(100px,12vh,146px) clamp(28px,5vw,72px) clamp(44px,7vh,88px);">
+      <div style="max-width:610px;">
+        <div style="display:flex;align-items:center;gap:13px;color:#C9A84C;margin-bottom:clamp(14px,2.4vh,26px);animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) both;">
+          <span style="height:1px;width:40px;background:#C9A84C;"></span>
+          <span style="font-size:11.5px;letter-spacing:3.4px;text-transform:uppercase;">Belley, Ain — fait main</span>
+        </div>
+
+        <h1 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(44px,5.4vw,86px);line-height:.95;letter-spacing:-1.5px;margin:0 0 clamp(16px,2.4vh,28px);color:#FFFFFF;text-shadow:0 2px 30px rgba(16,28,39,.45);animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .08s both;">L'art du givre<br><em style="font-style:italic;font-weight:400;color:#C9A84C;">et du chocolat</em></h1>
+
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,1.9vw,24px);line-height:1.4;color:#C9A84C;margin:0 0 clamp(10px,1.4vh,16px);max-width:24ch;animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .12s both;">La précision du givre, la douceur du chocolat.</p>
+
+        <p style="font-size:clamp(15px,1.15vw,17px);line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 clamp(12px,1.6vh,18px);max-width:44ch;animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .16s both;">Tartes, entremets, cannelés et number cakes — entièrement réalisés à la main, des pralinés maison aux finitions.</p>
+
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#FFFFFF;margin:0 0 clamp(18px,2.6vh,30px);animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .22s both;">Kylian Givre<span style="font-family:'DM Sans',sans-serif;font-style:normal;font-size:11.5px;letter-spacing:1.2px;color:rgba(255,255,255,.62);text-transform:uppercase;display:block;margin-top:5px;">Pâtissier-chocolatier · seul aux commandes</span></p>
+
+        <div class="ag-hero-cta" style="display:flex;flex-wrap:wrap;gap:13px;margin-bottom:clamp(18px,2.6vh,30px);animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .28s both;">
+          <button onClick="{{ openStory }}" style="display:inline-flex;align-items:center;gap:11px;background:#C9A84C;color:#fff;border:1px solid #C9A84C;cursor:pointer;font-size:13px;letter-spacing:1.3px;text-transform:uppercase;padding:15px 30px;border-radius:2px;transition:background .3s ease,transform .3s ease,box-shadow .3s ease;box-shadow:0 12px 30px -10px rgba(201,168,76,.55);" style-hover="background:#fff;color:#1A2C3D;transform:translateY(-2px);">Lire l'histoire <span style="font-size:15px;">→</span></button>
+          <a href="#creations" style="display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:13px;letter-spacing:1.3px;text-transform:uppercase;padding:15px 28px;border:1px solid rgba(255,255,255,.5);border-radius:2px;background:rgba(255,255,255,.06);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .3s ease,border-color .3s ease;" style-hover="background:rgba(255,255,255,.16);border-color:#fff;">Découvrir nos créations</a>
+        </div>
+
+        <div class="ag-hero-facts" style="display:grid;grid-template-columns:repeat(3,auto);gap:0;border-top:1px solid rgba(255,255,255,.2);padding-top:clamp(14px,2vh,22px);max-width:520px;animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .36s both;">
+          <div style="padding-right:24px;">
+            <p style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;color:#fff;margin:0 0 3px;">100%</p>
+            <p style="font-size:11.5px;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.6);margin:0;">Fait maison</p>
+          </div>
+          <div style="padding:0 24px;border-left:1px solid rgba(255,255,255,.2);">
+            <p style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;color:#fff;margin:0 0 3px;">20 km</p>
+            <p style="font-size:11.5px;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.6);margin:0;">Livraison</p>
+          </div>
+          <div style="padding-left:24px;border-left:1px solid rgba(255,255,255,.2);">
+            <p style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;color:#fff;margin:0 0 3px;">Gratuit</p>
+            <p style="font-size:11.5px;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.6);margin:0;">Click &amp; collect</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ NOS CRÉATIONS ════════════════ -->
+  <section id="creations" class="ag-sec" style="scroll-margin-top:80px;padding:104px 28px;background:#F5F7FA;">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);text-align:center;margin-bottom:18px;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:12px;color:#C9A84C;margin-bottom:16px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">La carte</span><span style="height:1px;width:30px;background:#C9A84C;"></span></div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(36px,5vw,58px);margin:0;color:#1A2C3D;">Nos créations</h2>
+        <p style="font-size:14.5px;line-height:1.7;color:#566571;margin:16px auto 0;max-width:52ch;">Tout est fabriqué à la commande : comptez <strong style="color:#1A2C3D;font-weight:600;">72&nbsp;h avant le retrait</strong> pour les pâtisseries de la carte, <strong style="color:#1A2C3D;font-weight:600;">10&nbsp;jours</strong> pour un number cake ou une création sur-mesure.</p>
+      </div>
+      <div class="ag-tabs" style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:34px 0 48px;">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+          <button onClick="{{ t.onPick }}" style="{{ t.style }}">{{ t.label }}</button>
+        </sc-for>
+      </div>
+      <sc-if value="{{ catEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:76px 24px;border:1px dashed #D5DFE9;border-radius:14px;background:#fff;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:27px;color:#1A2C3D;margin:0 0 10px;">Bientôt disponible</p>
+          <p style="font-size:14.5px;line-height:1.7;color:#8a98a5;margin:0;">Cette carte se remplit prochainement. Écrivez-moi pour une demande particulière.</p>
+        </div>
+      </sc-if>
+      <div class="ag-creations-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:30px;">
+        <sc-for list="{{ visibleProducts }}" as="p" hint-placeholder-count="6">
+          <article onClick="{{ p.onOpen }}" style="background:#fff;border:1px solid #E8E8E8;border-radius:13px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;animation:ag-cardIn .5s ease both;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;" style-hover="transform:translateY(-6px);box-shadow:0 24px 44px -26px rgba(26,44,61,.4);border-color:#C9A84C;">
+            <div class="ag-card-img" style="position:relative;height:215px;overflow:hidden;background:linear-gradient(150deg,#F5F7FA 0%,#EAF0F6 55%,#E2EAF2 100%);">
+              <img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;" style-hover="transform:scale(1.04);">
+            </div>
+            <div style="padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;">
+              <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:21px;margin:0 0 8px;color:#1A2C3D;">{{ p.name }}</h3>
+              <p style="font-size:13.5px;line-height:1.65;color:#728290;margin:0 0 14px;flex:1;">{{ p.desc }}</p>
+              <p style="display:flex;align-items:center;gap:7px;font-size:11.5px;letter-spacing:.4px;color:#8a98a5;margin:0 0 16px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>{{ p.delayShort }}</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#C9A84C;">{{ p.priceLabel }}</span>
+                <span style="background:#C9A84C;color:#fff;border:1px solid #C9A84C;font-size:12px;letter-spacing:.8px;text-transform:uppercase;padding:10px 18px;border-radius:2px;transition:background .28s ease,color .28s ease;" style-hover="background:#fff;color:#C9A84C;">Voir</span>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ NUMBER CAKE ════════════════ -->
+  <section id="number-cake" class="ag-sec" style="scroll-margin-top:80px;padding:104px 28px;background:#1A2C3D;color:#fff;overflow:hidden;">
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);max-width:920px;margin:0 auto;text-align:center;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;color:#C9A84C;margin-bottom:16px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">Sur-mesure</span><span style="height:1px;width:30px;background:#C9A84C;"></span></div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,5vw,56px);margin:0 0 20px;color:#fff;">Composez votre Number Cake</h2>
+      <p style="font-size:16px;line-height:1.85;color:#c4d0dc;margin:0 auto 34px;max-width:56ch;">Un chiffre, une lettre, une date… et une composition entièrement libre : choisissez votre base, votre croustillant, votre crémeux, vos inserts fruités, votre ganache montée et vos décors. Ou partez d'une de nos six recettes signature.</p>
+      <button onClick="{{ openNC }}" style="display:inline-flex;align-items:center;gap:10px;background:#C9A84C;color:#fff;border:none;font-size:14px;letter-spacing:1.2px;text-transform:uppercase;padding:16px 36px;border-radius:2px;cursor:pointer;transition:background .3s ease,transform .3s ease;" style-hover="background:#fff;color:#1A2C3D;transform:translateY(-2px);">Composer mon Number Cake</button>
+      <p style="font-size:12.5px;letter-spacing:.5px;color:#8fa1b3;margin:18px 0 0;">À commander 10 jours à l'avance</p>
+    </div>
+  </section>
+
+  <!-- ════════════════ DEVIS · GRANDES OCCASIONS ════════════════ -->
+  <section id="devis" class="ag-sec" style="scroll-margin-top:80px;padding:104px 28px;background:#F5F7FA;">
+    <div data-reveal class="ag-contact" style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);max-width:1080px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start;">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;color:#C9A84C;margin-bottom:16px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">Sur-mesure</span></div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,4vw,48px);margin:0 0 22px;line-height:1.1;color:#1A2C3D;">Devis &amp; grandes occasions</h2>
+        <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 18px;">Un anniversaire, un mariage, un baptême, une communion ou un événement d'entreprise&nbsp;? Je réalise des pièces sur-mesure et des grands formats, pensés avec vous.</p>
+        <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 24px;">Décrivez-moi votre projet — occasion, nombre de personnes, saveurs, thème et date — et je reviens vers vous avec une proposition et un devis personnalisé, sans engagement.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;gap:12px;color:#1A2C3D;font-size:14.5px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Wedding cakes &amp; pièces montées</div>
+          <div style="display:flex;align-items:center;gap:12px;color:#1A2C3D;font-size:14.5px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Number cakes géants &amp; grands formats</div>
+          <div style="display:flex;align-items:center;gap:12px;color:#1A2C3D;font-size:14.5px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Buffets sucrés &amp; commandes événementielles</div>
+        </div>
+      </div>
+      <form onSubmit="{{ onDevisSubmit }}" class="ag-form" style="background:#fff;border:1px solid #E8E8E8;border-radius:13px;padding:34px;display:flex;flex-direction:column;gap:18px;">
+        <div class="ag-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Occasion<select name="Occasion" required="true" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 24px 9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;cursor:pointer;"><option value="anniversaire">Anniversaire</option><option value="mariage">Mariage</option><option value="bapteme">Baptême / Communion</option><option value="baby-shower">Baby shower</option><option value="entreprise">Événement d'entreprise</option><option value="autre">Autre</option></select></label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Nombre de personnes<input type="number" name="Nombre de personnes" min="1" placeholder="ex. 40" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;transition:border-color .25s ease;" style-focus="border-bottom:1px solid #C9A84C;"></label>
+        </div>
+        <div class="ag-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Nom<input type="text" name="Nom" required="true" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;transition:border-color .25s ease;" style-focus="border-bottom:1px solid #C9A84C;"></label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Date souhaitée<input type="date" name="Date souhaitée" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;transition:border-color .25s ease;" style-focus="border-bottom:1px solid #C9A84C;"></label>
+        </div>
+        <div class="ag-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Email<input type="email" name="Email" required="true" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;transition:border-color .25s ease;" style-focus="border-bottom:1px solid #C9A84C;"></label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Téléphone<input type="tel" name="Téléphone" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;transition:border-color .25s ease;" style-focus="border-bottom:1px solid #C9A84C;"></label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Votre projet<textarea name="Votre projet" required="true" rows="4" placeholder="Saveurs, thème, couleurs, inspirations… et si vous avez coché « Autre », précisez-moi votre idée." style="border:1px solid #E8E8E8;border-radius:6px;padding:12px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;resize:vertical;transition:border-color .25s ease;" style-focus="border:1px solid #C9A84C;"></textarea></label>
+        <sc-if value="{{ devisSent }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:14px;color:#1A2C3D;background:#F5F7FA;border-left:2px solid #C9A84C;padding:12px 16px;animation:ag-fadeIn .4s ease;">Merci, votre demande de devis a bien été envoyée. Je reviens vers vous rapidement.</p></sc-if>
+        <button type="submit" style="align-self:flex-start;background:#1A2C3D;color:#fff;border:none;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;padding:15px 32px;border-radius:2px;cursor:pointer;transition:background .3s ease;" style-hover="background:#C9A84C;">Demander un devis</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ════════════════ L'ARTISAN · extrait de l'histoire ════════════════ -->
+  <section class="ag-sec" style="padding:104px 28px;background:#FFFFFF;">
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);max-width:760px;margin:0 auto;text-align:center;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;color:#C9A84C;margin-bottom:18px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">L'artisan</span><span style="height:1px;width:30px;background:#C9A84C;"></span></div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,34px);line-height:1.45;color:#1A2C3D;margin:0 0 28px;">« Chaque création est entièrement réalisée à la main, des pralinés maison aux finitions, avec des ingrédients soigneusement sélectionnés. »</p>
+      <p style="font-size:16px;line-height:1.85;color:#566571;margin:0 0 32px;">Je m'appelle Kylian Givre, né le 26 décembre 2006. Pâtissier et chocolatier diplômé, j'ai choisi de créer Atelier Givre avec une ambition simple : transformer ma passion en une entreprise reconnue pour son savoir-faire et son exigence.</p>
+      <button onClick="{{ openStory }}" style="display:inline-flex;align-items:center;gap:10px;background:transparent;color:#1A2C3D;border:1px solid #C9A84C;cursor:pointer;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;padding:15px 32px;border-radius:2px;transition:background .3s ease,color .3s ease;" style-hover="background:#C9A84C;color:#fff;">Lire l'histoire complète <span style="font-size:15px;">→</span></button>
+    </div>
+  </section>
+
+  <!-- ════════════════ GALERIE ════════════════ -->
+  <section id="galerie" class="ag-sec" style="scroll-margin-top:90px;padding:104px 28px;background:#FFFFFF;">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);text-align:center;margin-bottom:46px;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:12px;color:#C9A84C;margin-bottom:16px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">L'atelier en images</span><span style="height:1px;width:30px;background:#C9A84C;"></span></div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(36px,5vw,58px);margin:0;color:#1A2C3D;">Galerie</h2>
+      </div>
+      <div class="ag-gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="10">
+          <button onClick="{{ g.onOpen }}" style="{{ g.tileStyle }}" style-hover="filter:brightness(.97);">
+            <sc-if value="{{ g.hasPhoto }}" hint-placeholder-val="{{ true }}">
+              <img src="{{ g.src }}" alt="{{ g.caption }}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.03);">
+              <span style="position:absolute;bottom:0;left:0;right:0;padding:22px 18px 16px;font-size:13px;letter-spacing:.6px;color:#fff;text-align:left;background:linear-gradient(transparent,rgba(16,28,39,.72));">{{ g.caption }}</span>
+            </sc-if>
+            <sc-if value="{{ g.pending }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center;">
+                <svg viewBox="0 0 24 24" width="46" height="46" fill="none" stroke="#C8D8E8" stroke-width="0.8" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#1A2C3D;">{{ g.caption }}</span>
+                <span style="font-family:monospace;font-size:11px;letter-spacing:1.2px;color:#9fb0c0;">photo à venir</span>
+              </span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+      <sc-if value="{{ galleryHasMore }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;justify-content:center;margin-top:38px;">
+          <button onClick="{{ toggleGallery }}" style="display:inline-flex;flex-direction:column;align-items:center;gap:10px;background:none;border:none;cursor:pointer;padding:8px 16px;color:#1A2C3D;transition:color .25s ease;" style-hover="color:#C9A84C;">
+            <span style="font-size:12.5px;letter-spacing:1.6px;text-transform:uppercase;">{{ galleryMoreLabel }}</span>
+            <svg style="{{ galleryChevronStyle }}" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- ════════════════ CONTACT ════════════════ -->
+  <section id="contact" class="ag-sec" style="scroll-margin-top:90px;padding:104px 28px;background:#F5F7FA;">
+    <div data-reveal class="ag-contact" style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);max-width:1080px;margin:0 auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start;">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;color:#C9A84C;margin-bottom:16px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">Contact</span></div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,4vw,46px);margin:0 0 24px;line-height:1.1;color:#1A2C3D;">Une question, une commande&nbsp;?</h2>
+        <p style="font-size:15px;line-height:1.8;color:#566571;margin:0 0 30px;">Écrivez-nous, nous répondons sous 24&nbsp;h ouvrées.</p>
+        <div style="font-size:14.5px;line-height:1.9;color:#1A2C3D;">
+          <p style="margin:0 0 4px;font-weight:600;">Atelier Givre</p>
+          <p style="margin:0;color:#566571;">Retrait · 196 rue du Promenoir, 01300 Belley<br>Lundi au samedi 9h–19h · dimanche 9h–13h</p>
+          <a href="mailto:ateliergivre.contact@gmail.com" style="display:inline-block;margin-top:10px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #C9A84C;padding-bottom:2px;transition:color .25s ease;" style-hover="color:#C9A84C;">ateliergivre.contact@gmail.com</a>
+          <p style="margin:6px 0 0;"><a href="tel:+33629368117" style="color:#1A2C3D;text-decoration:none;border-bottom:1px solid #C9A84C;padding-bottom:2px;transition:color .25s ease;" style-hover="color:#C9A84C;">06 29 36 81 17</a></p>
+          <p style="margin:14px 0 0;color:#566571;">Livraison dans un rayon de 20&nbsp;km autour de Belley<br>Click &amp; collect gratuit</p>
+        </div>
+      </div>
+      <form onSubmit="{{ onContactSubmit }}" class="ag-form" style="background:#fff;border:1px solid #E8E8E8;border-radius:13px;padding:34px;display:flex;flex-direction:column;gap:18px;">
+        <div class="ag-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Nom<input type="text" name="Nom" required="true" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;transition:border-color .25s ease;" style-focus="border-bottom:1px solid #C9A84C;"></label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Email<input type="email" name="Email" required="true" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;transition:border-color .25s ease;" style-focus="border-bottom:1px solid #C9A84C;"></label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Objet<select name="Objet" required="true" style="border:none;border-bottom:1px solid #E8E8E8;padding:9px 2px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;cursor:pointer;"><option value="commande">Commande</option><option value="question">Question</option><option value="partenariat">Partenariat</option></select></label>
+        <label style="display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Message<textarea name="Message" required="true" rows="4" style="border:1px solid #E8E8E8;border-radius:6px;padding:12px;font-size:15px;color:#1A2C3D;background:transparent;outline:none;resize:vertical;transition:border-color .25s ease;" style-focus="border:1px solid #C9A84C;"></textarea></label>
+        <sc-if value="{{ contactSent }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:14px;color:#1A2C3D;background:#F5F7FA;border-left:2px solid #C9A84C;padding:12px 16px;animation:ag-fadeIn .4s ease;">Merci, votre message a bien été envoyé.</p></sc-if>
+        <button type="submit" style="align-self:flex-start;background:#1A2C3D;color:#fff;border:none;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;padding:15px 32px;border-radius:2px;cursor:pointer;transition:background .3s ease;" style-hover="background:#C9A84C;">Envoyer</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <footer class="ag-sec" style="background:#1A2C3D;color:#dbe4ec;padding:70px 28px 36px;">
+    <div class="ag-footer" style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1.2fr 1fr;gap:44px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:18px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#fff;">Atelier Givre</span>
+        </div>
+        <p style="font-size:14px;line-height:1.75;color:#9fb0c0;margin:0;max-width:36ch;">Pâtisserie &amp; chocolaterie artisanale dans l'Ain. Retrait à Belley, livraison dans un rayon de 20&nbsp;km — offerte dès 60&nbsp;€.</p>
+      </div>
+      <div>
+        <p style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin:0 0 16px;">Navigation</p>
+        <div style="display:flex;flex-direction:column;gap:11px;">
+          <a href="#accueil" style="color:#dbe4ec;text-decoration:none;font-size:14px;transition:color .25s ease;" style-hover="color:#C9A84C;">Accueil</a>
+          <a href="#creations" style="color:#dbe4ec;text-decoration:none;font-size:14px;transition:color .25s ease;" style-hover="color:#C9A84C;">Nos créations</a>
+          <a href="#galerie" style="color:#dbe4ec;text-decoration:none;font-size:14px;transition:color .25s ease;" style-hover="color:#C9A84C;">Galerie</a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin:0 0 16px;">Informations</p>
+        <div style="display:flex;flex-direction:column;gap:11px;align-items:flex-start;">
+          <sc-for list="{{ legalLinks }}" as="l" hint-placeholder-count="6">
+            <button onClick="{{ l.onOpen }}" style="background:none;border:none;padding:0;text-align:left;font-family:inherit;color:#dbe4ec;font-size:14px;cursor:pointer;transition:color .25s ease;" style-hover="color:#C9A84C;">{{ l.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin:0 0 16px;">Suivez-nous</p>
+        <div style="display:flex;gap:12px;">
+          <a href="https://instagram.com/ateliergivre01" target="_blank" rel="noopener" aria-label="Instagram" style="width:38px;height:38px;border:1px solid rgba(219,228,236,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#dbe4ec;text-decoration:none;transition:border-color .25s ease,color .25s ease;" style-hover="border-color:#C9A84C;color:#C9A84C;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
+          <a href="https://www.tiktok.com/@ateliergivre01" target="_blank" rel="noopener" aria-label="TikTok" style="width:38px;height:38px;border:1px solid rgba(219,228,236,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#dbe4ec;text-decoration:none;font-size:11.5px;letter-spacing:.5px;font-weight:600;transition:border-color .25s ease,color .25s ease;" style-hover="border-color:#C9A84C;color:#C9A84C;">TT</a>
+          <a href="https://facebook.com/ateliergivre01" target="_blank" rel="noopener" aria-label="Facebook" style="width:38px;height:38px;border:1px solid rgba(219,228,236,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#dbe4ec;text-decoration:none;transition:border-color .25s ease,color .25s ease;" style-hover="border-color:#C9A84C;color:#C9A84C;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8.5V7a1.5 1.5 0 0 1 1.5-1.5H17V3h-2.2A4 4 0 0 0 11 7v1.5H9V11h2v10h3V11h2.2l.4-2.5H14Z"/></svg></a>
+        </div>
+        <a href="mailto:ateliergivre.contact@gmail.com" style="display:inline-block;margin-top:18px;color:#dbe4ec;text-decoration:none;font-size:13.5px;border-bottom:1px solid rgba(201,168,76,.5);padding-bottom:2px;transition:color .25s ease;" style-hover="color:#C9A84C;">ateliergivre.contact@gmail.com</a>
+      </div>
+    </div>
+    <div class="ag-footer-bottom" style="max-width:1180px;margin:48px auto 0;padding-top:24px;border-top:1px solid rgba(219,228,236,.14);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:12.5px;color:#7d8e9d;">
+      <span>© 2026 Atelier Givre — Tous droits réservés</span>
+      <span>SIRET 106 682 404 00012 · TVA non applicable, art. 293 B du CGI</span>
+    </div>
+  </footer>
+
+  <!-- ════════════════ PANIER (drawer) ════════════════ -->
+  <div onClick="{{ closeCart }}" style="{{ backdropStyle }}"></div>
+  <aside class="ag-cart" style="{{ cartPanelStyle }}">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:24px 26px;border-bottom:1px solid #E8E8E8;">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;margin:0;color:#1A2C3D;">Votre panier</h3>
+      <button onClick="{{ closeCart }}" aria-label="Fermer" style="background:none;border:none;cursor:pointer;color:#1A2C3D;padding:6px;line-height:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
+    </div>
+
+    <div style="flex:1;overflow-y:auto;padding:8px 26px;">
+      <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ true }}">
+        <sc-for list="{{ cartItems }}" as="it" hint-placeholder-count="2">
+          <div style="display:flex;gap:14px;padding:18px 0;border-bottom:1px solid #F0F0F0;align-items:center;">
+            <div style="width:58px;height:58px;flex-shrink:0;border-radius:7px;overflow:hidden;background:linear-gradient(150deg,#F5F7FA,#E3EAF2);"><img src="{{ it.img }}" alt="{{ it.name }}" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+            <div style="flex:1;min-width:0;">
+              <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;margin:0 0 2px;color:#1A2C3D;">{{ it.name }}</p>
+              <p style="font-size:12.5px;color:#8a98a5;margin:0 0 8px;">{{ it.unitLabel }}</p>
+              <div class="ag-qty" style="display:flex;align-items:center;gap:10px;">
+                <button onClick="{{ it.onDec }}" style="width:26px;height:26px;border:1px solid #E8E8E8;background:#fff;border-radius:4px;cursor:pointer;color:#1A2C3D;font-size:16px;line-height:1;" style-hover="border-color:#C9A84C;color:#C9A84C;">−</button>
+                <span style="font-size:14px;min-width:18px;text-align:center;">{{ it.qty }}</span>
+                <button onClick="{{ it.onInc }}" style="width:26px;height:26px;border:1px solid #E8E8E8;background:#fff;border-radius:4px;cursor:pointer;color:#1A2C3D;font-size:16px;line-height:1;" style-hover="border-color:#C9A84C;color:#C9A84C;">+</button>
+              </div>
+            </div>
+            <div style="text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#1A2C3D;">{{ it.priceLabel }}</span>
+              <button onClick="{{ it.onRemove }}" style="background:none;border:none;cursor:pointer;color:#b3bfc9;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:0;" style-hover="color:#C9A84C;">Retirer</button>
+            </div>
+          </div>
+        </sc-for>
+
+        <div style="margin-top:24px;">
+          <p style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;margin:0 0 12px;">Livraison</p>
+          <label onClick="{{ setCollect }}" style="{{ collectOptStyle }}">
+            <span style="display:flex;flex-direction:column;gap:2px;"><strong style="font-size:14px;font-weight:600;">Click &amp; collect</strong><span style="font-size:12.5px;color:#8a98a5;">196 rue du Promenoir, 01300 Belley</span></span>
+            <span style="font-size:13px;color:#C9A84C;font-weight:600;">Gratuit</span>
+          </label>
+          <label onClick="{{ setHome }}" style="{{ homeOptStyle }}">
+            <span style="display:flex;flex-direction:column;gap:2px;"><strong style="font-size:14px;font-weight:600;">Livraison à domicile</strong><span style="font-size:12.5px;color:#8a98a5;">Zone 20 km autour de Belley</span></span>
+            <span style="font-size:13px;color:#C9A84C;font-weight:600;text-align:right;">1 € / km</span>
+          </label>
+          <sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}">
+            <input ref="{{ setAddress }}" type="text" placeholder="Adresse de livraison" style="width:100%;margin-top:12px;border:1px solid #E8E8E8;border-radius:6px;padding:12px 14px;font-size:14px;color:#1A2C3D;outline:none;transition:border-color .25s ease;" style-focus="border-color:#C9A84C;">
+          </sc-if>
+          <sc-if value="{{ askKm }}" hint-placeholder-val="{{ false }}">
+            <label style="display:flex;flex-direction:column;gap:6px;margin-top:10px;font-size:11.5px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Distance depuis Belley (km)
+              <input value="{{ deliveryKm }}" onInput="{{ kmInput }}" type="number" min="1" max="20" step="1" placeholder="ex. 8" style="width:100%;border:1px solid #E8E8E8;border-radius:6px;padding:12px 14px;font-size:14px;color:#1A2C3D;outline:none;transition:border-color .25s ease;" style-focus="border-color:#C9A84C;">
+            </label>
+            <p style="margin:8px 0 0;font-size:11.5px;line-height:1.6;color:#8a98a5;">1 € par kilomètre depuis l'atelier · livraison offerte à partir de 60 € de commande.</p>
+          </sc-if>
+          <sc-if value="{{ freeShipReached }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:10px 0 0;font-size:12px;line-height:1.6;color:#1A2C3D;background:#FBF3E4;border-left:2px solid #C9A84C;padding:9px 12px;">Commande supérieure à 60 € : livraison offerte.</p>
+          </sc-if>
+        </div>
+      </sc-if>
+      <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:70px 20px;color:#8a98a5;">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#C8D8E8" stroke-width="0.9" stroke-linecap="round" style="margin-bottom:18px;"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#1A2C3D;margin:0 0 6px;">Votre panier est vide</p>
+          <p style="font-size:13.5px;margin:0;">Découvrez nos créations pour le garnir.</p>
+        </div>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ true }}">
+      <div style="border-top:1px solid #E8E8E8;padding:22px 26px;background:#FBFCFD;">
+        <div style="display:flex;justify-content:space-between;font-size:13.5px;color:#566571;margin-bottom:8px;"><span>Sous-total</span><span>{{ subtotalLabel }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13.5px;color:#566571;margin-bottom:14px;"><span>Livraison</span><span>{{ deliveryFeeLabel }}</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;"><span style="font-size:14px;font-weight:600;color:#1A2C3D;">Total</span><span style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#1A2C3D;">{{ totalLabel }}</span></div>
+        <sc-if value="{{ isCollect }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#FBF3E4;border-left:2px solid #C9A84C;border-radius:0 6px 6px 0;padding:12px 14px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;"><span style="font-size:13px;font-weight:600;color:#1A2C3D;">Acompte à payer maintenant (30 %)</span><span style="font-size:16px;font-weight:700;color:#1A2C3D;">{{ payNowLabel }}</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12.5px;color:#8a7a4e;"><span>Solde à régler au retrait</span><span>{{ balanceDueLabel }}</span></div>
+          </div>
+        </sc-if>
+        <div onClick="{{ toggleCgv }}" style="display:flex;align-items:flex-start;gap:11px;cursor:pointer;margin-bottom:8px;font-size:12.5px;line-height:1.6;color:#566571;">
+          <span style="{{ cgvBoxStyle }}">✓</span>
+          <span>J'ai lu et j'accepte les Conditions Générales de Vente, dont les modalités de retrait, de livraison et de rétractation.</span>
+        </div>
+        <button onClick="{{ openCgv }}" style="display:block;background:none;border:none;padding:0 0 0 31px;margin:0 0 16px;font-family:inherit;font-size:12.5px;color:#1A2C3D;text-decoration:underline;text-underline-offset:2px;cursor:pointer;" style-hover="color:#C9A84C;">Lire les Conditions Générales de Vente</button>
+        <button onClick="{{ checkout }}" style="{{ checkoutBtnStyle }}">{{ checkoutLabel }}</button>
+        <p style="text-align:center;font-size:11px;color:#a7b6c5;margin:12px 0 0;letter-spacing:.3px;">Paiement sécurisé · Stripe · commande avec obligation de paiement</p>
+      </div>
+    </sc-if>
+  </aside>
+
+  <!-- ════════════════ LIGHTBOX ════════════════ -->
+  <sc-if value="{{ lightboxOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeLightbox }}" class="ag-lightbox" style="position:fixed;inset:0;z-index:90;background:rgba(13,22,31,.9);display:flex;align-items:center;justify-content:center;padding:40px;animation:ag-fadeIn .3s ease;">
+      <button onClick="{{ closeLightbox }}" aria-label="Fermer" style="position:absolute;top:24px;right:28px;background:none;border:none;cursor:pointer;color:#fff;padding:8px;line-height:0;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:16px;max-width:92vw;">
+        <img src="{{ lightboxSrc }}" alt="{{ lightboxCaption }}" style="max-width:min(760px,92vw);max-height:76vh;border-radius:10px;object-fit:contain;box-shadow:0 30px 80px -20px rgba(0,0,0,.6);">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#fff;">{{ lightboxCaption }}</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ════════════════ FICHE PRODUIT (popup) ════════════════ -->
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeProduct }}" class="ag-modal-overlay" style="position:fixed;inset:0;z-index:95;background:rgba(13,22,31,.62);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:24px;animation:ag-fadeIn .3s ease;">
+      <div onClick="{{ stopProp }}" class="ag-modal-shell" style="position:relative;width:min(920px,96vw);max-height:92vh;overflow-y:auto;background:#fff;border-radius:16px;box-shadow:0 40px 90px -30px rgba(13,22,31,.6);animation:ag-cardIn .4s ease both;">
+        <button onClick="{{ closeProduct }}" aria-label="Fermer" style="position:absolute;top:16px;right:16px;z-index:2;width:38px;height:38px;border:none;border-radius:50%;background:rgba(255,255,255,.92);cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A2C3D;box-shadow:0 4px 14px rgba(26,44,61,.22);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
+        <div class="ag-modal-grid" style="display:grid;grid-template-columns:1fr 1fr;">
+          <div class="ag-modal-img" style="position:relative;min-height:360px;background:linear-gradient(150deg,#F5F7FA,#E3EAF2);">
+            <img onClick="{{ zoomMain }}" src="{{ modalImg }}" alt="{{ modalName }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:zoom-in;">
+            <button onClick="{{ zoomMain }}" aria-label="Agrandir la photo" style="position:absolute;top:14px;left:14px;z-index:1;width:34px;height:34px;border:none;border-radius:50%;background:rgba(255,255,255,.9);cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A2C3D;box-shadow:0 3px 12px rgba(13,22,31,.25);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></button>
+            <sc-if value="{{ modalHasThumbs }}" hint-placeholder-val="{{ true }}">
+              <div style="position:absolute;left:0;right:0;bottom:0;display:flex;gap:8px;padding:12px;overflow-x:auto;background:linear-gradient(transparent,rgba(13,22,31,.5));">
+                <sc-for list="{{ modalThumbs }}" as="th" hint-placeholder-count="3">
+                  <button onClick="{{ th.onPick }}" style="{{ th.style }}"><img src="{{ th.src }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"></button>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+          <div class="ag-modal-info" style="padding:38px 34px;display:flex;flex-direction:column;gap:18px;">
+            <div>
+              <div style="display:flex;align-items:center;gap:10px;color:#C9A84C;margin-bottom:10px;"><span style="height:1px;width:26px;background:#C9A84C;"></span><span style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;">{{ modalCat }}</span></div>
+              <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;line-height:1.1;margin:0;color:#1A2C3D;">{{ modalName }}</h3>
+            </div>
+            <p style="font-size:14.5px;line-height:1.7;color:#566571;margin:0;">{{ modalDesc }}</p>
+            <p style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;line-height:1.6;color:#8a6d1f;background:#FBF3E4;border:1px solid #EBD9AE;border-radius:9px;padding:12px 14px;margin:0;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 17px;margin-top:1px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg><span>{{ modalDelayLabel }}</span></p>
+
+            <sc-if value="{{ modalHasVariants }}" hint-placeholder-val="{{ false }}">
+              <div>
+                <p style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;margin:0 0 10px;">Préparation</p>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                  <sc-for list="{{ modalVariants }}" as="v" hint-placeholder-count="2">
+                    <button onClick="{{ v.onPick }}" style="{{ v.style }}">{{ v.label }}</button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ modalHasChoices }}" hint-placeholder-val="{{ true }}">
+              <div>
+                <p style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;margin:0 0 10px;">Format</p>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                  <sc-for list="{{ modalSizes }}" as="sz" hint-placeholder-count="2">
+                    <button onClick="{{ sz.onPick }}" style="{{ sz.style }}">{{ sz.label }}</button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <div>
+              <p style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;margin:0 0 10px;">Composition</p>
+              <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px;">
+                <sc-for list="{{ modalComposition }}" as="ing" hint-placeholder-count="4">
+                  <li style="position:relative;padding-left:18px;font-size:13.5px;line-height:1.5;color:#1A2C3D;"><span style="position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#C9A84C;"></span>{{ ing.text }}</li>
+                </sc-for>
+              </ul>
+            </div>
+
+            <div style="border-top:1px solid #F0F0F0;padding-top:16px;">
+              <button onClick="{{ toggleAllergenes }}" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;cursor:pointer;padding:0;color:#1A2C3D;font-size:13px;letter-spacing:.8px;text-transform:uppercase;font-weight:600;">
+                <span style="display:flex;align-items:center;gap:9px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>Allergènes</span>
+                <svg style="{{ allergenesChevronStyle }}" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8a98a5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div style="{{ allergenesPanelStyle }}">
+                <div style="display:flex;flex-wrap:wrap;gap:8px;padding-top:2px;">
+                  <sc-for list="{{ modalAllergenes }}" as="al" hint-placeholder-count="3">
+                    <span style="background:#FBF3E4;color:#8a6d1f;font-size:12.5px;padding:6px 12px;border-radius:20px;border:1px solid #EBD9AE;">{{ al.text }}</span>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+
+            <div class="ag-modal-actions" style="margin-top:auto;border-top:1px solid #F0F0F0;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <span style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">{{ modalOptLabel }}</span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:#C9A84C;">{{ modalPriceLabel }}</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;">
+                <div class="ag-qty" style="display:flex;align-items:center;gap:10px;">
+                  <button onClick="{{ modalDec }}" aria-label="Moins" style="width:32px;height:32px;border:1px solid #E8E8E8;background:#fff;border-radius:6px;cursor:pointer;color:#1A2C3D;font-size:18px;line-height:1;" style-hover="border-color:#C9A84C;color:#C9A84C;">−</button>
+                  <span style="font-size:15px;min-width:20px;text-align:center;">{{ modalQty }}</span>
+                  <button onClick="{{ modalInc }}" aria-label="Plus" style="width:32px;height:32px;border:1px solid #E8E8E8;background:#fff;border-radius:6px;cursor:pointer;color:#1A2C3D;font-size:18px;line-height:1;" style-hover="border-color:#C9A84C;color:#C9A84C;">+</button>
+                </div>
+                <button onClick="{{ modalAdd }}" style="background:#C9A84C;color:#fff;border:none;font-size:13px;letter-spacing:1px;text-transform:uppercase;padding:14px 24px;border-radius:2px;cursor:pointer;transition:background .3s ease;" style-hover="background:#1A2C3D;">Ajouter au panier</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ════════════════ ZOOM PHOTO (fiche produit) ════════════════ -->
+  <sc-if value="{{ zoomOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeZoom }}" style="position:fixed;inset:0;z-index:105;background:rgba(13,22,31,.92);display:flex;align-items:center;justify-content:center;padding:20px;animation:ag-fadeIn .25s ease;cursor:zoom-out;">
+      <button onClick="{{ closeZoom }}" aria-label="Fermer" style="position:absolute;top:20px;right:22px;background:none;border:none;cursor:pointer;color:#fff;padding:8px;line-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
+      <img src="{{ zoomSrc }}" alt="" style="max-width:96vw;max-height:92vh;object-fit:contain;border-radius:8px;box-shadow:0 30px 80px -20px rgba(0,0,0,.7);">
+    </div>
+  </sc-if>
+
+  <!-- ════════════════ COMPOSEUR NUMBER CAKE ════════════════ -->
+  <sc-if value="{{ ncOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeNC }}" class="ag-nc-overlay" style="position:fixed;inset:0;z-index:96;background:rgba(13,22,31,.62);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:20px;animation:ag-fadeIn .3s ease;">
+      <div onClick="{{ stopProp }}" class="ag-nc-shell" style="position:relative;width:min(780px,96vw);max-height:92vh;overflow-y:auto;background:#fff;border-radius:16px;box-shadow:0 40px 90px -30px rgba(13,22,31,.6);animation:ag-cardIn .4s ease both;">
+        <button onClick="{{ closeNC }}" aria-label="Fermer" style="position:absolute;top:16px;right:16px;z-index:2;width:38px;height:38px;border:none;border-radius:50%;background:#F5F7FA;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A2C3D;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
+        <div class="ag-nc-body" style="padding:36px 30px 28px;display:flex;flex-direction:column;gap:24px;">
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;color:#C9A84C;margin-bottom:10px;"><span style="height:1px;width:26px;background:#C9A84C;"></span><span style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;">Sur-mesure</span></div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;line-height:1.1;margin:0;color:#1A2C3D;">Votre Number Cake</h3>
+          </div>
+
+          <p style="display:flex;align-items:flex-start;gap:10px;font-size:13.5px;line-height:1.6;color:#8a6d1f;background:#FBF3E4;border:1px solid #EBD9AE;border-radius:9px;padding:12px 14px;margin:-8px 0 0;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 17px;margin-top:1px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg><span>Création sur-mesure : commande à passer au moins <strong>10 jours</strong> avant la date souhaitée.</span></p>
+
+          <div class="ag-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;">Votre chiffre / lettre / date
+              <input value="{{ ncText }}" onInput="{{ ncTextInput }}" placeholder="ex. 18, 30, L…" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:13px 14px;font-size:16px;color:#1A2C3D;outline:none;transition:border-color .25s ease;" style-focus="border-color:#C9A84C;">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;">Nombre de personnes
+              <select value="{{ ncPlevel }}" onChange="{{ ncPlevelCh }}" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:13px 34px 13px 14px;font-size:15px;color:#1A2C3D;background-color:#fff;cursor:pointer;outline:none;">
+                <sc-for list="{{ ncPersonsOpts }}" as="o" hint-placeholder-count="5"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+              </select>
+            </label>
+          </div>
+          <p style="margin:-12px 0 0;font-size:12px;color:#8a98a5;">Le nombre de personnes s'adapte au nombre de chiffres/lettres saisis.</p>
+
+          <div>
+            <p style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;margin:0 0 10px;">Recettes signature</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <sc-for list="{{ ncPresets }}" as="p" hint-placeholder-count="6">
+                <button onClick="{{ p.onApply }}" style="{{ p.style }}">{{ p.name }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="border-top:1px solid #F0F0F0;padding-top:22px;">
+            <p style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;margin:0 0 14px;">Composez la vôtre</p>
+            <div class="ag-nc-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">Base *
+                <select value="{{ ncBase }}" onChange="{{ ncBaseCh }}" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:12px 34px 12px 12px;font-size:14px;color:#1A2C3D;background-color:#fff;cursor:pointer;outline:none;">
+                  <sc-for list="{{ ncBaseOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                </select>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">Croustillant
+                <select value="{{ ncCroust }}" onChange="{{ ncCroustCh }}" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:12px 34px 12px 12px;font-size:14px;color:#1A2C3D;background-color:#fff;cursor:pointer;outline:none;">
+                  <sc-for list="{{ ncCroustOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                </select>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">Crémeux
+                <select value="{{ ncCremeux }}" onChange="{{ ncCremeuxCh }}" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:12px 34px 12px 12px;font-size:14px;color:#1A2C3D;background-color:#fff;cursor:pointer;outline:none;">
+                  <sc-for list="{{ ncCremeuxOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                </select>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">Compotée / Confit
+                <select value="{{ ncCompotee }}" onChange="{{ ncCompoteeCh }}" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:12px 34px 12px 12px;font-size:14px;color:#1A2C3D;background-color:#fff;cursor:pointer;outline:none;">
+                  <sc-for list="{{ ncCompoteeOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                </select>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">Gel
+                <select value="{{ ncGel }}" onChange="{{ ncGelCh }}" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:12px 34px 12px 12px;font-size:14px;color:#1A2C3D;background-color:#fff;cursor:pointer;outline:none;">
+                  <sc-for list="{{ ncGelOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                </select>
+              </label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">Mousse / Ganache montée
+                <select value="{{ ncMousse }}" onChange="{{ ncMousseCh }}" style="width:100%;border:1px solid #E8E8E8;border-radius:9px;padding:12px 34px 12px 12px;font-size:14px;color:#1A2C3D;background-color:#fff;cursor:pointer;outline:none;">
+                  <sc-for list="{{ ncMousseOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <p style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;margin:0 0 10px;">{{ ncDecorSuppLabel }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <sc-for list="{{ ncDecors }}" as="d" hint-placeholder-count="6"><button onClick="{{ d.onToggle }}" style="{{ d.style }}">{{ d.name }}</button></sc-for>
+            </div>
+          </div>
+
+          <div>
+            <p style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a98a5;margin:0 0 10px;">{{ ncFruitsSecsSuppLabel }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <sc-for list="{{ ncFruitsSecs }}" as="d" hint-placeholder-count="6"><button onClick="{{ d.onToggle }}" style="{{ d.style }}">{{ d.name }}</button></sc-for>
+            </div>
+          </div>
+
+          <div class="ag-nc-actions" style="border-top:1px solid #F0F0F0;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+            <div style="display:flex;flex-direction:column;gap:2px;">
+              <span style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a98a5;">{{ ncPersonsLabel }}</span>
+              <span style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:#C9A84C;">{{ ncPriceLabel }}</span>
+              <sc-if value="{{ ncSuppShow }}" hint-placeholder-val="{{ true }}"><span style="font-size:12px;color:#8a98a5;">{{ ncSuppLabel }}</span></sc-if>
+            </div>
+            <button onClick="{{ addNC }}" style="background:#C9A84C;color:#fff;border:none;font-size:13px;letter-spacing:1px;text-transform:uppercase;padding:14px 24px;border-radius:2px;cursor:pointer;transition:background .3s ease;" style-hover="background:#1A2C3D;">Ajouter au panier</button>
+          </div>
+          <sc-if value="{{ ncInvalid }}" hint-placeholder-val="{{ true }}">
+            <p style="margin:0;font-size:12.5px;color:#b06a4f;background:#FBF1EC;border-left:2px solid #C9A84C;padding:10px 14px;border-radius:0 6px 6px 0;">Indiquez un chiffre / lettre et choisissez au moins une base pour ajouter au panier.</p>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ════════════════ PAGE HISTOIRE ════════════════ -->
+  <sc-if value="{{ storyOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:100;background:#FFFFFF;overflow-y:auto;animation:ag-fadeIn .4s ease;">
+      <div class="ag-story-head" style="position:sticky;top:0;z-index:2;background:rgba(255,255,255,.9);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid #EEE;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;">
+        <span style="display:flex;align-items:center;gap:11px;color:#1A2C3D;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg><span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;">Atelier Givre</span></span>
+        <button onClick="{{ closeStory }}" style="display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid #E8E8E8;border-radius:40px;cursor:pointer;color:#1A2C3D;font-size:13px;letter-spacing:.5px;padding:9px 18px;transition:border-color .25s ease,color .25s ease;" style-hover="border-color:#C9A84C;color:#C9A84C;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>Retour</button>
+      </div>
+      <div style="position:relative;overflow:hidden;">
+        <svg viewBox="0 0 24 24" width="620" height="620" fill="none" stroke="#EEF3F8" stroke-width="0.3" stroke-linecap="round" style="position:absolute;top:-6%;right:-10%;pointer-events:none;"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg>
+        <article class="ag-story-article" style="position:relative;max-width:720px;margin:0 auto;padding:76px 28px 104px;">
+          <div style="display:flex;align-items:center;gap:12px;color:#C9A84C;margin-bottom:20px;"><span style="height:1px;width:34px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">L'histoire</span></div>
+          <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(40px,6vw,68px);line-height:1.04;letter-spacing:-.5px;margin:0 0 40px;color:#1A2C3D;">Derrière l'Atelier Givre</h1>
+          <p style="font-size:18px;line-height:1.9;color:#3c4a57;margin:0 0 26px;"><span style="float:left;font-family:'Cormorant Garamond',serif;font-size:78px;line-height:.78;padding:8px 14px 0 0;color:#C9A84C;">J</span>e m'appelle Kylian Givre, né le 26 décembre 2006. Pâtissier et chocolatier diplômé, j'ai choisi de créer Atelier Givre avec une ambition simple&nbsp;: transformer ma passion en une entreprise reconnue pour son savoir-faire et son exigence.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 24px;">Après plusieurs années de formations en France et en Suisse, j'ai développé une approche où chaque détail compte. Ici, chaque création est entièrement réalisée à la main, des pralinés maison aux finitions, avec des ingrédients soigneusement sélectionnés.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 24px;">Je suis animé par une seule envie&nbsp;: faire grandir Atelier Givre, repousser mes limites chaque jour et proposer des pâtisseries qui marquent les esprits autant par leur goût que par leur élégance.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 40px;">Derrière chaque dessert, il y a des heures de travail, de recherche et une véritable passion. Merci de faire partie de cette aventure. Bienvenue chez Atelier Givre.</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:#1A2C3D;margin:0 0 44px;padding-top:28px;border-top:1px solid #EEE;">Kylian Givre <span style="font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;letter-spacing:1px;color:#C9A84C;text-transform:uppercase;display:block;margin-top:6px;">Pâtissier-chocolatier · seul aux commandes</span></p>
+          <a href="#creations" onClick="{{ closeStory }}" style="display:inline-flex;align-items:center;gap:10px;background:#C9A84C;color:#fff;text-decoration:none;font-size:14px;letter-spacing:1.2px;text-transform:uppercase;padding:16px 34px;border-radius:2px;transition:background .3s ease;" style-hover="background:#1A2C3D;">Découvrir les créations</a>
+        </article>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ════════════════ PAGES LÉGALES ════════════════ -->
+  <sc-if value="{{ legalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:101;background:#FFFFFF;overflow-y:auto;animation:ag-fadeIn .35s ease;">
+      <div class="ag-story-head" style="position:sticky;top:0;z-index:2;background:rgba(255,255,255,.92);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid #EEE;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 28px;">
+        <span style="display:flex;align-items:center;gap:11px;color:#1A2C3D;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg><span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;">Atelier Givre</span></span>
+        <button onClick="{{ closeLegal }}" style="display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid #E8E8E8;border-radius:40px;cursor:pointer;color:#1A2C3D;font-size:13px;letter-spacing:.5px;padding:9px 18px;transition:border-color .25s ease,color .25s ease;" style-hover="border-color:#C9A84C;color:#C9A84C;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>Retour</button>
+      </div>
+
+      <article class="ag-story-article" style="position:relative;max-width:780px;margin:0 auto;padding:64px 28px 96px;">
+        <div style="display:flex;align-items:center;gap:12px;color:#C9A84C;margin-bottom:18px;"><span style="height:1px;width:34px;background:#C9A84C;"></span><span style="font-size:11.5px;letter-spacing:3px;text-transform:uppercase;">Informations</span></div>
+        <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,5vw,54px);line-height:1.06;letter-spacing:-.5px;margin:0 0 12px;color:#1A2C3D;">{{ legalTitle }}</h1>
+        <p style="font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:#a7b6c5;margin:0 0 44px;">Dernière mise à jour — 29 août 2026</p>
+
+        <!-- ─────────── MENTIONS LÉGALES ─────────── -->
+        <sc-if value="{{ isMentions }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#1A2C3D;margin:0 0 14px;">Éditeur du site</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 8px;"><strong style="color:#1A2C3D;font-weight:600;">GIVRE BUISSON Kylian</strong>, entrepreneur individuel exerçant sous le régime de la micro-entreprise, sous le nom commercial <strong style="color:#1A2C3D;font-weight:600;">Atelier Givre</strong>.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 8px;">Siège social : 5 rue de la Violette, 01510 Artemare, France.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 8px;">SIRET : 106 682 404 00012 — SIREN : 106 682 404. Entreprise immatriculée au Registre National des Entreprises (RNE).</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 8px;">Activité : pâtisserie et chocolaterie artisanale. Début d'activité : 1<sup>er</sup> août 2026.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Lieu de retrait et de production : 196 rue du Promenoir, 01300 Belley.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#1A2C3D;margin:38px 0 14px;">Contact</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 8px;">Adresse électronique : <a href="mailto:ateliergivre.contact@gmail.com" style="color:#1A2C3D;">ateliergivre.contact@gmail.com</a></p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Téléphone : <a href="tel:+33629368117" style="color:#1A2C3D;">06 29 36 81 17</a></p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#1A2C3D;margin:38px 0 14px;">TVA</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">TVA non applicable, article 293 B du Code général des impôts. Les prix affichés sur le site sont donc nets de taxe.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#1A2C3D;margin:38px 0 14px;">Responsable de la publication</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Kylian GIVRE BUISSON, en qualité d'exploitant.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#1A2C3D;margin:38px 0 14px;">Hébergeur</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 8px;">Netlify, Inc.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 8px;">512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Téléphone : +1 844 899 7312 — <a href="https://www.netlify.com" target="_blank" rel="noopener" style="color:#1A2C3D;">netlify.com</a></p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#1A2C3D;margin:38px 0 14px;">Médiateur de la consommation</h2>
+            <p style="font-size:14.5px;line-height:1.8;color:#8a6d1f;background:#FBF3E4;border:1px solid #EBD9AE;border-radius:8px;padding:16px 18px;margin:0 0 14px;"><strong>[À COMPLÉTER]</strong> — nom, adresse postale et site internet du médiateur de la consommation auquel Atelier Givre adhère. Cette mention est obligatoire pour un site marchand et ne peut pas être renseignée tant que l'adhésion n'a pas été souscrite.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Conformément aux articles L.616-1 et R.616-1 du Code de la consommation, tout consommateur a le droit de recourir gratuitement à un médiateur de la consommation en vue de la résolution amiable d'un litige, après avoir tenté de résoudre le différend directement auprès d'Atelier Givre par une réclamation écrite. La plateforme européenne de règlement en ligne des litiges est également accessible.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#1A2C3D;margin:38px 0 14px;">Propriété intellectuelle</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">L'ensemble des éléments du site — textes, photographies, créations, identité visuelle et code — est la propriété d'Atelier Givre ou fait l'objet d'une autorisation d'usage. Toute reproduction ou représentation, totale ou partielle, sans autorisation écrite préalable est interdite.</p>
+          </div>
+        </sc-if>
+
+        <!-- ─────────── CGV ─────────── -->
+        <sc-if value="{{ isCgv }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 26px;">Les présentes conditions régissent toute commande passée sur le site d'Atelier Givre. Elles sont accessibles avant la validation de la commande et doivent être acceptées pour finaliser un achat.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">1. Vendeur</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Les produits sont vendus par GIVRE BUISSON Kylian, micro-entrepreneur exerçant sous le nom commercial Atelier Givre, 5 rue de la Violette, 01510 Artemare — SIRET 106 682 404 00012. Contact : ateliergivre.contact@gmail.com, 06 29 36 81 17.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">2. Produits</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 12px;">Atelier Givre propose des pâtisseries, des chocolats et des créations sur-mesure, entièrement réalisés à la main. Chaque produit est fabriqué à la commande.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Les photographies illustrant les produits ne sont pas contractuelles : les créations étant artisanales, des variations de teinte, de décor et de finition sont inhérentes à la fabrication à la main.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">3. Prix</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Les prix sont indiqués en euros, toutes taxes comprises. Atelier Givre bénéficie de la franchise en base de TVA (article 293 B du CGI) : TVA non applicable. Les frais de livraison éventuels sont indiqués séparément avant la validation de la commande.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">4. Commande</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 12px;">Le client sélectionne ses produits, leur format et leur quantité, puis choisit le retrait ou la livraison. Un récapitulatif affiche le détail des produits, les quantités, les prix unitaires, les frais de livraison et le total avant tout paiement.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 12px;">Le client peut modifier ou supprimer les articles de son panier jusqu'à la validation. La commande devient ferme après acceptation des présentes conditions et validation du bouton « Commander et payer », lequel emporte obligation de paiement.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Un courrier électronique de confirmation reprenant le détail de la commande est adressé au client sur support durable après le paiement.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">5. Délais de préparation</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 12px;">Tous les produits étant fabriqués à la commande, un délai minimum est requis :</p>
+            <ul style="list-style:none;margin:0 0 12px;padding:0;display:flex;flex-direction:column;gap:9px;">
+              <li style="position:relative;padding-left:18px;font-size:15px;line-height:1.7;color:#566571;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:#C9A84C;"></span>Gâteaux, tartes, entremets et pâtisseries de la carte : <strong style="color:#1A2C3D;font-weight:600;">72 heures</strong>.</li>
+              <li style="position:relative;padding-left:18px;font-size:15px;line-height:1.7;color:#566571;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:#C9A84C;"></span>Number cakes et créations sur-mesure : <strong style="color:#1A2C3D;font-weight:600;">10 jours</strong>.</li>
+            </ul>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Le client choisit son créneau de retrait ou de livraison en fonction du produit commandé et du délai applicable.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">6. Paiement</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 12px;">Le paiement en ligne s'effectue par carte bancaire, Apple Pay ou Google Pay, via le prestataire de paiement Stripe. Les données de carte bancaire sont saisies et traitées directement par Stripe : Atelier Givre n'y a pas accès et ne les conserve en aucun cas.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Le paiement en espèces est accepté au moment du retrait, pour les commandes réglées sur place.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">7. Click and collect</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 12px;">Les commandes sont retirées au 196 rue du Promenoir, 01300 Belley, du lundi au samedi de 9h à 19h et le dimanche de 9h à 13h. Le retrait est gratuit.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 12px;">Le client est informé par courrier électronique lorsque sa commande est prête et présente son numéro de commande lors du retrait.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">S'agissant de denrées alimentaires fraîches, la commande est conservée dans des conditions optimales pendant la durée du créneau convenu. En cas de non-retrait à la date fixée, le produit ne peut être ni conservé, ni remis à une date ultérieure, ni remboursé.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">8. Livraison</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 12px;">La livraison est assurée par Atelier Givre dans un rayon de 20 km autour du 196 rue du Promenoir, 01300 Belley.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 12px;">Les frais de livraison s'élèvent à <strong style="color:#1A2C3D;font-weight:600;">1 € par kilomètre</strong> depuis l'atelier. La livraison est <strong style="color:#1A2C3D;font-weight:600;">offerte à partir de 60 € de commande</strong>. Le montant exact est affiché au panier avant la validation.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 12px;">Le client communique une adresse complète et exacte, ainsi qu'un numéro de téléphone joignable. En cas d'adresse erronée ou d'absence au créneau convenu, les produits, périssables, ne peuvent être ni replacés en vente, ni représentés ultérieurement, ni remboursés. Un second passage peut être proposé sous réserve de disponibilité et fait l'objet de nouveaux frais.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Les pâtisseries sont des produits fragiles : il appartient au client de les placer immédiatement dans les conditions de conservation indiquées à la remise.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">9. Indisponibilité</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Si un produit commandé ne peut être réalisé, Atelier Givre en informe le client dans les meilleurs délais et lui propose soit un produit équivalent, soit le remboursement intégral de la somme correspondante, effectué dans un délai maximum de quatorze jours.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">10. Modification et annulation</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Toute demande de modification ou d'annulation doit être adressée par courrier électronique avant le lancement de la préparation, soit au plus tard 72 heures avant la date convenue pour les produits de la carte et 10 jours avant pour les créations sur-mesure. Passé ce délai, les matières premières étant engagées, aucun remboursement ne peut être accordé.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">11. Droit de rétractation</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 12px;">Conformément à l'article L.221-28 du Code de la consommation, le droit de rétractation ne s'applique pas aux contrats de fourniture de biens susceptibles de se détériorer ou de se périmer rapidement, ni aux biens confectionnés selon les spécifications du consommateur ou nettement personnalisés.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 12px;">En conséquence, <strong style="color:#1A2C3D;font-weight:600;">les pâtisseries fraîches, entremets, tartes, cannelés, cookies et l'ensemble des créations personnalisées, dont les number cakes, ne bénéficient pas du droit de rétractation.</strong></p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Les <strong style="color:#1A2C3D;font-weight:600;">produits de conservation non personnalisés</strong> — chocolats et confiseries — bénéficient du droit de rétractation de quatorze jours à compter de leur réception, à condition qu'ils soient retournés dans leur emballage d'origine intact et non descellé, les frais de retour restant à la charge du client. La demande s'exerce par courrier électronique à ateliergivre.contact@gmail.com.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">12. Réclamations</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Toute réclamation relative à une commande doit être adressée à ateliergivre.contact@gmail.com dans les meilleurs délais suivant le retrait ou la livraison, accompagnée si possible de photographies. Atelier Givre s'engage à répondre sous 48 heures ouvrées.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">13. Garanties légales</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Le client bénéficie de la garantie légale de conformité prévue aux articles L.217-3 et suivants du Code de la consommation, ainsi que de la garantie contre les vices cachés prévue aux articles 1641 et suivants du Code civil.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">14. Responsabilité</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Atelier Givre ne saurait être tenu responsable de la détérioration d'un produit résultant de conditions de conservation ou de transport inadaptées après sa remise au client, ni des conséquences d'une information incomplète communiquée par le client, notamment en matière d'allergies.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">15. Médiation</h2>
+            <p style="font-size:14.5px;line-height:1.8;color:#8a6d1f;background:#FBF3E4;border:1px solid #EBD9AE;border-radius:8px;padding:16px 18px;margin:0 0 12px;"><strong>[À COMPLÉTER]</strong> — coordonnées du médiateur de la consommation auquel Atelier Givre adhère.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Après avoir saisi Atelier Givre d'une réclamation écrite restée sans réponse satisfaisante, le client peut recourir gratuitement au médiateur de la consommation dont les coordonnées figurent ci-dessus.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">16. Données personnelles</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Le traitement des données personnelles du client est décrit dans la politique de confidentialité, accessible depuis le pied de page du site.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">17. Droit applicable</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Les présentes conditions sont soumises au droit français. En cas de litige, une solution amiable sera recherchée en priorité.</p>
+          </div>
+        </sc-if>
+
+        <!-- ─────────── LIVRAISON & CLICK AND COLLECT ─────────── -->
+        <sc-if value="{{ isLivraisonPage }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#1A2C3D;margin:0 0 14px;">Click and collect</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 10px;">Retrait gratuit au <strong style="color:#1A2C3D;font-weight:600;">196 rue du Promenoir, 01300 Belley</strong>.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 10px;">Du lundi au samedi de 9h à 19h, le dimanche de 9h à 13h.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Un courrier électronique prévient le client dès que la commande est prête. Le numéro de commande est demandé au retrait.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#1A2C3D;margin:38px 0 14px;">Livraison à domicile</h2>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid #EEE;margin-bottom:20px;">
+              <div style="padding:16px 0;border-bottom:1px solid #EEE;"><p style="font-size:11.5px;letter-spacing:1.4px;text-transform:uppercase;color:#8a98a5;margin:0 0 4px;">Zone</p><p style="font-size:15.5px;color:#1A2C3D;margin:0;">20 km autour de Belley</p></div>
+              <div style="padding:16px 0;border-bottom:1px solid #EEE;"><p style="font-size:11.5px;letter-spacing:1.4px;text-transform:uppercase;color:#8a98a5;margin:0 0 4px;">Tarif</p><p style="font-size:15.5px;color:#1A2C3D;margin:0;">1 € par kilomètre</p></div>
+              <div style="padding:16px 0;border-bottom:1px solid #EEE;"><p style="font-size:11.5px;letter-spacing:1.4px;text-transform:uppercase;color:#8a98a5;margin:0 0 4px;">Offerte</p><p style="font-size:15.5px;color:#1A2C3D;margin:0;">Dès 60 € de commande</p></div>
+              <div style="padding:16px 0;border-bottom:1px solid #EEE;"><p style="font-size:11.5px;letter-spacing:1.4px;text-transform:uppercase;color:#8a98a5;margin:0 0 4px;">Créneau</p><p style="font-size:15.5px;color:#1A2C3D;margin:0;">Convenu à la commande</p></div>
+            </div>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 12px;">Le montant exact des frais est calculé et affiché au panier avant le paiement, en fonction de la distance depuis l'atelier.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">En cas d'absence au créneau convenu ou d'adresse erronée, les produits, périssables, ne peuvent être ni représentés ni remboursés. Un second passage peut être proposé sous réserve de disponibilité, avec de nouveaux frais.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#1A2C3D;margin:38px 0 14px;">Délais de commande</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 10px;">72 heures pour les pâtisseries de la carte.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">10 jours pour les number cakes et les créations sur-mesure.</p>
+          </div>
+        </sc-if>
+
+        <!-- ─────────── ALLERGÈNES & CONSERVATION ─────────── -->
+        <sc-if value="{{ isAllergenes }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 24px;">La composition et les allergènes de chaque création figurent sur sa fiche produit, accessible depuis la carte. Les informations ci-dessous complètent ces indications.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#1A2C3D;margin:0 0 14px;">Allergènes</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 12px;">Les quatorze allergènes à déclaration obligatoire sont signalés sur chaque fiche produit. L'atelier travaillant dans un espace unique, des traces de fruits à coque, d'arachide, de gluten, d'œuf, de lait, de soja et de sésame ne peuvent être exclues, y compris sur les produits qui n'en contiennent pas volontairement.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">En cas d'allergie sévère, contactez Atelier Givre avant de commander à ateliergivre.contact@gmail.com ou au 06 29 36 81 17.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#1A2C3D;margin:38px 0 14px;">Conservation et consommation</h2>
+            <p style="font-size:14.5px;line-height:1.8;color:#8a6d1f;background:#FBF3E4;border:1px solid #EBD9AE;border-radius:8px;padding:16px 18px;margin:0 0 14px;"><strong>[À COMPLÉTER]</strong> — durée et température de conservation par famille de produit (tartes et entremets, cannelés, cookies, madeleines, chocolats et confiserie, number cakes), date limite de consommation applicable et mode d'emballage : produits vendus préemballés ou conditionnés à la demande au moment de la remise.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Ces informations sont remises au client avec sa commande et seront précisées ici produit par produit.</p>
+          </div>
+        </sc-if>
+
+        <!-- ─────────── CONFIDENTIALITÉ ─────────── -->
+        <sc-if value="{{ isConfidentialite }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 26px;">Atelier Givre attache une importance particulière à la protection des données personnelles de ses clients et traite celles-ci conformément au Règlement général sur la protection des données (RGPD) et à la loi Informatique et Libertés.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">Responsable du traitement</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">GIVRE BUISSON Kylian (Atelier Givre), 5 rue de la Violette, 01510 Artemare — ateliergivre.contact@gmail.com. Compte tenu de la taille de l'entreprise, aucun délégué à la protection des données n'a été désigné.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">Données collectées et finalités</h2>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;">
+              <li style="position:relative;padding-left:18px;font-size:15px;line-height:1.7;color:#566571;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:#C9A84C;"></span><strong style="color:#1A2C3D;font-weight:600;">Commande</strong> — nom, prénom, adresse électronique, téléphone, adresse de livraison, détail et historique des commandes. Finalité : traitement, préparation, retrait ou livraison, et suivi de la commande. Base légale : exécution du contrat.</li>
+              <li style="position:relative;padding-left:18px;font-size:15px;line-height:1.7;color:#566571;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:#C9A84C;"></span><strong style="color:#1A2C3D;font-weight:600;">Paiement</strong> — les données de carte bancaire sont collectées et traitées exclusivement par Stripe. Atelier Givre reçoit uniquement le statut de la transaction. Base légale : exécution du contrat.</li>
+              <li style="position:relative;padding-left:18px;font-size:15px;line-height:1.7;color:#566571;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:#C9A84C;"></span><strong style="color:#1A2C3D;font-weight:600;">Formulaires de contact et de devis</strong> — nom, adresse électronique, téléphone, description du projet. Finalité : répondre à la demande. Base légale : mesures précontractuelles à la demande de la personne.</li>
+              <li style="position:relative;padding-left:18px;font-size:15px;line-height:1.7;color:#566571;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:#C9A84C;"></span><strong style="color:#1A2C3D;font-weight:600;">Données techniques</strong> — adresse IP et journaux de connexion générés par l'hébergeur. Finalité : sécurité et bon fonctionnement du site. Base légale : intérêt légitime.</li>
+              <li style="position:relative;padding-left:18px;font-size:15px;line-height:1.7;color:#566571;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:#C9A84C;"></span><strong style="color:#1A2C3D;font-weight:600;">Facturation</strong> — données nécessaires aux obligations comptables. Base légale : obligation légale.</li>
+            </ul>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:16px 0 0;">Le panier est conservé localement dans le navigateur du client et n'est transmis à Atelier Givre qu'au moment de la commande. Aucune donnée n'est vendue ni cédée à des tiers, et aucune prospection commerciale n'est effectuée sans consentement préalable.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">Durées de conservation</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 10px;">Données de commande et de client : trois ans à compter de la dernière commande.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 10px;">Pièces comptables et factures : dix ans, conformément aux obligations légales.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 10px;">Demandes de contact et de devis non suivies d'une commande : trois ans.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Journaux techniques : douze mois au maximum.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">Destinataires et sous-traitants</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 10px;">Les données sont accessibles au seul exploitant d'Atelier Givre. Interviennent en qualité de sous-traitants ou de destinataires :</p>
+            <ul style="list-style:none;margin:0 0 10px;padding:0;display:flex;flex-direction:column;gap:9px;">
+              <li style="position:relative;padding-left:18px;font-size:15px;line-height:1.7;color:#566571;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:#C9A84C;"></span><strong style="color:#1A2C3D;font-weight:600;">Netlify, Inc.</strong> — hébergement du site.</li>
+              <li style="position:relative;padding-left:18px;font-size:15px;line-height:1.7;color:#566571;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:#C9A84C;"></span><strong style="color:#1A2C3D;font-weight:600;">Stripe</strong> — traitement des paiements en ligne.</li>
+              <li style="position:relative;padding-left:18px;font-size:15px;line-height:1.7;color:#566571;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:#C9A84C;"></span><strong style="color:#1A2C3D;font-weight:600;">Google LLC</strong> — fourniture des polices de caractères utilisées par le site et service de messagerie électronique.</li>
+            </ul>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Certains de ces prestataires étant établis aux États-Unis, les transferts éventuels de données hors de l'Union européenne sont encadrés par les mécanismes prévus par le RGPD, notamment les clauses contractuelles types et le cadre de protection des données UE–États-Unis.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">Vos droits</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 10px;">Le client dispose d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de ses données, ainsi que du droit de définir des directives relatives à leur sort après son décès.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 10px;">Ces droits s'exercent par courrier électronique à <a href="mailto:ateliergivre.contact@gmail.com" style="color:#1A2C3D;">ateliergivre.contact@gmail.com</a>. Une réponse est apportée dans un délai d'un mois.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">En cas de désaccord persistant, une réclamation peut être introduite auprès de la Commission nationale de l'informatique et des libertés (CNIL), 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07 — cnil.fr.</p>
+          </div>
+        </sc-if>
+
+        <!-- ─────────── COOKIES ─────────── -->
+        <sc-if value="{{ isCookies }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 26px;">Le site d'Atelier Givre n'utilise ni cookie publicitaire, ni cookie de mesure d'audience, ni traceur de réseau social. Aucun outil d'analyse comme Google Analytics ou de pixel publicitaire n'est installé.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:0 0 12px;">Ce qui est réellement utilisé</h2>
+            <ul style="list-style:none;margin:0 0 16px;padding:0;display:flex;flex-direction:column;gap:12px;">
+              <li style="position:relative;padding-left:18px;font-size:15px;line-height:1.7;color:#566571;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:#C9A84C;"></span><strong style="color:#1A2C3D;font-weight:600;">Stockage local du panier</strong> — le contenu du panier est enregistré dans le navigateur du client afin d'être retrouvé d'une visite à l'autre. Ce stockage est strictement nécessaire au fonctionnement du service de commande.</li>
+              <li style="position:relative;padding-left:18px;font-size:15px;line-height:1.7;color:#566571;"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:#C9A84C;"></span><strong style="color:#1A2C3D;font-weight:600;">Stripe</strong> — au moment du paiement, Stripe dépose les cookies nécessaires à la sécurisation de la transaction et à la prévention de la fraude.</li>
+            </ul>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Ces éléments relèvent des traceurs strictement nécessaires à la fourniture d'un service expressément demandé par l'utilisateur, exemptés de consentement selon les recommandations de la CNIL. Aucun bandeau de consentement n'est donc affiché.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">Polices de caractères</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Les polices utilisées par le site sont chargées depuis les serveurs de Google Fonts, ce qui implique la transmission de l'adresse IP du visiteur à Google. Aucun cookie n'est déposé à cette occasion.</p>
+
+            <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#1A2C3D;margin:34px 0 12px;">Gérer le stockage</h2>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 10px;">Le client peut à tout moment effacer les données stockées par le site depuis les réglages de son navigateur, rubrique confidentialité et données de navigation. La suppression du stockage local vide le panier en cours.</p>
+            <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0;">Si des outils de mesure d'audience ou de publicité venaient à être ajoutés, un mécanisme de recueil du consentement serait mis en place et la présente politique mise à jour.</p>
+          </div>
+        </sc-if>
+
+        <div style="margin-top:56px;padding-top:26px;border-top:1px solid #EEE;">
+          <p style="font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin:0 0 14px;">Autres informations</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;">
+            <sc-for list="{{ legalLinks }}" as="l" hint-placeholder-count="6">
+              <button onClick="{{ l.onOpen }}" style="background:none;border:1px solid #E8E8E8;border-radius:40px;padding:9px 16px;font-family:inherit;font-size:13px;color:#566571;cursor:pointer;transition:border-color .25s ease,color .25s ease;" style-hover="border-color:#C9A84C;color:#C9A84C;">{{ l.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </article>
+    </div>
+  </sc-if>
+
+  <!-- ════════════════ CONFIRMATION ════════════════ -->
+  <sc-if value="{{ isConfirmed }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:100;background:#FFFFFF;overflow-y:auto;animation:ag-fadeIn .4s ease;">
+      <div style="min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 28px;background:radial-gradient(120% 90% at 50% 0%,#FFFFFF 0%,#F5F7FA 80%);">
+        <div style="width:74px;height:74px;border-radius:50%;border:1.5px solid #C9A84C;display:flex;align-items:center;justify-content:center;margin-bottom:30px;"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
+        <div style="display:flex;align-items:center;gap:12px;color:#C9A84C;margin-bottom:14px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">Commande confirmée</span><span style="height:1px;width:30px;background:#C9A84C;"></span></div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,5vw,54px);margin:0 0 18px;color:#1A2C3D;">Merci pour votre commande</h2>
+        <p style="font-size:16px;line-height:1.8;color:#566571;margin:0 0 6px;max-width:46ch;">Chaque création est désormais entre les mains de l'Atelier. Vous recevrez un email de confirmation avec les détails de retrait ou de livraison.</p>
+        <p style="font-size:13px;letter-spacing:1px;color:#8a98a5;margin:0 0 34px;">Référence — <span style="color:#1A2C3D;font-weight:600;">{{ orderNumber }}</span></p>
+        <div style="width:min(440px,90vw);background:#fff;border:1px solid #E8E8E8;border-radius:13px;padding:26px 28px;text-align:left;margin-bottom:36px;">
+          <sc-for list="{{ orderItems }}" as="oi" hint-placeholder-count="2">
+            <div style="display:flex;justify-content:space-between;font-size:14px;padding:9px 0;border-bottom:1px solid #F2F2F2;color:#1A2C3D;"><span>{{ oi.label }}</span><span style="color:#566571;">{{ oi.priceLabel }}</span></div>
+          </sc-for>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding-top:16px;"><span style="font-size:14px;font-weight:600;">Total</span><span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#C9A84C;">{{ orderTotalLabel }}</span></div>
+          <sc-if value="{{ orderIsDeposit }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:14px;padding-top:14px;border-top:1px solid #F2F2F2;">
+              <div style="display:flex;justify-content:space-between;font-size:13.5px;color:#1A2C3D;margin-bottom:5px;"><span>Acompte réglé (30 %)</span><span style="font-weight:600;">{{ orderPayNowLabel }}</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:13.5px;color:#8a98a5;"><span>Solde au retrait</span><span>{{ orderBalanceLabel }}</span></div>
+            </div>
+          </sc-if>
+        </div>
+        <button onClick="{{ backToShop }}" style="background:#1A2C3D;color:#fff;border:none;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;padding:15px 34px;border-radius:2px;cursor:pointer;transition:background .3s ease;" style-hover="background:#C9A84C;">Retour à la boutique</button>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  // ── Données produits (photos réelles de l'atelier) ──
+  // NOTE : ingrédients et allergènes sont des valeurs par défaut à VÉRIFIER.
+  //   Chaque produit a une ou plusieurs options { label, price } (format / lot).
+  CATEGORIES = ['Tartes & entremets', 'Cakes', 'Petits gâteaux', 'Confiserie'];
+  // Un produit peut porter des `variants` : chaque variante remplace options,
+  // composition et allergènes (ex. cannelés nature / au rhum).
+  PRODUCTS = [
+    // ── Tartes & entremets ──
+    { id: 'trois-citrons', cat: 'Tartes & entremets', name: 'Tarte aux Trois Citrons', img: 'images/trois-citrons-1.jpg',
+      desc: "Trois citrons pour une seule tarte : la vivacité du jaune, le parfum du vert, l'amertume fine du zeste confit.",
+      options: [{ label: "4/6 personnes", price: 26 }, { label: "8/10 personnes", price: 44 }],
+      composition: ["Pâte sablée (farine de blé, beurre, sucre, œufs)", "Crème aux trois citrons (citrons, œufs, beurre, sucre)", "Chantilly vanille", "Zestes de citron"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+    { id: 'peche-verveine', cat: 'Tartes & entremets', name: 'Tarte Pêche, Verveine & Vanille', img: 'images/peche-verveine-1.jpg',
+      desc: "Une tarte d'été : pêches de vigne en rosace, crème vanille infusée à la verveine fraîche, feuille d'or.",
+      options: [{ label: "4/6 personnes", price: 24 }, { label: "8/10 personnes", price: 42 }],
+      composition: ["Pâte sablée (farine de blé, beurre, sucre, œufs)", "Crème vanille-verveine", "Pêches fraîches", "Sucre"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+    { id: 'choco-cacahuete', cat: 'Tartes & entremets', name: 'Tarte Chocolat, Caramel & Cacahuète', img: 'images/choco-cacahuete-1.jpg',
+      desc: "L'accord franc du chocolat noir et du caramel, relevé par la cacahuète torréfiée. Une tarte de caractère.",
+      options: [{ label: "4/6 personnes", price: 24 }, { label: "8/10 personnes", price: 42 }],
+      composition: ["Pâte sablée (farine de blé, beurre, sucre, œufs)", "Ganache chocolat", "Caramel", "Cacahuètes torréfiées"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Arachides", "Soja"] },
+    { id: 'vanille-pistache', cat: 'Tartes & entremets', name: 'Tarte Vanille & Pistache', img: 'images/vanille-pistache-1.jpg',
+      desc: "La signature de la maison. Crème vanille dressée en spirale, cœur de pistaches caramélisées, éclats d'or.",
+      options: [{ label: "4/6 personnes", price: 26 }, { label: "8/10 personnes", price: 44 }],
+      composition: ["Pâte sablée (farine de blé, beurre, sucre, œufs)", "Crème vanille", "Pâte de pistache & pistaches", "Sucre"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (pistaches)"] },
+    { id: 'manguier', cat: 'Tartes & entremets', name: 'Le Manguier', img: 'images/manguier-1.jpg',
+      desc: "Un entremets tout en douceur : mousse vanille aérienne, dés de mangue fraîche, biscuit moelleux.",
+      options: [{ label: "4 personnes", price: 24 }, { label: "8 personnes", price: 42 }],
+      composition: ["Biscuit (farine de blé, œufs, sucre)", "Mousse vanille", "Mangue fraîche"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+    { id: 'flan-pecan', cat: 'Tartes & entremets', name: 'Flan Vanille & Pécan', img: 'images/flan-pecan-1.jpg',
+      desc: "Le flan de l'enfance, revu avec exigence : appareil à la vanille, base sablée, pécans caramélisées.",
+      options: [{ label: "4 personnes", price: 22 }, { label: "8 personnes", price: 40 }],
+      composition: ["Pâte sablée (farine de blé, beurre, sucre, œufs)", "Appareil à flan (lait, œufs, vanille, sucre)", "Noix de pécan"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (pécan)"] },
+
+    // ── Cakes ──
+    { id: 'cake-citron-framboise', cat: 'Cakes', name: 'Cake Citron & Framboise', img: 'images/cake-citron-framboise-1.jpg',
+      desc: "Mie serrée et parfumée au citron, cœur de framboise, glaçage croquant aux amandes.",
+      options: [{ label: "Cake 25 cm", price: 22 }],
+      composition: ["Farine de blé", "Œufs", "Beurre", "Sucre", "Citron", "Framboise", "Amandes"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (amandes)"] },
+    { id: 'cake-vanille-pavot', cat: 'Cakes', name: 'Cake Vanille & Pavot', img: 'images/cake-vanille-pavot-1.jpg',
+      desc: "Vanille franche et graines de pavot, sous un glaçage croquant aux amandes.",
+      options: [{ label: "Cake 25 cm", price: 22 }],
+      composition: ["Farine de blé", "Œufs", "Beurre", "Sucre", "Vanille", "Graines de pavot", "Amandes"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (amandes)"] },
+    // TODO photo : cliché dédié au cake citron nature (utilise pour l'instant celui du glacé).
+    { id: 'cake-citron-nature', cat: 'Cakes', name: 'Cake Citron (nature)', img: 'images/cake-citron-framboise-1.jpg',
+      desc: "Le même cake au citron, sans glaçage. Pour le café du matin.",
+      options: [{ label: "Cake 25 cm", price: 12 }],
+      composition: ["Farine de blé", "Œufs", "Beurre", "Sucre", "Citron"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+    // TODO photo : cliché dédié au cake vanille-pavot nature.
+    { id: 'cake-vanille-pavot-nature', cat: 'Cakes', name: 'Cake Vanille-Pavot (nature)', img: 'images/cake-vanille-pavot-1.jpg',
+      desc: "Vanille et pavot, sans glaçage. La version sobre, à trancher épais.",
+      options: [{ label: "Cake 25 cm", price: 14 }],
+      composition: ["Farine de blé", "Œufs", "Beurre", "Sucre", "Vanille", "Graines de pavot"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+    // ── Petits gâteaux ──
+    { id: 'cannele', cat: 'Petits gâteaux', name: 'Cannelés Bordelais', img: 'images/cannele-1.jpg',
+      desc: "Croûte sombre et caramélisée, cœur tendre à la vanille. Au choix, nature ou parfumés au rhum.",
+      variantLabel: "Préparation",
+      variants: [
+        { label: "Sans alcool",
+          options: [{ label: "À l'unité", price: 2.40 }, { label: "Lot de 3", price: 6.80 }, { label: "Lot de 6", price: 13.30 }],
+          composition: ["Lait", "Farine de blé", "Œufs", "Sucre", "Beurre", "Vanille"],
+          allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+        { label: "Au rhum",
+          options: [{ label: "À l'unité", price: 2.60 }, { label: "Lot de 3", price: 7.40 }, { label: "Lot de 6", price: 14.40 }],
+          composition: ["Lait", "Farine de blé", "Œufs", "Sucre", "Beurre", "Vanille", "Rhum"],
+          allergenes: ["Gluten (blé)", "Œufs", "Lait", "Alcool (rhum)"] },
+      ],
+      options: [{ label: "À l'unité", price: 2.40 }, { label: "Lot de 3", price: 6.80 }, { label: "Lot de 6", price: 13.30 }],
+      composition: ["Lait", "Farine de blé", "Œufs", "Sucre", "Beurre", "Vanille"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+    { id: 'cookie-pistache', cat: 'Petits gâteaux', name: 'Cookie Deux Chocolats & Pistache', img: 'images/cookie-1.jpg',
+      desc: "Deux chocolats, un cœur coulant à la pistache. Servi encore tiède, il est à son meilleur.",
+      options: [{ label: "À l'unité", price: 4.20 }, { label: "Lot de 2", price: 8 }, { label: "Lot de 4", price: 15.50 }],
+      composition: ["Farine de blé", "Beurre", "Sucre", "Œufs", "Chocolat noir & au lait", "Pistache"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (pistaches)", "Soja"] },
+    { id: 'cookie-pecan', cat: 'Petits gâteaux', name: 'Cookie Deux Chocolats & Pécan', img: 'images/cookie-2.jpg',
+      desc: "Deux chocolats et un cœur coulant à la pécan, pour une note plus torréfiée.",
+      options: [{ label: "À l'unité", price: 4.20 }, { label: "Lot de 2", price: 8 }, { label: "Lot de 4", price: 15.50 }],
+      composition: ["Farine de blé", "Beurre", "Sucre", "Œufs", "Chocolat noir & au lait", "Noix de pécan"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (pécan)", "Soja"] },
+    { id: 'financiers', cat: 'Petits gâteaux', name: 'Financiers Pistache / Noisette', img: 'images/financier-1.jpg',
+      desc: "Beurre noisette et poudre d'amande, bords dorés et cœur moelleux. Au choix pistache ou noisette.",
+      options: [{ label: "À l'unité", price: 2.40 }, { label: "Lot de 2", price: 4.60 }, { label: "Lot de 4", price: 9.20 }, { label: "Lot de 6", price: 14 }],
+      composition: ["Blancs d'œufs", "Beurre noisette", "Sucre glace", "Poudre d'amande", "Farine de blé", "Pistache ou noisette"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque"] },
+    // TODO photo : clichés des madeleines à venir.
+    { id: 'madeleines', cat: 'Petits gâteaux', name: 'Madeleines Citron & Vanille', img: 'images/financier-1.jpg',
+      desc: "Bosse haute, bord croustillant, cœur vanillé relevé de citron.",
+      options: [{ label: "À l'unité", price: 2 }, { label: "Lot de 3", price: 5.50 }, { label: "Lot de 6", price: 10.50 }],
+      composition: ["Farine de blé", "Œufs", "Beurre", "Sucre", "Citron", "Vanille"],
+      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+
+    // ── Confiserie ──
+    // TODO : catégorie créée, produits et prix à définir avec Kylian.
+  ];
+  // Galerie : photos fournies par Kylian. `wide` → cliché paysage, la tuile occupe
+  // deux colonnes pour ne pas être recadrée en portrait.
+  GALLERY = [
+    { src: 'images/kylian.jpg', caption: "À l'atelier" },
+    { src: 'images/galerie-number-cake-30.jpg', caption: 'Number Cake 30 · pêche & vanille', wide: true },
+    { src: 'images/galerie-tarte-rosace.jpg', caption: 'Tarte rosace pêche & abricot' },
+    { src: 'images/galerie-pavlovas.jpg', caption: 'Pavlovas aux fruits frais' },
+    { src: 'images/galerie-madeleines.jpg', caption: 'Madeleines sortie de four' },
+    { src: 'images/galerie-number-cake-25.jpg', caption: 'Number Cake 25 · chocolat & noisette', wide: true },
+    { src: 'images/galerie-pralines.jpg', caption: 'Pralinés maison' },
+    { src: 'images/galerie-entremets-peche.jpg', caption: 'Entremets pêche, abricot & romarin' },
+    { src: 'images/galerie-tropezienne.jpg', caption: 'Tarte tropézienne' },
+    { src: 'images/vanille-pistache-1.jpg', caption: 'Tarte vanille & pistache' },
+  ];
+
+  // ── Photos supplémentaires par produit (miniatures dans la fiche) ──
+  PRODUCT_IMAGES = {
+    'trois-citrons': ['images/trois-citrons-1.jpg', 'images/trois-citrons-2.jpg', 'images/trois-citrons-3.jpg'],
+    'peche-verveine': ['images/peche-verveine-1.jpg', 'images/peche-verveine-2.jpg', 'images/peche-verveine-3.jpg', 'images/peche-verveine-4.jpg'],
+    'choco-cacahuete': ['images/choco-cacahuete-1.jpg', 'images/choco-cacahuete-2.jpg', 'images/choco-cacahuete-3.jpg'],
+    'vanille-pistache': ['images/vanille-pistache-1.jpg', 'images/vanille-pistache-2.jpg', 'images/vanille-pistache-3.jpg'],
+    'manguier': ['images/manguier-1.jpg', 'images/manguier-2.jpg', 'images/manguier-3.jpg'],
+    'flan-pecan': ['images/flan-pecan-1.jpg', 'images/flan-pecan-2.jpg', 'images/flan-pecan-3.jpg'],
+    'cake-citron-framboise': ['images/cake-citron-framboise-1.jpg', 'images/cake-citron-framboise-2.jpg', 'images/cake-citron-framboise-3.jpg'],
+    'cake-vanille-pavot': ['images/cake-vanille-pavot-1.jpg', 'images/cake-vanille-pavot-2.jpg', 'images/cake-vanille-pavot-3.jpg'],
+    'cannele': ['images/cannele-1.jpg', 'images/cannele-2.jpg', 'images/cannele-3.jpg'],
+    'cookie-pistache': ['images/cookie-1.jpg', 'images/cookie-3.jpg'],
+    'cookie-pecan': ['images/cookie-2.jpg', 'images/cookie-3.jpg'],
+    'financiers': ['images/financier-1.jpg', 'images/financier-2.jpg', 'images/financier-3.jpg'],
+  };
+  imagesOf = (product) => (product && this.PRODUCT_IMAGES[product.id]) || (product ? [product.img] : []);
+
+  // ── Number Cake : options de composition (valeurs choisies par défaut, à ajuster) ──
+  NC_PRICE_PER_PERSON = 3.5;                 // prix par personne
+  NC_PORTIONS = [10, 15, 20, 25, 30];        // parts par chiffre/lettre (niveaux de taille)
+  NC_SUPP_DECOR = 2.5;                       // supplément par fruit de décoration
+  NC_SUPP_FRUITSEC = 1.5;                    // supplément par fruit sec
+  NC = {
+    bases: ['Pâte sucrée nature', 'Pâte sucrée cacao', 'Pâte sucrée citron', 'Pâte sucrée amande', 'Pâte sucrée noisette', 'Pâte sucrée pistache', 'Biscuit madeleine vanille', 'Biscuit madeleine citron', 'Biscuit madeleine chocolat', 'Biscuit joconde amande', 'Biscuit joconde pistache', 'Biscuit noisette', 'Biscuit chocolat', 'Biscuit financier', 'Biscuit pain de Gênes'],
+    croustillants: ['Praliné noisette', 'Praliné pistache', 'Praliné pécan', 'Praliné amande', 'Praliné cacahuète', 'Chocolat noir feuilletine', 'Chocolat au lait feuilletine', 'Chocolat blanc croustillant', 'Noix de coco torréfiée'],
+    cremeux: ['Vanille', 'Chocolat noir', 'Chocolat au lait', 'Chocolat blanc', 'Pistache', 'Noisette', 'Cacahuète', 'Café', 'Citron jaune', 'Citron vert', 'Yuzu', 'Framboise', 'Fraise', 'Mangue', 'Passion', 'Pêche', 'Abricot', 'Poire', 'Praliné', 'Noix de coco', 'Verveine'],
+    compotees: ['Fraise', 'Framboise', 'Mangue', 'Mangue-passion', 'Pêche', 'Abricot', 'Poire', 'Pomme', 'Cassis', 'Myrtille', 'Cerise', 'Ananas', 'Kiwi', 'Litchi'],
+    gels: ['Citron', 'Citron vert', 'Yuzu', 'Framboise', 'Fraise', 'Mangue', 'Passion', 'Abricot', 'Pêche', 'Cassis', 'Myrtille', 'Orange', 'Clémentine', 'Litchi'],
+    mousses: ['Vanille', 'Chocolat noir', 'Chocolat lait', 'Citron', 'Framboise', 'Fraise', 'Mangue', 'Passion', 'Coco', 'Verveine vanille', "Fleur d'oranger vanille", 'Tonka vanille'],
+    decors: ['Framboises', 'Fraises', 'Myrtilles', 'Mûres', 'Mangue', 'Pêche', 'Abricot', 'Kiwi', 'Fruit de la passion', 'Figue', 'Raisin', 'Citron', 'Citron vert'],
+    fruitsSecs: ['Pistaches', 'Noisettes', 'Amandes', 'Noix de pécan', 'Cacahuètes', 'Noix'],
+  };
+  NC_PRESETS = [
+    { name: 'Vanille & Pistache', base: 'Pâte sucrée nature', croustillant: 'Praliné pistache', cremeux: 'Vanille', compotee: '', gel: '', mousse: 'Vanille', decors: [], fruitsSecs: ['Pistaches'] },
+    { name: 'Chocolat praliné noisette', base: 'Pâte sucrée cacao', croustillant: 'Praliné noisette', cremeux: 'Chocolat noir', compotee: '', gel: '', mousse: 'Chocolat noir', decors: [], fruitsSecs: ['Cacahuètes'] },
+    { name: 'Citrons', base: 'Pâte sucrée citron', croustillant: '', cremeux: 'Citron jaune', compotee: '', gel: 'Citron vert', mousse: 'Citron', decors: ['Citron'], fruitsSecs: [] },
+    { name: 'Framboise & Vanille', base: 'Pâte sucrée nature', croustillant: '', cremeux: '', compotee: 'Framboise', gel: '', mousse: 'Vanille', decors: ['Framboises'], fruitsSecs: [] },
+    { name: 'Pêche & Verveine', base: 'Pâte sucrée nature', croustillant: '', cremeux: '', compotee: 'Pêche', gel: '', mousse: 'Verveine vanille', decors: ['Pêche'], fruitsSecs: [] },
+    { name: 'Mangue & Passion', base: 'Pâte sucrée nature', croustillant: '', cremeux: '', compotee: 'Mangue-passion', gel: '', mousse: 'Vanille', decors: ['Mangue'], fruitsSecs: [] },
+  ];
+
+  state = {
+    cart: [],
+    activeCat: 'Tartes & entremets',
+    nc: { open: false, text: '', plevel: 2, preset: -1, base: '', croustillant: '', cremeux: '', compotee: '', gel: '', mousse: '', decors: [], fruitsSecs: [] },
+    cartOpen: false,
+    delivery: 'collect',
+    view: 'shop',
+    lightboxIndex: -1,
+    contactSent: false,
+    devisSent: false,
+    order: null,
+    modalId: null,
+    modalOptIdx: 0,
+    modalImgIdx: 0,
+    modalQty: 1,
+    allergenesOpen: false,
+    menuOpen: false,
+    zoomSrc: null,
+    storyOpen: false,
+    legalPage: null,
+    cgvAccepted: false,
+    galleryExpanded: false,
+    deliveryKm: '',
+    checkoutBusy: false,
+  };
+
+  // ── Cycle de vie ──
+  componentDidMount() {
+    try {
+      const saved = JSON.parse(localStorage.getItem('atelier-givre-cart') || '[]');
+      const known = this.PRODUCTS.map((p) => p.id);
+      const valid = (Array.isArray(saved) ? saved : [])
+        .filter((i) => i && i.key && i.opt && (known.includes(i.id) || i.id === 'number-cake'))
+        .map((i) => ({ key: i.key, id: i.id, name: i.name, opt: i.opt, price: i.price, qty: i.qty || 1, img: i.img, meta: i.meta || null }));
+      if (valid.length) this.setState({ cart: valid });
+    } catch (e) { /* panier corrompu : on ignore */ }
+
+    // ── Retour depuis Stripe Checkout ──
+    // ?paid=1  → paiement accepté : on affiche la confirmation et on vide le panier.
+    // ?canceled=1 → paiement abandonné : on rouvre simplement le panier.
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('paid') === '1') {
+        let order = null;
+        try { order = JSON.parse(localStorage.getItem('ag_pending_order') || 'null'); } catch (e) {}
+        try { localStorage.removeItem('ag_pending_order'); } catch (e) {}
+        this.persist([]);
+        this.setState({ order, cart: [], view: 'confirmation', cartOpen: false });
+        window.history.replaceState({}, '', window.location.pathname);
+      } else if (params.get('canceled') === '1') {
+        this.setState({ cartOpen: true });
+        window.history.replaceState({}, '', window.location.pathname);
+      }
+    } catch (e) { /* pas de retour Stripe */ }
+
+    // Photo introuvable → on masque l'image pour laisser voir le fond givré
+    // (évite l'icône « image cassée » ; sans effet quand les photos sont bien là).
+    if (this._root) {
+      this._root.addEventListener('error', (e) => {
+        const t = e.target;
+        if (t && t.tagName === 'IMG') t.style.opacity = '0';
+      }, true);
+    }
+
+    // Bandeau transparent tant que la photo de garde le recouvre.
+    // Tout est requêté sur `document` : les références mises en cache peuvent
+    // encore pointer vers un arbre de rendu intermédiaire, détaché du document.
+    this._onScroll = () => {
+      const h = document.querySelector('header');
+      const hero = document.querySelector('#accueil');
+      if (!h || !hero) return;
+      const rect = hero.getBoundingClientRect();
+      const overHero = rect.bottom > h.offsetHeight + 4; // la photo couvre le bandeau
+      const on = !overHero && rect.top < -24;            // page défilée : bandeau blanc
+      h.classList.toggle('ag-top', overHero);
+      this.revealVisible();
+      h.style.borderBottomColor = on ? '#C9A84C' : 'transparent';
+      h.style.boxShadow = on ? '0 8px 28px -18px rgba(26,44,61,.5)' : 'none';
+    };
+    // capture:true → on capte aussi le défilement d'un conteneur interne.
+    window.addEventListener('scroll', this._onScroll, { passive: true, capture: true });
+    window.addEventListener('resize', this._onScroll, { passive: true });
+
+    // IntersectionObserver : il livre l'état dès `observe()`, donc l'affichage
+    // est correct quel que soit le moment où la photo arrive dans le document.
+    const attachHero = () => {
+      const hero = document.querySelector('#accueil');
+      if (!hero) { this._heroRaf = requestAnimationFrame(attachHero); return; }
+      this._heroIO = new IntersectionObserver(() => this._onScroll(), { threshold: [0, 0.01, 0.25, 0.5, 0.75, 1] });
+      this._heroIO.observe(hero);
+      this._onScroll();
+    };
+    attachHero();
+    this.initReveal();
+    this.syncScrollLock();
+  }
+  componentDidUpdate() { this.initReveal(); this.syncScrollLock(); if (this._onScroll) this._onScroll(); }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll, { capture: true });
+    window.removeEventListener('resize', this._onScroll);
+    if (this._revealTimer) { clearInterval(this._revealTimer); this._revealTimer = null; }
+    if (this._heroIO) { this._heroIO.disconnect(); this._heroIO = null; }
+    if (this._heroRaf) cancelAnimationFrame(this._heroRaf);
+    document.body.style.overflow = '';
+  }
+
+  // ── Blocage du défilement de l'arrière-plan quand un panneau est ouvert ──
+  syncScrollLock() {
+    const s = this.state;
+    const lock = !!(s.modalId || s.cartOpen || s.zoomSrc || s.menuOpen || s.storyOpen || s.legalPage || (s.nc && s.nc.open) || s.lightboxIndex >= 0 || s.view === 'confirmation');
+    document.body.style.overflow = lock ? 'hidden' : '';
+  }
+
+  // ── Apparition en fondu au défilement ──
+  // Calcul par position réelle, sur `document` : aucune dépendance à un
+  // observateur ni au conteneur qui défile. Une vérification périodique
+  // s'arrête d'elle-même une fois toutes les sections affichées, ce qui
+  // garantit qu'aucun contenu ne peut rester invisible.
+  revealVisible = () => {
+    const vh = window.innerHeight || 800;
+    document.querySelectorAll('[data-reveal]:not([data-reveal-done])').forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh - 40 && r.bottom > -80) {
+        el.setAttribute('data-reveal-done', '1');
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }
+    });
+  };
+  initReveal() {
+    this.revealVisible();
+    if (!this._revealTimer) {
+      this._revealTimer = setInterval(() => {
+        this.revealVisible();
+        if (!document.querySelector('[data-reveal]:not([data-reveal-done])')) {
+          clearInterval(this._revealTimer);
+          this._revealTimer = null;
+        }
+      }, 150);
+    }
+  }
+
+  // ── Helpers ──
+  formatPrice = (n) => n.toFixed(2).replace('.', ',') + ' €';
+  persist = (cart) => {
+    try { localStorage.setItem('atelier-givre-cart', JSON.stringify(cart)); } catch (e) {}
+  };
+
+  // ── Panier ──
+  setRoot = (el) => { this._root = el; };
+  setHeader = (el) => { this._header = el; };
+  setAddress = (el) => { this._addr = el; };
+
+  setCat = (name) => this.setState({ activeCat: name });
+
+  openCart = () => this.setState({ cartOpen: true });
+  closeCart = () => this.setState({ cartOpen: false });
+
+  toggleMenu = () => this.setState((s) => ({ menuOpen: !s.menuOpen }));
+  closeMenu = () => this.setState({ menuOpen: false });
+
+  // ── Page Histoire ──
+  openStory = () => this.setState({ storyOpen: true, menuOpen: false });
+  closeStory = () => this.setState({ storyOpen: false });
+
+  // ── Pages légales ──
+  LEGAL_PAGES = [
+    { key: 'mentions', label: 'Mentions légales' },
+    { key: 'cgv', label: 'Conditions Générales de Vente' },
+    { key: 'livraison', label: 'Livraison & Click and collect' },
+    { key: 'allergenes', label: 'Allergènes & conservation' },
+    { key: 'confidentialite', label: 'Politique de confidentialité' },
+    { key: 'cookies', label: 'Politique des cookies' },
+  ];
+  openLegal = (k) => this.setState({ legalPage: k, menuOpen: false, cartOpen: false });
+  closeLegal = () => this.setState({ legalPage: null });
+
+  // ── Frais de livraison : 1 €/km depuis Belley, offerte à partir de 60 € ──
+  feeFor(subtotal) {
+    if (this.state.delivery !== 'home') return 0;
+    if (subtotal >= 60) return 0;
+    const km = parseFloat(String(this.state.deliveryKm).replace(',', '.'));
+    if (!isFinite(km) || km <= 0) return null; // distance non renseignée
+    return Math.round(Math.min(km, 20) * 100) / 100;
+  }
+  kmInput = (e) => this.setState({ deliveryKm: e.target.value });
+  toggleCgv = () => this.setState({ cgvAccepted: !this.state.cgvAccepted });
+  toggleGallery = () => this.setState({ galleryExpanded: !this.state.galleryExpanded });
+
+  // ── Number Cake (composeur) ──
+  openNC = () => this.setState((s) => ({ menuOpen: false, cartOpen: false, nc: { ...s.nc, open: true } }));
+  closeNC = () => this.setState((s) => ({ nc: { ...s.nc, open: false } }));
+  ncSetField = (f, v) => this.setState((s) => ({ nc: { ...s.nc, [f]: v, preset: -1 } }));
+  ncBaseCh = (e) => this.ncSetField('base', e.target.value);
+  ncCroustCh = (e) => this.ncSetField('croustillant', e.target.value);
+  ncCremeuxCh = (e) => this.ncSetField('cremeux', e.target.value);
+  ncCompoteeCh = (e) => this.ncSetField('compotee', e.target.value);
+  ncGelCh = (e) => this.ncSetField('gel', e.target.value);
+  ncMousseCh = (e) => this.ncSetField('mousse', e.target.value);
+  ncTextInput = (e) => { const v = e.target.value; this.setState((s) => ({ nc: { ...s.nc, text: v } })); };
+  ncPlevelCh = (e) => { const v = parseInt(e.target.value, 10) || 0; this.setState((s) => ({ nc: { ...s.nc, plevel: v } })); };
+  ncCharCount = () => Math.max(1, (this.state.nc.text || '').replace(/[^0-9A-Za-zÀ-ÿ]/g, '').length);
+  ncPersons = () => this.ncCharCount() * this.NC_PORTIONS[this.state.nc.plevel];
+  ncSupplements = () => this.state.nc.decors.length * this.NC_SUPP_DECOR + this.state.nc.fruitsSecs.length * this.NC_SUPP_FRUITSEC;
+  ncToggle = (kind, name) => this.setState((s) => {
+    const arr = s.nc[kind];
+    const next = arr.indexOf(name) >= 0 ? arr.filter((x) => x !== name) : [...arr, name];
+    return { nc: { ...s.nc, [kind]: next, preset: -1 } };
+  });
+  applyPreset = (i) => this.setState((s) => {
+    const p = this.NC_PRESETS[i];
+    return { nc: { ...s.nc, preset: i, base: p.base, croustillant: p.croustillant, cremeux: p.cremeux, compotee: p.compotee, gel: p.gel, mousse: p.mousse, decors: [...p.decors], fruitsSecs: [...p.fruitsSecs] } };
+  });
+  ncPrice = () => this.ncPersons() * this.NC_PRICE_PER_PERSON + this.ncSupplements();
+  addNC = () => {
+    const nc = this.state.nc;
+    if (!nc.text.trim() || !nc.base) return;
+    const parts = [this.ncPersons() + ' personnes'];
+    parts.push('Base : ' + nc.base);
+    if (nc.croustillant) parts.push('Croustillant : ' + nc.croustillant);
+    if (nc.cremeux) parts.push('Crémeux : ' + nc.cremeux);
+    if (nc.compotee) parts.push('Compotée : ' + nc.compotee);
+    if (nc.gel) parts.push('Gel : ' + nc.gel);
+    if (nc.mousse) parts.push('Mousse : ' + nc.mousse);
+    if (nc.decors.length) parts.push('Décor : ' + nc.decors.join(', '));
+    if (nc.fruitsSecs.length) parts.push('Fruits secs : ' + nc.fruitsSecs.join(', '));
+    const key = 'nc-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
+    const line = { key, id: 'number-cake', name: 'Number Cake « ' + nc.text.trim() + ' »', opt: parts.join(' · '), price: this.ncPrice(), qty: 1, img: 'images/vanille-pistache-1.jpg', meta: { persons: this.ncPersons(), decors: nc.decors.length, fruitsSecs: nc.fruitsSecs.length } };
+    this.setState((s) => {
+      const cart = [...s.cart, line];
+      this.persist(cart);
+      return { cart, cartOpen: true, nc: { ...s.nc, open: false } };
+    });
+  };
+
+  setCollect = () => this.setState({ delivery: 'collect' });
+  setHome = () => this.setState({ delivery: 'home' });
+
+  closeLightbox = () => this.setState({ lightboxIndex: -1 });
+  backToShop = () => this.setState({ view: 'shop', order: null });
+
+  // ── Fiche produit (popup détaillée) ──
+  productById = (id) => this.PRODUCTS.find((p) => p.id === id);
+
+  openProduct = (product) => this.setState({
+    modalId: product.id,
+    modalOptIdx: 0,
+    modalVarIdx: 0,
+    modalImgIdx: 0,
+    modalQty: 1,
+    allergenesOpen: false,
+    lightboxIndex: -1,
+    cartOpen: false,
+  });
+  closeProduct = () => this.setState({ modalId: null });
+  setModalOpt = (i) => this.setState({ modalOptIdx: i });
+  setModalVar = (i) => this.setState({ modalVarIdx: i, modalOptIdx: 0 });
+  setModalImg = (i) => this.setState({ modalImgIdx: i });
+  setZoom = (src) => this.setState({ zoomSrc: src });
+  closeZoom = () => this.setState({ zoomSrc: null });
+  toggleAllergenes = () => this.setState((s) => ({ allergenesOpen: !s.allergenesOpen }));
+  modalInc = () => this.setState((s) => ({ modalQty: s.modalQty + 1 }));
+  modalDec = () => this.setState((s) => ({ modalQty: Math.max(1, s.modalQty - 1) }));
+  stopProp = (e) => { if (e && e.stopPropagation) e.stopPropagation(); };
+
+  // ── Panier (lignes identifiées par une clé produit + option) ──
+  addLine = (product, optIdx, qty, variant) => {
+    if (!product) return;
+    const src = variant || product;
+    const opt = src.options[optIdx] || src.options[0];
+    const name = variant ? product.name + ' — ' + variant.label : product.name;
+    const key = product.id + '@' + (variant ? variant.label + '@' : '') + opt.label;
+    this.setState((s) => {
+      const existing = s.cart.find((i) => i.key === key);
+      let cart;
+      if (existing) {
+        cart = s.cart.map((i) => i.key === key ? { ...i, qty: i.qty + qty } : i);
+      } else {
+        cart = [...s.cart, { key, id: product.id, name, opt: opt.label, price: opt.price, qty }];
+      }
+      this.persist(cart);
+      return { cart, cartOpen: true, modalId: null };
+    });
+  };
+  inc = (key) => this.setState((s) => {
+    const cart = s.cart.map((i) => i.key === key ? { ...i, qty: i.qty + 1 } : i);
+    this.persist(cart); return { cart };
+  });
+  dec = (key) => this.setState((s) => {
+    const cart = s.cart.map((i) => i.key === key ? { ...i, qty: Math.max(1, i.qty - 1) } : i);
+    this.persist(cart); return { cart };
+  });
+  removeItem = (key) => this.setState((s) => {
+    const cart = s.cart.filter((i) => i.key !== key);
+    this.persist(cart); return { cart };
+  });
+
+  // ── Paiement (Stripe Checkout) ──
+  // Le montant N'EST PAS calculé ici : le navigateur envoie seulement les
+  // références du panier (clés + quantités) à la fonction Netlify
+  // `/.netlify/functions/create-checkout`, qui recalcule les prix côté serveur
+  // à partir de son propre catalogue, applique la règle d'acompte, crée la
+  // session Stripe et renvoie l'URL de paiement sécurisée.
+  //   • Livraison à domicile → paiement de la TOTALITÉ.
+  //   • Click & collect       → acompte de 30 % (solde réglé au retrait).
+  checkout = async () => {
+    const s = this.state;
+    if (s.cart.length === 0 || !s.cgvAccepted || this._checkoutBusy) return;
+    const subtotal = s.cart.reduce((a, b) => a + b.price * b.qty, 0);
+    const deliveryFee = this.feeFor(subtotal);
+    if (deliveryFee === null) return; // distance de livraison manquante
+    this._checkoutBusy = true;
+    this.setState({ checkoutBusy: true });
+    try {
+      const payload = {
+        items: s.cart.map((it) => ({ key: it.key, id: it.id, qty: it.qty, name: it.name, opt: it.opt, meta: it.meta || null })),
+        delivery: s.delivery,
+        deliveryKm: s.deliveryKm,
+      };
+      const res = await fetch('/.netlify/functions/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error('checkout ' + res.status);
+      const data = await res.json();
+      if (!data || !data.url) throw new Error('no url');
+      // Instantané de commande pour l'écran de confirmation au retour de Stripe.
+      const total = subtotal + deliveryFee;
+      const payNow = s.delivery === 'collect' ? Math.round(subtotal * 0.30 * 100) / 100 : total;
+      const order = {
+        number: 'AG-' + Math.floor(1000 + Math.random() * 9000),
+        items: s.cart.map((it) => ({ ...it })),
+        total,
+        delivery: s.delivery,
+        deposit: s.delivery === 'collect' ? payNow : 0,
+        payNow,
+        balance: s.delivery === 'collect' ? Math.round((total - payNow) * 100) / 100 : 0,
+      };
+      try { localStorage.setItem('ag_pending_order', JSON.stringify(order)); } catch (e) {}
+      window.location.href = data.url; // redirection vers Stripe
+    } catch (e) {
+      this._checkoutBusy = false;
+      this.setState({ checkoutBusy: false });
+      alert("Le paiement n'a pas pu démarrer. Merci de réessayer, ou de nous contacter à ateliergivre.contact@gmail.com");
+    }
+  };
+
+  onContactSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    data.append('_subject', 'Nouveau message — Atelier Givre');
+    data.append('_template', 'table');
+    data.append('_captcha', 'false');
+    fetch('https://formsubmit.co/ajax/ateliergivre.contact@gmail.com', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    })
+      .then((r) => { if (!r.ok) throw new Error('http'); return r.json(); })
+      .then(() => {
+        this.setState({ contactSent: true });
+        if (form.reset) form.reset();
+      })
+      .catch(() => {
+        alert("L'envoi a échoué. Merci de nous écrire directement à ateliergivre.contact@gmail.com");
+      });
+  };
+  onDevisSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    data.append('_subject', 'Nouvelle demande de devis — Atelier Givre');
+    data.append('_template', 'table');
+    data.append('_captcha', 'false');
+    fetch('https://formsubmit.co/ajax/ateliergivre.contact@gmail.com', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    })
+      .then((r) => { if (!r.ok) throw new Error('http'); return r.json(); })
+      .then(() => {
+        this.setState({ devisSent: true });
+        if (form.reset) form.reset();
+      })
+      .catch(() => {
+        alert("L'envoi a échoué. Merci de nous écrire directement à ateliergivre.contact@gmail.com");
+      });
+  };
+
+  // ── Styles dérivés de l'état (valeurs runtime) ──
+  tabStyle(active) {
+    return {
+      fontFamily: "'DM Sans',sans-serif",
+      fontSize: '13px',
+      letterSpacing: '1.4px',
+      textTransform: 'uppercase',
+      padding: '12px 28px',
+      borderRadius: '2px',
+      cursor: 'pointer',
+      transition: 'all .3s ease',
+      border: active ? '1px solid #C9A84C' : '1px solid #E8E8E8',
+      background: active ? '#C9A84C' : '#fff',
+      color: active ? '#fff' : '#566571',
+    };
+  }
+  optStyle(active) {
+    return {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      gap: '12px',
+      padding: '14px 16px',
+      marginBottom: '10px',
+      borderRadius: '8px',
+      cursor: 'pointer',
+      transition: 'border-color .25s ease,background .25s ease',
+      border: active ? '1px solid #C9A84C' : '1px solid #E8E8E8',
+      background: active ? '#FBF8EF' : '#fff',
+      color: '#1A2C3D',
+    };
+  }
+  sizeStyle(active) {
+    return {
+      minWidth: '62px',
+      padding: '11px 14px',
+      borderRadius: '9px',
+      cursor: 'pointer',
+      fontSize: '13.5px',
+      fontWeight: '600',
+      transition: 'all .25s ease',
+      border: active ? '1px solid #C9A84C' : '1px solid #E8E8E8',
+      background: active ? '#C9A84C' : '#fff',
+      color: active ? '#fff' : '#1A2C3D',
+    };
+  }
+  chipStyle(active) {
+    return {
+      padding: '8px 14px',
+      borderRadius: '20px',
+      cursor: 'pointer',
+      fontSize: '13px',
+      transition: 'all .2s ease',
+      border: active ? '1px solid #C9A84C' : '1px solid #E8E8E8',
+      background: active ? '#C9A84C' : '#fff',
+      color: active ? '#fff' : '#566571',
+    };
+  }
+  thumbStyle(active) {
+    return {
+      width: '52px',
+      height: '52px',
+      flexShrink: '0',
+      padding: '0',
+      borderRadius: '7px',
+      overflow: 'hidden',
+      cursor: 'pointer',
+      background: 'none',
+      lineHeight: '0',
+      border: active ? '2px solid #C9A84C' : '2px solid rgba(255,255,255,.75)',
+      boxShadow: '0 2px 10px rgba(13,22,31,.35)',
+      transition: 'border-color .2s ease, transform .2s ease',
+      opacity: active ? '1' : '.85',
+    };
+  }
+  ncSelectOptions(list, placeholder) {
+    return [{ v: '', label: placeholder }].concat(list.map((v) => ({ v, label: v })));
+  }
+
+  priceFromLabel = (p) => {
+    const min = Math.min.apply(null, p.options.map((o) => o.price));
+    return p.options.length > 1 ? 'dès ' + this.formatPrice(min) : this.formatPrice(min);
+  };
+
+  renderVals() {
+    const s = this.state;
+    const tabs = this.CATEGORIES.map((c) => ({
+      label: c,
+      style: this.tabStyle(c === s.activeCat),
+      onPick: () => this.setCat(c),
+    }));
+    const visibleProducts = this.PRODUCTS.filter((p) => p.cat === s.activeCat).map((p) => ({
+      id: p.id,
+      name: p.name,
+      desc: p.desc,
+      img: p.img,
+      priceLabel: this.priceFromLabel(p),
+      delayShort: p.delayShort || '72 h à l’avance',
+      onOpen: () => this.openProduct(p),
+    }));
+    const catEmpty = visibleProducts.length === 0;
+
+    const cartItems = s.cart.map((it) => ({
+      ...it,
+      img: it.img || (this.productById(it.id) || {}).img || '',
+      unitLabel: it.opt,
+      priceLabel: this.formatPrice(it.price * it.qty),
+      onInc: () => this.inc(it.key),
+      onDec: () => this.dec(it.key),
+      onRemove: () => this.removeItem(it.key),
+    }));
+
+    // ── Valeurs de la fiche produit (popup) ──
+    const modalP = s.modalId ? this.productById(s.modalId) : null;
+    const modalImgs = this.imagesOf(modalP);
+    const imgIdx = modalP ? Math.min(Math.max(0, s.modalImgIdx), modalImgs.length - 1) : 0;
+    const modalThumbs = modalImgs.map((src, i) => ({
+      src,
+      style: this.thumbStyle(i === imgIdx),
+      onPick: () => this.setModalImg(i),
+    }));
+    // Variante active (ex. cannelés sans alcool / au rhum) : elle remplace
+    // les options, la composition et les allergènes du produit.
+    const varList = modalP && modalP.variants ? modalP.variants : [];
+    const varIdx = varList.length ? Math.min(s.modalVarIdx || 0, varList.length - 1) : 0;
+    const modalVar = varList.length ? varList[varIdx] : null;
+    const modalSrc = modalVar || modalP;
+    const modalOpts = modalSrc ? modalSrc.options : [];
+    const optIdx = modalOpts.length ? Math.min(s.modalOptIdx, modalOpts.length - 1) : 0;
+    const modalOpt = modalOpts.length ? modalOpts[optIdx] : null;
+    const modalTotal = modalOpt ? modalOpt.price * s.modalQty : 0;
+    const hasChoices = modalOpts.length > 1;
+    const modalSizes = modalOpts.map((o, i) => ({
+      label: o.label,
+      style: this.sizeStyle(i === optIdx),
+      onPick: () => this.setModalOpt(i),
+    }));
+    const modalVariants = varList.map((v, i) => ({
+      label: v.label,
+      style: this.sizeStyle(i === varIdx),
+      onPick: () => this.setModalVar(i),
+    }));
+    const modalComposition = modalSrc ? (modalSrc.composition || []).map((t) => ({ text: t })) : [];
+    const modalAllergenes = modalSrc ? (modalSrc.allergenes || []).map((t) => ({ text: t })) : [];
+
+    const cartCount = s.cart.reduce((a, b) => a + b.qty, 0);
+    const subtotal = s.cart.reduce((a, b) => a + b.price * b.qty, 0);
+    const isHome = s.delivery === 'home';
+    const rawFee = this.feeFor(subtotal);
+    const feeKnown = rawFee !== null;
+    const deliveryFee = feeKnown ? rawFee : 0;
+    const total = subtotal + deliveryFee;
+    const freeShip = isHome && subtotal >= 60;
+    const canCheckout = cartCount > 0 && s.cgvAccepted && feeKnown && !s.checkoutBusy;
+    // Acompte : 30 % en click & collect, sinon paiement intégral.
+    const isCollect = !isHome;
+    const payNow = isCollect ? Math.round(subtotal * 0.30 * 100) / 100 : total;
+    const balanceDue = Math.round((total - payNow) * 100) / 100;
+
+    const galleryAll = this.GALLERY.map((g, i) => ({
+      src: g.src,
+      caption: g.caption,
+      pending: !!g.pending,
+      hasPhoto: !g.pending,
+      tileStyle: {
+        position: 'relative', border: 'none', padding: 0, cursor: 'pointer', overflow: 'hidden',
+        borderRadius: '10px', background: 'linear-gradient(150deg,#F5F7FA 0%,#E8EFF6 55%,#DFE8F1 100%)',
+        boxShadow: '0 22px 44px -30px rgba(26,44,61,.5)',
+        aspectRatio: g.wide ? '8 / 5' : '4 / 5',
+        gridColumn: g.wide ? 'span 2' : 'auto',
+      },
+      onOpen: () => { if (!g.pending) this.setState({ lightboxIndex: i }); },
+    }));
+    // Trois rangées visibles au premier abord (les tuiles paysage occupent deux colonnes).
+    const GALLERY_FOLD = 7;
+    const galleryExpanded = s.galleryExpanded;
+    const gallery = galleryExpanded ? galleryAll : galleryAll.slice(0, GALLERY_FOLD);
+    const galleryHasMore = galleryAll.length > GALLERY_FOLD;
+
+    const order = s.order;
+    const orderItems = order ? order.items.map((it) => ({
+      label: it.name + (it.qty > 1 ? ' × ' + it.qty : ''),
+      priceLabel: this.formatPrice(it.price * it.qty),
+    })) : [];
+
+    return {
+      // tabs
+      tabs,
+      visibleProducts,
+      // gallery
+      gallery,
+      galleryHasMore,
+      toggleGallery: this.toggleGallery,
+      galleryMoreLabel: galleryExpanded ? 'Voir moins' : 'Voir toutes les photos',
+      galleryChevronStyle: { transition: 'transform .35s ease', transform: galleryExpanded ? 'rotate(180deg)' : 'none' },
+      lightboxOpen: s.lightboxIndex >= 0,
+      lightboxSrc: s.lightboxIndex >= 0 ? this.GALLERY[s.lightboxIndex].src : '',
+      lightboxCaption: s.lightboxIndex >= 0 ? this.GALLERY[s.lightboxIndex].caption : '',
+      closeLightbox: this.closeLightbox,
+      // fiche produit (popup)
+      modalOpen: !!modalP,
+      modalHasChoices: hasChoices,
+      modalName: modalP ? modalP.name : '',
+      modalDesc: modalP ? modalP.desc : '',
+      modalDelayLabel: modalP ? (modalP.delay || "Fabriqué à la commande : à commander au moins 72 h avant le retrait ou la livraison.") : '',
+      modalImg: modalImgs[imgIdx] || (modalP ? modalP.img : ''),
+      modalThumbs,
+      modalHasThumbs: modalImgs.length > 1,
+      zoomMain: () => this.setZoom(modalImgs[imgIdx] || (modalP ? modalP.img : '')),
+      zoomOpen: !!s.zoomSrc,
+      zoomSrc: s.zoomSrc || '',
+      closeZoom: this.closeZoom,
+      modalCat: modalP ? modalP.cat : '',
+      modalSizes,
+      modalOptLabel: modalOpt ? modalOpt.label : '',
+      catEmpty,
+      modalComposition,
+      modalVariants,
+      modalHasVariants: modalVariants.length > 0,
+      modalVariantLabel: (modalP && modalP.variantLabel) || 'Préparation',
+      modalAllergenes,
+      modalPriceLabel: this.formatPrice(modalTotal),
+      modalQty: s.modalQty,
+      modalInc: this.modalInc,
+      modalDec: this.modalDec,
+      modalAdd: () => this.addLine(modalP, optIdx, s.modalQty, modalVar),
+      closeProduct: this.closeProduct,
+      stopProp: this.stopProp,
+      // number cake (composeur)
+      openNC: this.openNC,
+      closeNC: this.closeNC,
+      ncOpen: s.nc.open,
+      ncText: s.nc.text,
+      ncTextInput: this.ncTextInput,
+      ncPresets: this.NC_PRESETS.map((p, i) => ({ name: p.name, style: this.chipStyle(i === s.nc.preset), onApply: () => this.applyPreset(i) })),
+      ncBase: s.nc.base, ncBaseCh: this.ncBaseCh, ncBaseOpts: this.ncSelectOptions(this.NC.bases, '— Choisir une base —'),
+      ncCroust: s.nc.croustillant, ncCroustCh: this.ncCroustCh, ncCroustOpts: this.ncSelectOptions(this.NC.croustillants, '— Aucun —'),
+      ncCremeux: s.nc.cremeux, ncCremeuxCh: this.ncCremeuxCh, ncCremeuxOpts: this.ncSelectOptions(this.NC.cremeux, '— Aucun —'),
+      ncCompotee: s.nc.compotee, ncCompoteeCh: this.ncCompoteeCh, ncCompoteeOpts: this.ncSelectOptions(this.NC.compotees, '— Aucune —'),
+      ncGel: s.nc.gel, ncGelCh: this.ncGelCh, ncGelOpts: this.ncSelectOptions(this.NC.gels, '— Aucun —'),
+      ncMousse: s.nc.mousse, ncMousseCh: this.ncMousseCh, ncMousseOpts: this.ncSelectOptions(this.NC.mousses, '— Aucune —'),
+      ncDecors: this.NC.decors.map((n) => ({ name: n, style: this.chipStyle(s.nc.decors.indexOf(n) >= 0), onToggle: () => this.ncToggle('decors', n) })),
+      ncFruitsSecs: this.NC.fruitsSecs.map((n) => ({ name: n, style: this.chipStyle(s.nc.fruitsSecs.indexOf(n) >= 0), onToggle: () => this.ncToggle('fruitsSecs', n) })),
+      ncCharCount: this.ncCharCount(),
+      ncPlevel: s.nc.plevel,
+      ncPlevelCh: this.ncPlevelCh,
+      ncPersonsOpts: this.NC_PORTIONS.map((p, i) => ({ v: i, label: (this.ncCharCount() * p) + ' personnes' })),
+      ncPersonsLabel: 'Pour ' + this.ncPersons() + ' personnes',
+      ncDecorSuppLabel: 'Décoration — fruits (+' + this.formatPrice(this.NC_SUPP_DECOR) + ' l\'unité)',
+      ncFruitsSecsSuppLabel: 'Fruits secs (+' + this.formatPrice(this.NC_SUPP_FRUITSEC) + ' l\'unité)',
+      ncSuppShow: this.ncSupplements() > 0,
+      ncSuppLabel: 'dont ' + this.formatPrice(this.ncSupplements()) + ' de suppléments',
+      ncPriceLabel: this.formatPrice(this.ncPrice()),
+      ncValid: !!(s.nc.text.trim() && s.nc.base),
+      ncInvalid: !(s.nc.text.trim() && s.nc.base),
+      addNC: this.addNC,
+      allergenesOpen: s.allergenesOpen,
+      toggleAllergenes: this.toggleAllergenes,
+      allergenesPanelStyle: {
+        overflow: 'hidden',
+        maxHeight: s.allergenesOpen ? '320px' : '0px',
+        opacity: s.allergenesOpen ? 1 : 0,
+        marginTop: s.allergenesOpen ? '12px' : '0px',
+        transition: 'max-height .4s ease, opacity .3s ease, margin-top .3s ease',
+      },
+      allergenesChevronStyle: {
+        display: 'inline-flex',
+        transition: 'transform .3s ease',
+        transform: s.allergenesOpen ? 'rotate(180deg)' : 'none',
+      },
+      // cart
+      cartItems,
+      cartCount,
+      hasItems: cartCount > 0,
+      cartEmpty: cartCount === 0,
+      subtotalLabel: this.formatPrice(subtotal),
+      deliveryFeeLabel: !isHome ? 'Gratuit' : (freeShip ? 'Offerte' : (feeKnown ? this.formatPrice(deliveryFee) : 'À renseigner')),
+      askKm: isHome && !freeShip,
+      deliveryKm: s.deliveryKm,
+      kmInput: this.kmInput,
+      freeShipReached: freeShip,
+      cgvAccepted: s.cgvAccepted,
+      toggleCgv: this.toggleCgv,
+      cgvBoxStyle: {
+        width: '20px', height: '20px', flex: '0 0 20px', borderRadius: '4px', marginTop: '1px',
+        border: '1px solid ' + (s.cgvAccepted ? '#C9A84C' : '#CFD8E1'),
+        background: s.cgvAccepted ? '#C9A84C' : '#fff',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        color: '#fff', fontSize: '13px', lineHeight: 1, transition: 'background .2s ease,border-color .2s ease',
+      },
+      checkoutBtnStyle: {
+        width: '100%', background: canCheckout ? '#C9A84C' : '#DCE3EA', color: canCheckout ? '#fff' : '#93A2B0',
+        border: 'none', fontSize: '13px', letterSpacing: '1.2px', textTransform: 'uppercase',
+        padding: '17px', borderRadius: '2px', cursor: canCheckout ? 'pointer' : 'not-allowed',
+        transition: 'background .3s ease', minHeight: '52px',
+      },
+      // pages légales
+      legalOpen: !!s.legalPage,
+      legalTitle: (this.LEGAL_PAGES.find((p) => p.key === s.legalPage) || {}).label || '',
+      isMentions: s.legalPage === 'mentions',
+      isCgv: s.legalPage === 'cgv',
+      isLivraisonPage: s.legalPage === 'livraison',
+      isAllergenes: s.legalPage === 'allergenes',
+      isConfidentialite: s.legalPage === 'confidentialite',
+      isCookies: s.legalPage === 'cookies',
+      closeLegal: this.closeLegal,
+      openCgv: () => this.openLegal('cgv'),
+      legalLinks: this.LEGAL_PAGES.map((p) => ({ label: p.label, onOpen: () => this.openLegal(p.key) })),
+      totalLabel: this.formatPrice(total),
+      isCollect,
+      payNowLabel: this.formatPrice(payNow),
+      balanceDueLabel: this.formatPrice(balanceDue),
+      checkoutLabel: s.checkoutBusy ? 'Redirection…' : (isCollect ? 'Payer l’acompte (30 %)' : 'Commander et payer'),
+      openCart: this.openCart,
+      closeCart: this.closeCart,
+      checkout: this.checkout,
+      // menu mobile
+      menuOpen: s.menuOpen,
+      toggleMenu: this.toggleMenu,
+      closeMenu: this.closeMenu,
+      // histoire
+      storyOpen: s.storyOpen,
+      openStory: this.openStory,
+      closeStory: this.closeStory,
+      // delivery
+      isHome,
+      setCollect: this.setCollect,
+      setHome: this.setHome,
+      setAddress: this.setAddress,
+      collectOptStyle: this.optStyle(!isHome),
+      homeOptStyle: this.optStyle(isHome),
+      // drawer chrome
+      backdropStyle: {
+        position: 'fixed', inset: 0, zIndex: 70, background: 'rgba(13,22,31,.42)',
+        opacity: s.cartOpen ? 1 : 0,
+        pointerEvents: s.cartOpen ? 'auto' : 'none',
+        transition: 'opacity .35s ease',
+      },
+      cartPanelStyle: {
+        position: 'fixed', top: 0, right: 0, bottom: 0, zIndex: 80,
+        width: 'min(420px,92vw)', background: '#fff',
+        display: 'flex', flexDirection: 'column',
+        boxShadow: '-24px 0 60px -30px rgba(26,44,61,.5)',
+        transform: s.cartOpen ? 'translateX(0)' : 'translateX(105%)',
+        transition: 'transform .4s cubic-bezier(.22,.61,.36,1)',
+      },
+      // contact
+      onContactSubmit: this.onContactSubmit,
+      contactSent: s.contactSent,
+      // devis
+      onDevisSubmit: this.onDevisSubmit,
+      devisSent: s.devisSent,
+      // confirmation
+      isConfirmed: s.view === 'confirmation',
+      orderNumber: order ? order.number : '',
+      orderItems,
+      orderTotalLabel: order ? this.formatPrice(order.total) : '',
+      orderIsDeposit: !!(order && order.delivery === 'collect'),
+      orderPayNowLabel: order ? this.formatPrice(order.payNow != null ? order.payNow : order.total) : '',
+      orderBalanceLabel: order ? this.formatPrice(order.balance || 0) : '',
+      backToShop: this.backToShop,
+      // refs
+      setRoot: this.setRoot,
+      setHeader: this.setHeader,
+    };
+  }
+}
+</script>
+</body>
+</html>
