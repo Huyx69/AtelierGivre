@@ -215,6 +215,7 @@ exports.handler = async (event) => {
     paye_maintenant: euros(amountDueCents),
     solde_au_retrait: delivery === 'collect' ? euros(totalCents - amountDueCents) : '0,00 €',
     date_souhaitee: pickupDate.split('-').reverse().join('/'),
+    date_iso: pickupDate,
     articles: summary,
     ...(delivery === 'home' ? { adresse_livraison: String(payload.address || '').slice(0, 480), distance_km: String(payload.deliveryKm || '') } : {}),
   };

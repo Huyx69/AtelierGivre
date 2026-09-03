@@ -82,9 +82,43 @@ exports.handler = async (event) => {
       + '<p style="color:#8a98a5;font-size:12px;margin-top:18px;">Atelier Givre · notification automatique de commande</p>'
       + '</div>';
 
+    // ── Pièce jointe calendrier (.ics) : ajout en 1 tap sur iPhone, à la bonne date ──
+    let attachments;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(m.date_iso || '')) {
+      const start = m.date_iso.replace(/-/g, '');
+      const endD = new Date(m.date_iso + 'T00:00:00Z'); endD.setUTCDate(endD.getUTCDate() + 1);
+      const end = endD.getUTCFullYear() + String(endD.getUTCMonth() + 1).padStart(2, '0') + String(endD.getUTCDate()).padStart(2, '0');
+      const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+      const icsEsc = (t) => String(t == null ? '' : t).replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/,/g, '\\,').replace(/;/g, '\\;');
+      const summary = ('Commande — ' + (m.articles || 'Atelier Givre')).slice(0, 180);
+      const location = home ? (m.adresse_livraison || shipStr || '') : '196 rue du Promenoir, 01300 Belley';
+      const ics = [
+        'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Atelier Givre//Commande//FR', 'METHOD:PUBLISH', 'CALSCALE:GREGORIAN',
+        'BEGIN:VEVENT',
+        'UID:' + ((s.id || ('ag-' + Date.now())) + '@ateliergivre.fr'),
+        'DTSTAMP:' + stamp,
+        'DTSTART;VALUE=DATE:' + start,
+        'DTEND;VALUE=DATE:' + end,
+        'SUMMARY:' + icsEsc(summary),
+        'DESCRIPTION:' + icsEsc(text),
+        'LOCATION:' + icsEsc(location),
+        'END:VEVENT', 'END:VCALENDAR',
+      ].join('\r\n');
+      attachments = [{ filename: 'commande.ics', content: Buffer.from(ics, 'utf8').toString('base64') }];
+    }
+
     if (!process.env.RESEND_API_KEY) {
       return { statusCode: 200, body: JSON.stringify({ received: true, email: 'RESEND_API_KEY manquant' }) };
     }
+    const payload = {
+      from: FROM,
+      to: [NOTIFY_EMAIL],
+      reply_to: cust.email || undefined,
+      subject: 'Nouvelle commande — Atelier Givre' + (m.date_souhaitee ? (' (pour le ' + m.date_souhaitee + ')') : ''),
+      text,
+      html,
+    };
+    if (attachments) payload.attachments = attachments;
     try {
       await fetch('https://api.resend.com/emails', {
         method: 'POST',
@@ -92,14 +126,7 @@ exports.handler = async (event) => {
           'Authorization': 'Bearer ' + process.env.RESEND_API_KEY,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          from: FROM,
-          to: [NOTIFY_EMAIL],
-          reply_to: cust.email || undefined,
-          subject: 'Nouvelle commande — Atelier Givre' + (m.date_souhaitee ? (' (pour le ' + m.date_souhaitee + ')') : ''),
-          text,
-          html,
-        }),
+        body: JSON.stringify(payload),
       });
     } catch (e) {
       // On n'échoue pas le webhook pour un email (sinon Stripe le renvoie en boucle).
