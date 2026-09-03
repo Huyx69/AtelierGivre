@@ -1819,7 +1819,7 @@ class Component extends DCLogic {
       onOpen: () => { if (!g.pending) this.setState({ lightboxIndex: i }); },
     }));
     // Trois rangées visibles au premier abord (les tuiles paysage occupent deux colonnes).
-    const GALLERY_FOLD = 7;
+    const GALLERY_FOLD = 5; // 2 lignes visibles (ligne 1 : 1 photo + 1 large ; ligne 2 : 3 photos)
     const galleryExpanded = s.galleryExpanded;
     const gallery = galleryExpanded ? galleryAll : galleryAll.slice(0, GALLERY_FOLD);
     const galleryHasMore = galleryAll.length > GALLERY_FOLD;
