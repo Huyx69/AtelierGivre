@@ -64,8 +64,19 @@ const PRICES = {
 
 // ── Number Cake : mêmes constantes que le site ──
 const NC_PRICE_PER_PERSON = 3.5;
-const NC_SUPP_DECOR = 2.5;
-const NC_SUPP_FRUITSEC = 1.5;
+// Supplément par garniture (décor ou fruit sec), croissant avec le nombre de parts.
+const NC_SUPP_TIERS = [
+  { max: 8, price: 2 },
+  { max: 12, price: 4 },
+  { max: 20, price: 5 },
+  { max: 30, price: 6 },
+  { max: 40, price: 8 },
+  { max: Infinity, price: 10 },
+];
+const ncSuppPerItem = (persons) => {
+  const t = NC_SUPP_TIERS.find((x) => persons <= x.max);
+  return t ? t.price : 10;
+};
 
 const DEPOSIT_RATE = 0.30;          // acompte click & collect
 const FREE_SHIPPING_FROM = 60;      // livraison offerte à partir de 60 €
@@ -107,7 +118,7 @@ exports.handler = async (event) => {
       const persons = Math.max(1, parseInt(m.persons, 10) || 0);
       const decors = Math.max(0, parseInt(m.decors, 10) || 0);
       const fruitsSecs = Math.max(0, parseInt(m.fruitsSecs, 10) || 0);
-      unit = persons * NC_PRICE_PER_PERSON + decors * NC_SUPP_DECOR + fruitsSecs * NC_SUPP_FRUITSEC;
+      unit = persons * NC_PRICE_PER_PERSON + (decors + fruitsSecs) * ncSuppPerItem(persons);
       label = (it.name || 'Number Cake sur-mesure') + ' (' + persons + ' personnes)';
     } else {
       unit = PRICES[it.key];

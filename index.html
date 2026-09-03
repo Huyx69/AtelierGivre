@@ -1151,20 +1151,20 @@ class Component extends DCLogic {
       allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
     // ── Petits gâteaux ──
     { id: 'cannele', cat: 'Petits gâteaux', name: 'Cannelés Bordelais', img: 'images/cannele-1.jpg',
-      desc: "Croûte sombre et caramélisée, cœur tendre à la vanille. Au choix, nature ou parfumés au rhum.",
+      desc: "Une coque intensément caramélisée, un cœur tendre et le parfum de la vanille relevé par les notes du rhum.",
       variantLabel: "Préparation",
       variants: [
         { label: "Sans alcool",
           options: [{ label: "À l'unité", price: 2.40 }, { label: "Lot de 3", price: 6.80 }, { label: "Lot de 6", price: 13.30 }],
-          composition: ["Lait", "Farine de blé", "Œufs", "Sucre", "Beurre", "Vanille"],
+          composition: ["Cannelé"],
           allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
         { label: "Au rhum",
           options: [{ label: "À l'unité", price: 2.60 }, { label: "Lot de 3", price: 7.40 }, { label: "Lot de 6", price: 14.40 }],
-          composition: ["Lait", "Farine de blé", "Œufs", "Sucre", "Beurre", "Vanille", "Rhum"],
+          composition: ["Cannelé"],
           allergenes: ["Gluten (blé)", "Œufs", "Lait", "Alcool (rhum)"] },
       ],
       options: [{ label: "À l'unité", price: 2.40 }, { label: "Lot de 3", price: 6.80 }, { label: "Lot de 6", price: 13.30 }],
-      composition: ["Lait", "Farine de blé", "Œufs", "Sucre", "Beurre", "Vanille"],
+      composition: ["Cannelé"],
       allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
     { id: 'cookie-pistache', cat: 'Petits gâteaux', name: 'Cookie Deux Chocolats & Pistache', img: 'images/cookie-1.jpg',
       desc: "Deux chocolats, un cœur coulant à la pistache. Servi encore tiède, il est à son meilleur.",
@@ -1177,15 +1177,15 @@ class Component extends DCLogic {
       composition: ["Farine de blé", "Beurre", "Sucre", "Œufs", "Chocolat noir & au lait", "Noix de pécan"],
       allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (pécan)", "Soja"] },
     { id: 'financiers', cat: 'Petits gâteaux', name: 'Financiers Pistache / Noisette', img: 'images/financier-1.jpg',
-      desc: "Beurre noisette et poudre d'amande, bords dorés et cœur moelleux. Au choix pistache ou noisette.",
+      desc: "Un financier fondant et généreux où la pistache et la noisette révèlent toute leur intensité.",
       options: [{ label: "À l'unité", price: 2.40 }, { label: "Lot de 2", price: 4.60 }, { label: "Lot de 4", price: 9.20 }, { label: "Lot de 6", price: 14 }],
-      composition: ["Blancs d'œufs", "Beurre noisette", "Sucre glace", "Poudre d'amande", "Farine de blé", "Pistache ou noisette"],
+      composition: ["Financier pistache ou noisette"],
       allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque"] },
     // TODO photo : clichés des madeleines à venir.
     { id: 'madeleines', cat: 'Petits gâteaux', name: 'Madeleines Citron & Vanille', img: 'images/financier-1.jpg',
-      desc: "Bosse haute, bord croustillant, cœur vanillé relevé de citron.",
+      desc: "Une madeleine tendre et moelleuse, délicatement parfumée à la vanille ou au citron.",
       options: [{ label: "À l'unité", price: 2 }, { label: "Lot de 3", price: 5.50 }, { label: "Lot de 6", price: 10.50 }],
-      composition: ["Farine de blé", "Œufs", "Beurre", "Sucre", "Citron", "Vanille"],
+      composition: ["Madeleine moelleuse"],
       allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
 
     // ── Confiserie ──
@@ -1225,8 +1225,15 @@ class Component extends DCLogic {
   // ── Number Cake : options de composition (valeurs choisies par défaut, à ajuster) ──
   NC_PRICE_PER_PERSON = 3.5;                 // prix par personne
   NC_PORTIONS = [10, 15, 20, 25, 30];        // parts par chiffre/lettre (niveaux de taille)
-  NC_SUPP_DECOR = 2.5;                       // supplément par fruit de décoration
-  NC_SUPP_FRUITSEC = 1.5;                    // supplément par fruit sec
+  // Supplément par garniture (chaque décor OU fruit sec), croissant avec le nombre de parts.
+  NC_SUPP_TIERS = [
+    { max: 8, price: 2 },
+    { max: 12, price: 4 },
+    { max: 20, price: 5 },
+    { max: 30, price: 6 },
+    { max: 40, price: 8 },
+    { max: Infinity, price: 10 },
+  ];
   NC = {
     bases: ['Pâte sucrée nature', 'Pâte sucrée cacao', 'Pâte sucrée citron', 'Pâte sucrée amande', 'Pâte sucrée noisette', 'Pâte sucrée pistache', 'Biscuit madeleine vanille', 'Biscuit madeleine citron', 'Biscuit madeleine chocolat', 'Biscuit joconde amande', 'Biscuit joconde pistache', 'Biscuit noisette', 'Biscuit chocolat', 'Biscuit financier', 'Biscuit pain de Gênes'],
     croustillants: ['Praliné noisette', 'Praliné pistache', 'Praliné pécan', 'Praliné amande', 'Praliné cacahuète', 'Chocolat noir feuilletine', 'Chocolat au lait feuilletine', 'Chocolat blanc croustillant', 'Noix de coco torréfiée'],
@@ -1449,7 +1456,8 @@ class Component extends DCLogic {
   ncPlevelCh = (e) => { const v = parseInt(e.target.value, 10) || 0; this.setState((s) => ({ nc: { ...s.nc, plevel: v } })); };
   ncCharCount = () => Math.max(1, (this.state.nc.text || '').replace(/[^0-9A-Za-zÀ-ÿ]/g, '').length);
   ncPersons = () => this.ncCharCount() * this.NC_PORTIONS[this.state.nc.plevel];
-  ncSupplements = () => this.state.nc.decors.length * this.NC_SUPP_DECOR + this.state.nc.fruitsSecs.length * this.NC_SUPP_FRUITSEC;
+  ncSuppPerItem = () => { const p = this.ncPersons(); const t = this.NC_SUPP_TIERS.find((x) => p <= x.max); return t ? t.price : 10; };
+  ncSupplements = () => (this.state.nc.decors.length + this.state.nc.fruitsSecs.length) * this.ncSuppPerItem();
   ncToggle = (kind, name) => this.setState((s) => {
     const arr = s.nc[kind];
     const next = arr.indexOf(name) >= 0 ? arr.filter((x) => x !== name) : [...arr, name];
@@ -1885,8 +1893,8 @@ class Component extends DCLogic {
       ncPlevelCh: this.ncPlevelCh,
       ncPersonsOpts: this.NC_PORTIONS.map((p, i) => ({ v: i, label: (this.ncCharCount() * p) + ' personnes' })),
       ncPersonsLabel: 'Pour ' + this.ncPersons() + ' personnes',
-      ncDecorSuppLabel: 'Décoration — fruits (+' + this.formatPrice(this.NC_SUPP_DECOR) + ' l\'unité)',
-      ncFruitsSecsSuppLabel: 'Fruits secs (+' + this.formatPrice(this.NC_SUPP_FRUITSEC) + ' l\'unité)',
+      ncDecorSuppLabel: 'Décoration — fruits (+' + this.formatPrice(this.ncSuppPerItem()) + ' l\'unité, selon la taille)',
+      ncFruitsSecsSuppLabel: 'Fruits secs (+' + this.formatPrice(this.ncSuppPerItem()) + ' l\'unité, selon la taille)',
       ncSuppShow: this.ncSupplements() > 0,
       ncSuppLabel: 'dont ' + this.formatPrice(this.ncSupplements()) + ' de suppléments',
       ncPriceLabel: this.formatPrice(this.ncPrice()),
