@@ -145,7 +145,7 @@
     .ag-sec{padding:64px 18px !important;scroll-margin-top:64px !important;}
 
     .ag-hero-copy{padding:126px 20px 54px !important;}
-    .ag-hero-photo{object-position:85% 15% !important;} /* téléphone : image décalée vers la gauche */
+    .ag-hero-photo{object-position:42% 15% !important;} /* téléphone : image décalée vers la droite */
     .ag-hero-facts{grid-template-columns:repeat(3,1fr) !important;max-width:none !important;}
     .ag-hero-facts > div{padding:0 10px !important;}
     .ag-hero-facts > div:first-child{padding-left:0 !important;padding-right:10px !important;}
@@ -372,7 +372,7 @@
         <div style="display:flex;align-items:center;justify-content:center;gap:12px;color:#C9A84C;margin-bottom:16px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">L'atelier en images</span><span style="height:1px;width:30px;background:#C9A84C;"></span></div>
         <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(36px,5vw,58px);margin:0;color:#1A2C3D;">Galerie</h2>
       </div>
-      <div class="ag-gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:clamp(210px,26vw,330px);gap:20px;">
+      <div class="ag-gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:clamp(300px,40vw,475px);gap:20px;">
         <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="10">
           <button onClick="{{ g.onOpen }}" style="{{ g.tileStyle }}" style-hover="filter:brightness(.97);">
             <sc-if value="{{ g.hasPhoto }}" hint-placeholder-val="{{ true }}">
