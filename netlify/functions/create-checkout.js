@@ -106,6 +106,16 @@ exports.handler = async (event) => {
     return { statusCode: 400, headers, body: JSON.stringify({ error: 'Panier vide' }) };
   }
 
+  // ── Date souhaitée : délai minimum 10 j (number cake) sinon 72 h ──
+  const leadDays = items.some((it) => it && it.id === 'number-cake') ? 10 : 3;
+  const minDate = new Date(); minDate.setHours(0, 0, 0, 0); minDate.setDate(minDate.getDate() + leadDays);
+  const pad = (n) => String(n).padStart(2, '0');
+  const minDateStr = minDate.getFullYear() + '-' + pad(minDate.getMonth() + 1) + '-' + pad(minDate.getDate());
+  const pickupDate = String(payload.pickupDate || '');
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(pickupDate) || pickupDate < minDateStr) {
+    return { statusCode: 400, headers, body: JSON.stringify({ error: 'Date de retrait/livraison invalide ou trop proche (délai minimum ' + leadDays + ' jours).' }) };
+  }
+
   // ── Reconstruction du panier avec des prix DE CONFIANCE ──
   const lines = [];
   let subtotalCents = 0;
@@ -204,6 +214,7 @@ exports.handler = async (event) => {
     total_commande: euros(totalCents),
     paye_maintenant: euros(amountDueCents),
     solde_au_retrait: delivery === 'collect' ? euros(totalCents - amountDueCents) : '0,00 €',
+    date_souhaitee: pickupDate.split('-').reverse().join('/'),
     articles: summary,
     ...(delivery === 'home' ? { adresse_livraison: String(payload.address || '').slice(0, 480), distance_km: String(payload.deliveryKm || '') } : {}),
   };

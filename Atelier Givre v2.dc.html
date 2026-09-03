@@ -546,6 +546,11 @@
 
     <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ true }}">
       <div style="border-top:1px solid #E8E8E8;padding:22px 26px;background:#FBFCFD;">
+        <div style="margin-bottom:16px;">
+          <label style="display:block;font-size:11.5px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;margin-bottom:7px;">Date souhaitée (retrait ou livraison) *</label>
+          <input type="date" min="{{ pickupMin }}" value="{{ pickupDate }}" onInput="{{ onPickupDate }}" style="width:100%;border:1px solid #E8E8E8;border-radius:6px;padding:11px 14px;font-size:14px;color:#1A2C3D;outline:none;transition:border-color .25s ease;" style-focus="border-color:#C9A84C;">
+          <p style="margin:7px 0 0;font-size:11.5px;line-height:1.6;color:#8a98a5;">{{ pickupHint }}</p>
+        </div>
         <div style="display:flex;justify-content:space-between;font-size:13.5px;color:#566571;margin-bottom:8px;"><span>Sous-total</span><span>{{ subtotalLabel }}</span></div>
         <div style="display:flex;justify-content:space-between;font-size:13.5px;color:#566571;margin-bottom:14px;"><span>Livraison</span><span>{{ deliveryFeeLabel }}</span></div>
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;"><span style="font-size:14px;font-weight:600;color:#1A2C3D;">Total</span><span style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#1A2C3D;">{{ totalLabel }}</span></div>
@@ -1083,7 +1088,8 @@
         <div style="display:flex;align-items:center;gap:12px;color:#C9A84C;margin-bottom:14px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">Commande confirmée</span><span style="height:1px;width:30px;background:#C9A84C;"></span></div>
         <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,5vw,54px);margin:0 0 18px;color:#1A2C3D;">Merci pour votre commande</h2>
         <p style="font-size:16px;line-height:1.8;color:#566571;margin:0 0 6px;max-width:46ch;">Chaque création est désormais entre les mains de l'Atelier. Vous recevrez un email de confirmation avec les détails de retrait ou de livraison.</p>
-        <p style="font-size:13px;letter-spacing:1px;color:#8a98a5;margin:0 0 34px;">Référence — <span style="color:#1A2C3D;font-weight:600;">{{ orderNumber }}</span></p>
+        <p style="font-size:13px;letter-spacing:1px;color:#8a98a5;margin:0 0 6px;">Référence — <span style="color:#1A2C3D;font-weight:600;">{{ orderNumber }}</span></p>
+        <p style="font-size:13px;letter-spacing:1px;color:#8a98a5;margin:0 0 34px;">Date souhaitée — <span style="color:#1A2C3D;font-weight:600;">{{ orderDateLabel }}</span></p>
         <div style="width:min(440px,90vw);background:#fff;border:1px solid #E8E8E8;border-radius:13px;padding:26px 28px;text-align:left;margin-bottom:36px;">
           <sc-for list="{{ orderItems }}" as="oi" hint-placeholder-count="2">
             <div style="display:flex;justify-content:space-between;font-size:14px;padding:9px 0;border-bottom:1px solid #F2F2F2;color:#1A2C3D;"><span>{{ oi.label }}</span><span style="color:#566571;">{{ oi.priceLabel }}</span></div>
@@ -1117,17 +1123,17 @@ class Component extends DCLogic {
       desc: "Trois citrons, trois nuances : la fraîcheur du citron jaune, le parfum du citron vert et l'intensité du yuzu.",
       options: [{ label: "4/6 personnes", price: 26 }, { label: "8/10 personnes", price: 44 }],
       composition: ["Pâte sucrée", "Crème d'amande au citron vert", "Crémeux citron jaune", "Gel citron yuzu", "Ganache montée citron jaune et vert", "Zestes de citron vert et jaune"],
-      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (amande)"] },
     { id: 'choco-cacahuete', cat: 'Tartes & entremets', name: 'Tarte Chocolat, Caramel & Cacahuète', img: 'images/choco-cacahuete-1.jpg',
       desc: "L'intensité du chocolat, la douceur du caramel et le caractère de la cacahuète dans une tarte résolument gourmande.",
       options: [{ label: "4/6 personnes", price: 24 }, { label: "8/10 personnes", price: 42 }],
       composition: ["Pâte sucrée amande", "Croustillant cacahuète", "Caramel vanille", "Crémeux chocolat au lait", "Ganache montée chocolat noir", "Cacahuètes"],
-      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Arachides", "Soja"] },
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (amande)", "Arachides", "Soja"] },
     { id: 'vanille-pistache', cat: 'Tartes & entremets', name: 'Tarte Vanille & Pistache', img: 'images/vanille-pistache-1.jpg',
       desc: "La douceur de la vanille rencontre l'intensité de la pistache, entre crémeux, croustillant et praliné.",
       options: [{ label: "4/6 personnes", price: 26 }, { label: "8/10 personnes", price: 44 }],
       composition: ["Pâte sucrée amande", "Croustillant pistache", "Crémeux vanille & chocolat blanc", "Praliné pistache maison", "Ganache montée vanille", "Pistaches caramélisées"],
-      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (pistaches)"] },
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (pistache, amande)", "Soja"] },
     { id: 'manguier', cat: 'Tartes & entremets', name: 'Le Manguier', img: 'images/manguier-1.jpg',
       desc: "La fraîcheur de la mangue associée à la douceur de la vanille, pour un entremets frais, léger et fruité.",
       options: [{ label: "4 personnes", price: 24 }, { label: "8 personnes", price: 42 }],
@@ -1144,12 +1150,12 @@ class Component extends DCLogic {
       desc: "La fraîcheur du citron associée à l'acidité de la framboise dans un cake moelleux, fruité et gourmand.",
       options: [{ label: "Cake 25 cm", price: 22 }],
       composition: ["Cake moelleux citron", "Crémeux framboise", "Glaçage rocher"],
-      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (amandes)"] },
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (amande)", "Soja"] },
     { id: 'cake-vanille-pavot', cat: 'Cakes', name: 'Cake Vanille & Pavot', img: 'images/cake-vanille-pavot-1.jpg',
       desc: "La douceur de la vanille associée au caractère délicat du pavot dans un cake tendre et parfumé.",
       options: [{ label: "Cake 25 cm", price: 22 }],
       composition: ["Cake moelleux vanille pavot", "Crémeux vanille", "Glaçage rocher vanille pavot"],
-      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (amandes)"] },
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (amande)", "Soja"] },
     // TODO photo : cliché dédié au cake citron nature (utilise pour l'instant celui du glacé).
     { id: 'cake-citron-nature', cat: 'Cakes', name: 'Cake Citron (nature)', img: 'images/cake-citron-framboise-1.jpg',
       desc: "La fraîcheur du citron dans un cake simple, généreux et délicieusement moelleux.",
@@ -1193,7 +1199,7 @@ class Component extends DCLogic {
       desc: "Un financier fondant et généreux où la pistache et la noisette révèlent toute leur intensité.",
       options: [{ label: "À l'unité", price: 2.40 }, { label: "Lot de 2", price: 4.60 }, { label: "Lot de 4", price: 9.20 }, { label: "Lot de 6", price: 14 }],
       composition: ["Financier pistache ou noisette"],
-      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque"] },
+      allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (amande, pistache, noisette)"] },
     // TODO photo : clichés des madeleines à venir.
     { id: 'madeleines', cat: 'Petits gâteaux', name: 'Madeleines Citron & Vanille', img: 'images/financier-1.jpg',
       desc: "Une madeleine tendre et moelleuse, délicatement parfumée à la vanille ou au citron.",
@@ -1293,6 +1299,7 @@ class Component extends DCLogic {
     addressLabel: '',
     addressSuggestions: [],
     deliveryTooFar: false,
+    pickupDate: '',
     checkoutBusy: false,
   };
 
@@ -1457,6 +1464,14 @@ class Component extends DCLogic {
       addressLabel: sug.label, addressQuery: sug.label, addressSuggestions: [],
       deliveryKm: km, deliveryTooFar: km > this.MAX_DELIVERY_KM,
     });
+  };
+  onPickupDate = (e) => this.setState({ pickupDate: e.target.value });
+  // Délai minimum : 10 jours si le panier contient un number cake / sur-mesure, sinon 72 h.
+  pickupLeadDays = () => (this.state.cart.some((it) => it.id === 'number-cake') ? 10 : 3);
+  pickupMinDate = () => {
+    const d = new Date(); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() + this.pickupLeadDays());
+    const p = (n) => String(n).padStart(2, '0');
+    return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
   };
 
   setCat = (name) => this.setState({ activeCat: name });
@@ -1628,6 +1643,7 @@ class Component extends DCLogic {
     const subtotal = s.cart.reduce((a, b) => a + b.price * b.qty, 0);
     const deliveryFee = this.feeFor(subtotal);
     if (deliveryFee === null) return; // distance de livraison manquante
+    if (!s.pickupDate || s.pickupDate < this.pickupMinDate()) return; // date manquante ou trop proche
     this._checkoutBusy = true;
     this.setState({ checkoutBusy: true });
     try {
@@ -1636,6 +1652,7 @@ class Component extends DCLogic {
         delivery: s.delivery,
         deliveryKm: s.deliveryKm,
         address: s.addressLabel,
+        pickupDate: s.pickupDate,
       };
       const res = await fetch('/.netlify/functions/create-checkout', {
         method: 'POST',
@@ -1656,6 +1673,7 @@ class Component extends DCLogic {
         deposit: s.delivery === 'collect' ? payNow : 0,
         payNow,
         balance: s.delivery === 'collect' ? Math.round((total - payNow) * 100) / 100 : 0,
+        pickupDate: s.pickupDate,
       };
       try { localStorage.setItem('ag_pending_order', JSON.stringify(order)); } catch (e) {}
       window.location.href = data.url; // redirection vers Stripe
@@ -1866,7 +1884,9 @@ class Component extends DCLogic {
     const tooFar = kmKnown && kmVal > this.MAX_DELIVERY_KM;
     const farSupp = kmKnown && kmVal > this.FREE_ZONE_KM && kmVal <= this.MAX_DELIVERY_KM;
     const freeShip = isHome && subtotal >= 60 && kmKnown && kmVal <= this.FREE_ZONE_KM;
-    const canCheckout = cartCount > 0 && s.cgvAccepted && feeKnown && !s.checkoutBusy;
+    const pickupMin = this.pickupMinDate();
+    const pickupOk = !!s.pickupDate && s.pickupDate >= pickupMin;
+    const canCheckout = cartCount > 0 && s.cgvAccepted && feeKnown && pickupOk && !s.checkoutBusy;
     // Acompte : 30 % en click & collect, sinon paiement intégral.
     const isCollect = !isHome;
     const payNow = isCollect ? Math.round(subtotal * 0.30 * 100) / 100 : total;
@@ -2030,6 +2050,12 @@ class Component extends DCLogic {
       payNowLabel: this.formatPrice(payNow),
       balanceDueLabel: this.formatPrice(balanceDue),
       checkoutLabel: s.checkoutBusy ? 'Redirection…' : (isCollect ? 'Payer l’acompte (30 %)' : 'Commander et payer'),
+      pickupMin,
+      pickupDate: s.pickupDate,
+      onPickupDate: this.onPickupDate,
+      pickupHint: this.pickupLeadDays() >= 10
+        ? 'Délai minimum : 10 jours (number cake ou création sur-mesure).'
+        : 'Délai minimum : 72 h pour les pâtisseries de la carte.',
       openCart: this.openCart,
       closeCart: this.closeCart,
       checkout: this.checkout,
@@ -2071,6 +2097,7 @@ class Component extends DCLogic {
       // confirmation
       isConfirmed: s.view === 'confirmation',
       orderNumber: order ? order.number : '',
+      orderDateLabel: order && order.pickupDate ? order.pickupDate.split('-').reverse().join('/') : '',
       orderItems,
       orderTotalLabel: order ? this.formatPrice(order.total) : '',
       orderIsDeposit: !!(order && order.delivery === 'collect'),
