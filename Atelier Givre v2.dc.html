@@ -506,20 +506,33 @@
             <span style="font-size:13px;color:#C9A84C;font-weight:600;">Gratuit</span>
           </label>
           <label onClick="{{ setHome }}" style="{{ homeOptStyle }}">
-            <span style="display:flex;flex-direction:column;gap:2px;"><strong style="font-size:14px;font-weight:600;">Livraison à domicile</strong><span style="font-size:12.5px;color:#8a98a5;">Zone 20 km autour de Belley</span></span>
-            <span style="font-size:13px;color:#C9A84C;font-weight:600;text-align:right;">1 € / km</span>
+            <span style="display:flex;flex-direction:column;gap:2px;"><strong style="font-size:14px;font-weight:600;">Livraison à domicile</strong><span style="font-size:12.5px;color:#8a98a5;">Jusqu'à 50 km autour de Belley</span></span>
+            <span style="font-size:13px;color:#C9A84C;font-weight:600;text-align:right;">dès 1 € / km</span>
           </label>
           <sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}">
-            <input ref="{{ setAddress }}" type="text" placeholder="Adresse de livraison" style="width:100%;margin-top:12px;border:1px solid #E8E8E8;border-radius:6px;padding:12px 14px;font-size:14px;color:#1A2C3D;outline:none;transition:border-color .25s ease;" style-focus="border-color:#C9A84C;">
-          </sc-if>
-          <sc-if value="{{ askKm }}" hint-placeholder-val="{{ false }}">
-            <label style="display:flex;flex-direction:column;gap:6px;margin-top:10px;font-size:11.5px;letter-spacing:.8px;text-transform:uppercase;color:#8a98a5;">Distance depuis Belley (km)
-              <input value="{{ deliveryKm }}" onInput="{{ kmInput }}" type="number" min="1" max="20" step="1" placeholder="ex. 8" style="width:100%;border:1px solid #E8E8E8;border-radius:6px;padding:12px 14px;font-size:14px;color:#1A2C3D;outline:none;transition:border-color .25s ease;" style-focus="border-color:#C9A84C;">
-            </label>
-            <p style="margin:8px 0 0;font-size:11.5px;line-height:1.6;color:#8a98a5;">1 € par kilomètre depuis l'atelier · livraison offerte à partir de 60 € de commande.</p>
-          </sc-if>
-          <sc-if value="{{ freeShipReached }}" hint-placeholder-val="{{ false }}">
-            <p style="margin:10px 0 0;font-size:12px;line-height:1.6;color:#1A2C3D;background:#FBF3E4;border-left:2px solid #C9A84C;padding:9px 12px;">Commande supérieure à 60 € : livraison offerte.</p>
+            <div style="position:relative;margin-top:12px;">
+              <input value="{{ addressQuery }}" onInput="{{ onAddressInput }}" type="text" autocomplete="off" placeholder="Commencez à taper votre adresse…" style="width:100%;border:1px solid #E8E8E8;border-radius:6px;padding:12px 14px;font-size:14px;color:#1A2C3D;outline:none;transition:border-color .25s ease;" style-focus="border-color:#C9A84C;">
+              <sc-if value="{{ hasAddrSuggestions }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;z-index:6;left:0;right:0;top:calc(100% + 4px);background:#fff;border:1px solid #E8E8E8;border-radius:8px;box-shadow:0 16px 34px -18px rgba(26,44,61,.5);overflow:hidden;max-height:230px;overflow-y:auto;">
+                  <sc-for list="{{ addressSuggestions }}" as="a" hint-placeholder-count="4">
+                    <button onClick="{{ a.onPick }}" style="display:block;width:100%;text-align:left;padding:11px 14px;background:none;border:none;border-bottom:1px solid #F2F2F2;cursor:pointer;font-size:13.5px;color:#1A2C3D;" style-hover="background:#F5F7FA;color:#C9A84C;">{{ a.label }}</button>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+            <sc-if value="{{ addrChosen }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:10px 0 0;font-size:12.5px;line-height:1.6;color:#1A2C3D;"><span style="color:#8a98a5;">Distance estimée&nbsp;:</span> <strong>{{ deliveryKmLabel }}</strong></p>
+            </sc-if>
+            <sc-if value="{{ deliveryTooFar }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:10px 0 0;font-size:12px;line-height:1.6;color:#9a3b2e;background:#FBECEA;border-left:2px solid #C0503E;padding:9px 12px;">Cette adresse est à plus de 50 km : c'est hors de notre zone de livraison. Choisissez le <strong>Click &amp; collect</strong> ou contactez-nous.</p>
+            </sc-if>
+            <sc-if value="{{ deliveryFarSupp }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:10px 0 0;font-size:12px;line-height:1.6;color:#8a6d1e;background:#FBF3E4;border-left:2px solid #C9A84C;padding:9px 12px;">Livraison éloignée : un supplément de <strong>+2 € par km</strong> au-delà de 20 km est appliqué.</p>
+            </sc-if>
+            <sc-if value="{{ freeShipReached }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:10px 0 0;font-size:12px;line-height:1.6;color:#1A2C3D;background:#FBF3E4;border-left:2px solid #C9A84C;padding:9px 12px;">Commande supérieure à 60 € : livraison offerte (dans la zone de 20 km).</p>
+            </sc-if>
+            <p style="margin:8px 0 0;font-size:11.5px;line-height:1.6;color:#8a98a5;">1 € / km depuis l'atelier · offerte dès 60 € (≤ 20 km) · supplément +2 €/km au-delà de 20 km.</p>
           </sc-if>
         </div>
       </sc-if>
@@ -1277,6 +1290,10 @@ class Component extends DCLogic {
     cgvAccepted: false,
     galleryExpanded: false,
     deliveryKm: '',
+    addressQuery: '',
+    addressLabel: '',
+    addressSuggestions: [],
+    deliveryTooFar: false,
     checkoutBusy: false,
   };
 
@@ -1405,7 +1422,43 @@ class Component extends DCLogic {
   // ── Panier ──
   setRoot = (el) => { this._root = el; };
   setHeader = (el) => { this._header = el; };
-  setAddress = (el) => { this._addr = el; };
+  // ── Livraison : autocomplétion d'adresse (Base Adresse Nationale) + distance ──
+  ATELIER_COORDS = { lat: 45.762056, lon: 5.68827 }; // 196 rue du Promenoir, 01300 Belley
+  FREE_ZONE_KM = 20;      // zone normale : 1 €/km, offerte dès 60 €
+  MAX_DELIVERY_KM = 50;   // limite absolue de livraison
+  ROAD_FACTOR = 1.3;      // approx. distance routière depuis le vol d'oiseau
+
+  haversineKm(lat, lon) {
+    const R = 6371, toRad = (d) => d * Math.PI / 180;
+    const dLat = toRad(lat - this.ATELIER_COORDS.lat);
+    const dLon = toRad(lon - this.ATELIER_COORDS.lon);
+    const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(this.ATELIER_COORDS.lat)) * Math.cos(toRad(lat)) * Math.sin(dLon / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(a));
+  }
+  onAddressInput = (e) => {
+    const q = e.target.value;
+    this.setState({ addressQuery: q, addressLabel: '', deliveryKm: '', deliveryTooFar: false });
+    clearTimeout(this._addrTimer);
+    if (q.trim().length < 3) { this.setState({ addressSuggestions: [] }); return; }
+    this._addrTimer = setTimeout(() => {
+      fetch('https://api-adresse.data.gouv.fr/search/?limit=5&q=' + encodeURIComponent(q))
+        .then((r) => r.json())
+        .then((d) => {
+          const feats = (d && d.features) || [];
+          this.setState({ addressSuggestions: feats.map((f) => ({
+            label: f.properties.label, lat: f.geometry.coordinates[1], lon: f.geometry.coordinates[0],
+          })) });
+        })
+        .catch(() => this.setState({ addressSuggestions: [] }));
+    }, 300);
+  };
+  pickAddress = (sug) => {
+    const km = Math.max(1, Math.round(this.haversineKm(sug.lat, sug.lon) * this.ROAD_FACTOR));
+    this.setState({
+      addressLabel: sug.label, addressQuery: sug.label, addressSuggestions: [],
+      deliveryKm: km, deliveryTooFar: km > this.MAX_DELIVERY_KM,
+    });
+  };
 
   setCat = (name) => this.setState({ activeCat: name });
 
@@ -1431,15 +1484,19 @@ class Component extends DCLogic {
   openLegal = (k) => this.setState({ legalPage: k, menuOpen: false, cartOpen: false });
   closeLegal = () => this.setState({ legalPage: null });
 
-  // ── Frais de livraison : 1 €/km depuis Belley, offerte à partir de 60 € ──
+  // ── Frais de livraison ──
+  //  • ≤ 20 km : 1 €/km (offerte dès 60 € de commande)
+  //  • 20–50 km : 1 €/km + 2 €/km de supplément au-delà de 20 km
+  //  • > 50 km : livraison impossible (return null → paiement bloqué)
   feeFor(subtotal) {
     if (this.state.delivery !== 'home') return 0;
-    if (subtotal >= 60) return 0;
     const km = parseFloat(String(this.state.deliveryKm).replace(',', '.'));
-    if (!isFinite(km) || km <= 0) return null; // distance non renseignée
-    return Math.round(Math.min(km, 20) * 100) / 100;
+    if (!isFinite(km) || km <= 0) return null;          // adresse pas encore choisie
+    if (km > this.MAX_DELIVERY_KM) return null;          // hors zone de livraison
+    if (km <= this.FREE_ZONE_KM && subtotal >= 60) return 0; // offerte dans la zone
+    const fee = km * 1 + Math.max(0, km - this.FREE_ZONE_KM) * 2;
+    return Math.round(fee * 100) / 100;
   }
-  kmInput = (e) => this.setState({ deliveryKm: e.target.value });
   toggleCgv = () => this.setState({ cgvAccepted: !this.state.cgvAccepted });
   toggleGallery = () => this.setState({ galleryExpanded: !this.state.galleryExpanded });
 
@@ -1573,6 +1630,7 @@ class Component extends DCLogic {
         items: s.cart.map((it) => ({ key: it.key, id: it.id, qty: it.qty, name: it.name, opt: it.opt, meta: it.meta || null })),
         delivery: s.delivery,
         deliveryKm: s.deliveryKm,
+        address: s.addressLabel,
       };
       const res = await fetch('/.netlify/functions/create-checkout', {
         method: 'POST',
@@ -1798,7 +1856,11 @@ class Component extends DCLogic {
     const feeKnown = rawFee !== null;
     const deliveryFee = feeKnown ? rawFee : 0;
     const total = subtotal + deliveryFee;
-    const freeShip = isHome && subtotal >= 60;
+    const kmVal = parseFloat(String(s.deliveryKm).replace(',', '.'));
+    const kmKnown = isHome && isFinite(kmVal) && kmVal > 0;
+    const tooFar = kmKnown && kmVal > this.MAX_DELIVERY_KM;
+    const farSupp = kmKnown && kmVal > this.FREE_ZONE_KM && kmVal <= this.MAX_DELIVERY_KM;
+    const freeShip = isHome && subtotal >= 60 && kmKnown && kmVal <= this.FREE_ZONE_KM;
     const canCheckout = cartCount > 0 && s.cgvAccepted && feeKnown && !s.checkoutBusy;
     // Acompte : 30 % en click & collect, sinon paiement intégral.
     const isCollect = !isHome;
@@ -1921,10 +1983,15 @@ class Component extends DCLogic {
       hasItems: cartCount > 0,
       cartEmpty: cartCount === 0,
       subtotalLabel: this.formatPrice(subtotal),
-      deliveryFeeLabel: !isHome ? 'Gratuit' : (freeShip ? 'Offerte' : (feeKnown ? this.formatPrice(deliveryFee) : 'À renseigner')),
-      askKm: isHome && !freeShip,
-      deliveryKm: s.deliveryKm,
-      kmInput: this.kmInput,
+      deliveryFeeLabel: !isHome ? 'Gratuit' : (freeShip ? 'Offerte' : (tooFar ? 'Hors zone' : (feeKnown ? this.formatPrice(deliveryFee) : 'À renseigner'))),
+      addressQuery: s.addressQuery,
+      onAddressInput: this.onAddressInput,
+      addressSuggestions: s.addressSuggestions.map((sug) => ({ label: sug.label, onPick: () => this.pickAddress(sug) })),
+      hasAddrSuggestions: s.addressSuggestions.length > 0,
+      addrChosen: kmKnown && !tooFar,
+      deliveryKmLabel: kmKnown ? (kmVal + ' km environ') : '',
+      deliveryTooFar: tooFar,
+      deliveryFarSupp: farSupp,
       freeShipReached: freeShip,
       cgvAccepted: s.cgvAccepted,
       toggleCgv: this.toggleCgv,
@@ -1973,7 +2040,6 @@ class Component extends DCLogic {
       isHome,
       setCollect: this.setCollect,
       setHome: this.setHome,
-      setAddress: this.setAddress,
       collectOptStyle: this.optStyle(!isHome),
       homeOptStyle: this.optStyle(isHome),
       // drawer chrome

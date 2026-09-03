@@ -79,8 +79,9 @@ const ncSuppPerItem = (persons) => {
 };
 
 const DEPOSIT_RATE = 0.30;          // acompte click & collect
-const FREE_SHIPPING_FROM = 60;      // livraison offerte à partir de 60 €
-const MAX_KM = 20;                  // rayon de livraison
+const FREE_SHIPPING_FROM = 60;      // livraison offerte à partir de 60 € (dans la zone)
+const FREE_ZONE_KM = 20;            // zone normale : 1 €/km, offerte dès 60 €
+const MAX_KM = 50;                  // limite absolue de livraison
 const cents = (eur) => Math.round(eur * 100);
 
 exports.handler = async (event) => {
@@ -135,13 +136,21 @@ exports.handler = async (event) => {
 
   // ── Frais de livraison (recalculés côté serveur) ──
   let deliveryFeeCents = 0;
-  if (delivery === 'home' && subtotalCents < cents(FREE_SHIPPING_FROM)) {
-    let km = parseFloat(String(payload.deliveryKm).replace(',', '.'));
+  if (delivery === 'home') {
+    const km = parseFloat(String(payload.deliveryKm).replace(',', '.'));
     if (!isFinite(km) || km <= 0) {
       return { statusCode: 400, headers, body: JSON.stringify({ error: 'Distance de livraison manquante' }) };
     }
-    km = Math.min(km, MAX_KM);
-    deliveryFeeCents = cents(km); // 1 €/km
+    if (km > MAX_KM) {
+      return { statusCode: 400, headers, body: JSON.stringify({ error: 'Adresse hors zone de livraison (max 50 km).' }) };
+    }
+    if (km <= FREE_ZONE_KM && subtotalCents >= cents(FREE_SHIPPING_FROM)) {
+      deliveryFeeCents = 0; // offerte dans la zone
+    } else {
+      // 1 €/km + 2 €/km de supplément au-delà de 20 km
+      const fee = km * 1 + Math.max(0, km - FREE_ZONE_KM) * 2;
+      deliveryFeeCents = cents(fee);
+    }
   }
 
   const totalCents = subtotalCents + deliveryFeeCents;
@@ -193,6 +202,7 @@ exports.handler = async (event) => {
     paye_maintenant: euros(amountDueCents),
     solde_au_retrait: delivery === 'collect' ? euros(totalCents - amountDueCents) : '0,00 €',
     articles: summary,
+    ...(delivery === 'home' ? { adresse_livraison: String(payload.address || '').slice(0, 480), distance_km: String(payload.deliveryKm || '') } : {}),
   };
 
   try {
