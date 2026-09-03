@@ -202,6 +202,7 @@
         <a href="#number-cake" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Number Cake</a>
         <a href="#devis" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Devis</a>
         <a href="#galerie" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Galerie</a>
+        <a onClick="{{ openStory }}" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;cursor:pointer;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Histoire</a>
         <a href="#contact" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Contact</a>
       </nav>
       <div style="display:flex;align-items:center;gap:6px;">
@@ -225,6 +226,7 @@
       <a onClick="{{ closeMenu }}" href="#number-cake" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Number Cake</a>
       <a onClick="{{ closeMenu }}" href="#devis" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Devis</a>
       <a onClick="{{ closeMenu }}" href="#galerie" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Galerie</a>
+      <a onClick="{{ openStory }}" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;cursor:pointer;">Histoire</a>
       <a onClick="{{ closeMenu }}" href="#contact" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;">Contact</a>
     </div>
   </sc-if>
@@ -244,11 +246,11 @@
           <span style="font-size:11.5px;letter-spacing:3.4px;text-transform:uppercase;">Belley, Ain — fait main</span>
         </div>
 
-        <h1 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(44px,5.4vw,86px);line-height:.95;letter-spacing:-1.5px;margin:0 0 clamp(16px,2.4vh,28px);color:#FFFFFF;text-shadow:0 2px 30px rgba(16,28,39,.45);animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .08s both;">L'art du givre<br><em style="font-style:italic;font-weight:400;color:#C9A84C;">et du chocolat</em></h1>
+        <h1 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(44px,5.4vw,86px);line-height:.95;letter-spacing:-1.5px;margin:0 0 clamp(16px,2.4vh,28px);color:#FFFFFF;text-shadow:0 2px 30px rgba(16,28,39,.45);animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .08s both;">Là où le dessert<br><em style="font-style:italic;font-weight:400;color:#C9A84C;">devient souvenir</em></h1>
 
-        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,1.9vw,24px);line-height:1.4;color:#C9A84C;margin:0 0 clamp(10px,1.4vh,16px);max-width:24ch;animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .12s both;">La précision du givre, la douceur du chocolat.</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,1.9vw,24px);line-height:1.4;color:#C9A84C;margin:0 0 clamp(10px,1.4vh,16px);max-width:24ch;animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .12s both;">La passion du fait maison, au cœur de chaque bouchée.</p>
 
-        <p style="font-size:clamp(15px,1.15vw,17px);line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 clamp(12px,1.6vh,18px);max-width:44ch;animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .16s both;">Tartes, entremets, cannelés et number cakes — entièrement réalisés à la main, des pralinés maison aux finitions.</p>
+        <p style="font-size:clamp(15px,1.15vw,17px);line-height:1.7;color:rgba(255,255,255,.82);margin:0 0 clamp(12px,1.6vh,18px);max-width:44ch;animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .16s both;">Tartes, entremets et number cakes — entièrement réalisés à la main, des pralinés maison aux finitions.</p>
 
         <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#FFFFFF;margin:0 0 clamp(18px,2.6vh,30px);animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .22s both;">Kylian Givre<span style="font-family:'DM Sans',sans-serif;font-style:normal;font-size:11.5px;letter-spacing:1.2px;color:rgba(255,255,255,.62);text-transform:uppercase;display:block;margin-top:5px;">Pâtissier-chocolatier · seul aux commandes</span></p>
 
@@ -360,15 +362,7 @@
     </div>
   </section>
 
-  <!-- ════════════════ L'ARTISAN · extrait de l'histoire ════════════════ -->
-  <section class="ag-sec" style="padding:104px 28px;background:#FFFFFF;">
-    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);max-width:760px;margin:0 auto;text-align:center;">
-      <div style="display:flex;align-items:center;justify-content:center;gap:12px;color:#C9A84C;margin-bottom:18px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">L'artisan</span><span style="height:1px;width:30px;background:#C9A84C;"></span></div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,34px);line-height:1.45;color:#1A2C3D;margin:0 0 28px;">« Chaque création est entièrement réalisée à la main, des pralinés maison aux finitions, avec des ingrédients soigneusement sélectionnés. »</p>
-      <p style="font-size:16px;line-height:1.85;color:#566571;margin:0 0 32px;">Je m'appelle Kylian Givre, né le 26 décembre 2006. Pâtissier et chocolatier diplômé, j'ai choisi de créer Atelier Givre avec une ambition simple : transformer ma passion en une entreprise reconnue pour son savoir-faire et son exigence.</p>
-      <button onClick="{{ openStory }}" style="display:inline-flex;align-items:center;gap:10px;background:transparent;color:#1A2C3D;border:1px solid #C9A84C;cursor:pointer;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;padding:15px 32px;border-radius:2px;transition:background .3s ease,color .3s ease;" style-hover="background:#C9A84C;color:#fff;">Lire l'histoire complète <span style="font-size:15px;">→</span></button>
-    </div>
-  </section>
+  <!-- (section « L'artisan » retirée) -->
 
   <!-- ════════════════ GALERIE ════════════════ -->
   <section id="galerie" class="ag-sec" style="scroll-margin-top:90px;padding:104px 28px;background:#FFFFFF;">
@@ -779,11 +773,54 @@
         <svg viewBox="0 0 24 24" width="620" height="620" fill="none" stroke="#EEF3F8" stroke-width="0.3" stroke-linecap="round" style="position:absolute;top:-6%;right:-10%;pointer-events:none;"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg>
         <article class="ag-story-article" style="position:relative;max-width:720px;margin:0 auto;padding:76px 28px 104px;">
           <div style="display:flex;align-items:center;gap:12px;color:#C9A84C;margin-bottom:20px;"><span style="height:1px;width:34px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">L'histoire</span></div>
-          <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(40px,6vw,68px);line-height:1.04;letter-spacing:-.5px;margin:0 0 40px;color:#1A2C3D;">Derrière l'Atelier Givre</h1>
-          <p style="font-size:18px;line-height:1.9;color:#3c4a57;margin:0 0 26px;"><span style="float:left;font-family:'Cormorant Garamond',serif;font-size:78px;line-height:.78;padding:8px 14px 0 0;color:#C9A84C;">J</span>e m'appelle Kylian Givre, né le 26 décembre 2006. Pâtissier et chocolatier diplômé, j'ai choisi de créer Atelier Givre avec une ambition simple&nbsp;: transformer ma passion en une entreprise reconnue pour son savoir-faire et son exigence.</p>
-          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 24px;">Après plusieurs années de formations en France et en Suisse, j'ai développé une approche où chaque détail compte. Ici, chaque création est entièrement réalisée à la main, des pralinés maison aux finitions, avec des ingrédients soigneusement sélectionnés.</p>
-          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 24px;">Je suis animé par une seule envie&nbsp;: faire grandir Atelier Givre, repousser mes limites chaque jour et proposer des pâtisseries qui marquent les esprits autant par leur goût que par leur élégance.</p>
-          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 40px;">Derrière chaque dessert, il y a des heures de travail, de recherche et une véritable passion. Merci de faire partie de cette aventure. Bienvenue chez Atelier Givre.</p>
+          <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(40px,6vw,68px);line-height:1.04;letter-spacing:-.5px;margin:0 0 16px;color:#1A2C3D;">L'histoire d'Atelier Givre</h1>
+
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(24px,3.1vw,32px);line-height:1.18;color:#1A2C3D;margin:34px 0 16px;">Une passion née bien avant Atelier Givre</h2>
+          <p style="font-size:18px;line-height:1.9;color:#3c4a57;margin:0 0 20px;"><span style="float:left;font-family:'Cormorant Garamond',serif;font-size:78px;line-height:.78;padding:8px 14px 0 0;color:#C9A84C;">J</span>e m'appelle Kylian Givre Buisson, je suis né le 26 décembre 2006, et la cuisine a toujours fait partie de mon quotidien.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">J'ai grandi dans un environnement où la restauration était très présente. Mes parents ont toujours travaillé dans cet univers et, depuis petit, j'ai donc été entouré par la cuisine, les produits, le travail et cette envie de faire plaisir à travers ce que l'on prépare.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Enfant, j'aimais déjà pâtisser, essayer, découvrir et mettre la main à la pâte. Au fil des années, ce qui n'était au départ qu'un plaisir est devenu une véritable passion, puis une évidence&nbsp;: je voulais en faire mon métier.</p>
+
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(24px,3.1vw,32px);line-height:1.18;color:#1A2C3D;margin:44px 0 16px;">Apprendre, se former et se perfectionner</h2>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">J'ai commencé mon parcours professionnel avec un CAP Pâtissier à Ambérieu-en-Bugey. Cette première formation m'a permis d'acquérir les bases du métier, mais elle m'a surtout donné envie d'aller beaucoup plus loin.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Je ne voulais pas uniquement savoir réaliser des pâtisseries. Je souhaitais comprendre et maîtriser différents univers afin de devenir le plus complet possible.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">J'ai donc poursuivi avec un CAP Chocolatier à Dardilly, près de Lyon. Le travail du chocolat m'a permis de découvrir une autre facette de mon métier&nbsp;: un univers extrêmement précis, technique et exigeant, dans lequel chaque température, chaque geste et chaque détail ont leur importance.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">J'ai ensuite continué ma formation à Gap avec une mention complémentaire en pâtisserie, glacerie et confiserie.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Pâtisserie, chocolaterie, confiserie, glacerie… Chaque étape avait le même objectif&nbsp;: continuer d'apprendre et me former dans le plus de domaines possible pour construire mon propre savoir-faire.</p>
+
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(24px,3.1vw,32px);line-height:1.18;color:#1A2C3D;margin:44px 0 16px;">Une expérience au-delà de la formation</h2>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Après mes études, mon parcours m'a conduit en Suisse, à Genève.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">J'ai notamment travaillé chez BARZ, dans l'univers de la chocolaterie et de la confiserie, tout en ayant également l'occasion d'aider au comptoir du Woodward à Genève.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Ces expériences m'ont permis de découvrir de nouvelles méthodes de travail, d'autres exigences et différents univers. Elles m'ont aussi conforté dans une idée que j'avais depuis longtemps.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">J'aimais mon métier, mais j'avais surtout envie de pouvoir le pratiquer à ma manière. Créer, prendre mes propres décisions, développer mon univers et construire quelque chose qui m'appartienne.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">C'est de cette envie qu'est né Atelier Givre.</p>
+
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(24px,3.1vw,32px);line-height:1.18;color:#1A2C3D;margin:44px 0 16px;">La naissance d'Atelier Givre</h2>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Entreprendre a toujours été quelque chose qui m'attirait. J'ai toujours aimé l'idée de travailler pour moi-même et de construire, petit à petit, un projet qui me ressemble.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Le nom Atelier Givre est directement lié à mon nom de famille, mais derrière ce nom se cache surtout une ambition. Pour moi, Atelier Givre représente une recherche permanente de perfection.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Je sais que la perfection absolue n'existe probablement pas en pâtisserie. Il y aura toujours un détail à améliorer, une recette à retravailler, une finition à rendre plus précise ou une nouvelle technique à apprendre. Et c'est justement ce qui me plaît&nbsp;: essayer de s'en rapprocher un peu plus à chaque création.</p>
+
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(24px,3.1vw,32px);line-height:1.18;color:#1A2C3D;margin:44px 0 16px;">Le goût du fait maison</h2>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Chez Atelier Givre, le fait maison occupe une place essentielle.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Derrière une pâtisserie terminée se cachent de nombreuses préparations, des essais, des heures de travail et beaucoup de précision. Mon objectif est de maîtriser au maximum ce qui compose mes créations et de réaliser moi-même les différents éléments, jusqu'aux pralinés maison. Ce choix demande davantage de temps et de travail, mais il correspond à la vision que j'ai de mon métier.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Parce qu'avant l'apparence d'un gâteau, il y a son goût. Je veux que mes clients puissent retrouver dans chaque création de la gourmandise, de l'élégance et de la créativité, avec des produits soigneusement sélectionnés et un véritable travail derrière chaque élément.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Une belle pâtisserie doit donner envie lorsqu'on la regarde, mais elle doit surtout laisser un souvenir lorsqu'on la déguste.</p>
+
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(24px,3.1vw,32px);line-height:1.18;color:#1A2C3D;margin:44px 0 16px;">Exigence, élégance, gourmandise et créativité</h2>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Ces quatre mots résument probablement le mieux l'univers que je souhaite construire avec Atelier Givre.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">L'exigence, parce que je suis perfectionniste et que j'ai beaucoup de mal à me satisfaire d'un résultat simplement «&nbsp;correct&nbsp;». L'élégance, parce que j'aime les créations soignées, précises et visuellement travaillées. La gourmandise, parce qu'elle reste la raison première pour laquelle on pousse la porte d'une pâtisserie. Et enfin la créativité, parce que je veux continuer à imaginer, tester de nouvelles associations et faire évoluer ma pâtisserie avec le temps.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Je suis ambitieux, perfectionniste, mais j'aime également travailler dans la bonne humeur. Atelier Givre est une entreprise sérieuse et exigeante, sans pour autant perdre le plaisir qui m'a donné envie de faire ce métier lorsque j'étais enfant.</p>
+
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(24px,3.1vw,32px);line-height:1.18;color:#1A2C3D;margin:44px 0 16px;">Une aventure qui ne se construit pas seul</h2>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Même si Atelier Givre porte mon nom et représente mon projet, cette aventure ne s'est pas construite seul. Depuis le début, j'ai la chance d'être entouré.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Mes parents, ma copine, ma famille et mes amis m'ont beaucoup aidé et soutenu dans la création de cette entreprise. Derrière les produits que vous voyez aujourd'hui, il y a également toutes ces personnes qui ont cru au projet, donné de leur temps, apporté leur aide ou simplement été présentes lorsque j'en avais besoin.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Et puis il y a vous. Chaque commande, chaque retour, chaque recommandation et chaque personne qui choisit de faire confiance à Atelier Givre participe directement à la suite de cette histoire.</p>
+
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(24px,3.1vw,32px);line-height:1.18;color:#1A2C3D;margin:44px 0 16px;">Ce n'est que le début</h2>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Atelier Givre est aujourd'hui au commencement de son histoire. Et mes ambitions, elles, sont grandes.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Dans cinq, dix ans et au-delà, mon objectif est de faire d'Atelier Givre une pâtisserie reconnue pour son savoir-faire, son identité et la qualité de ses créations. Je rêve d'ouvrir ma propre pâtisserie, de la faire grandir et, un jour, pourquoi pas, de voir plusieurs boutiques Atelier Givre voir le jour.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Mais je veux surtout grandir sans perdre ce qui constitue l'ADN du projet depuis le début&nbsp;: le travail, le fait maison, l'exigence et cette volonté permanente de progresser.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 20px;">Je sais qu'il reste énormément de chemin à parcourir, de choses à apprendre et de défis à relever. Et c'est précisément ce qui me motive. À chaque nouvelle création, l'objectif restera le même&nbsp;: faire mieux que la veille, repousser mes limites et essayer de me rapprocher toujours un peu plus de la perfection.</p>
+          <p style="font-size:17px;line-height:1.9;color:#566571;margin:0 0 40px;">Merci à toutes les personnes qui participent, de près ou de loin, à cette aventure. Bienvenue chez Atelier Givre.</p>
           <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:#1A2C3D;margin:0 0 44px;padding-top:28px;border-top:1px solid #EEE;">Kylian Givre <span style="font-family:'DM Sans',sans-serif;font-style:normal;font-size:12px;letter-spacing:1px;color:#C9A84C;text-transform:uppercase;display:block;margin-top:6px;">Pâtissier-chocolatier · seul aux commandes</span></p>
           <a href="#creations" onClick="{{ closeStory }}" style="display:inline-flex;align-items:center;gap:10px;background:#C9A84C;color:#fff;text-decoration:none;font-size:14px;letter-spacing:1.2px;text-transform:uppercase;padding:16px 34px;border-radius:2px;transition:background .3s ease;" style-hover="background:#1A2C3D;">Découvrir les créations</a>
         </article>
@@ -1064,58 +1101,53 @@ class Component extends DCLogic {
   PRODUCTS = [
     // ── Tartes & entremets ──
     { id: 'trois-citrons', cat: 'Tartes & entremets', name: 'Tarte aux Trois Citrons', img: 'images/trois-citrons-1.jpg',
-      desc: "Trois citrons pour une seule tarte : la vivacité du jaune, le parfum du vert, l'amertume fine du zeste confit.",
+      desc: "Trois citrons, trois nuances : la fraîcheur du citron jaune, le parfum du citron vert et l'intensité du yuzu.",
       options: [{ label: "4/6 personnes", price: 26 }, { label: "8/10 personnes", price: 44 }],
-      composition: ["Pâte sablée (farine de blé, beurre, sucre, œufs)", "Crème aux trois citrons (citrons, œufs, beurre, sucre)", "Chantilly vanille", "Zestes de citron"],
-      allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
-    { id: 'peche-verveine', cat: 'Tartes & entremets', name: 'Tarte Pêche, Verveine & Vanille', img: 'images/peche-verveine-1.jpg',
-      desc: "Une tarte d'été : pêches de vigne en rosace, crème vanille infusée à la verveine fraîche, feuille d'or.",
-      options: [{ label: "4/6 personnes", price: 24 }, { label: "8/10 personnes", price: 42 }],
-      composition: ["Pâte sablée (farine de blé, beurre, sucre, œufs)", "Crème vanille-verveine", "Pêches fraîches", "Sucre"],
+      composition: ["Pâte sucrée", "Crème d'amande au citron vert", "Crémeux citron jaune", "Gel citron yuzu", "Ganache montée citron jaune et vert", "Zestes de citron vert et jaune"],
       allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
     { id: 'choco-cacahuete', cat: 'Tartes & entremets', name: 'Tarte Chocolat, Caramel & Cacahuète', img: 'images/choco-cacahuete-1.jpg',
-      desc: "L'accord franc du chocolat noir et du caramel, relevé par la cacahuète torréfiée. Une tarte de caractère.",
+      desc: "L'intensité du chocolat, la douceur du caramel et le caractère de la cacahuète dans une tarte résolument gourmande.",
       options: [{ label: "4/6 personnes", price: 24 }, { label: "8/10 personnes", price: 42 }],
-      composition: ["Pâte sablée (farine de blé, beurre, sucre, œufs)", "Ganache chocolat", "Caramel", "Cacahuètes torréfiées"],
+      composition: ["Pâte sucrée amande", "Croustillant cacahuète", "Caramel vanille", "Crémeux chocolat au lait", "Ganache montée chocolat noir", "Cacahuètes"],
       allergenes: ["Gluten (blé)", "Œufs", "Lait", "Arachides", "Soja"] },
     { id: 'vanille-pistache', cat: 'Tartes & entremets', name: 'Tarte Vanille & Pistache', img: 'images/vanille-pistache-1.jpg',
-      desc: "La signature de la maison. Crème vanille dressée en spirale, cœur de pistaches caramélisées, éclats d'or.",
+      desc: "La douceur de la vanille rencontre l'intensité de la pistache, entre crémeux, croustillant et praliné.",
       options: [{ label: "4/6 personnes", price: 26 }, { label: "8/10 personnes", price: 44 }],
-      composition: ["Pâte sablée (farine de blé, beurre, sucre, œufs)", "Crème vanille", "Pâte de pistache & pistaches", "Sucre"],
+      composition: ["Pâte sucrée amande", "Croustillant pistache", "Crémeux vanille & chocolat blanc", "Praliné pistache maison", "Ganache montée vanille", "Pistaches caramélisées"],
       allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (pistaches)"] },
     { id: 'manguier', cat: 'Tartes & entremets', name: 'Le Manguier', img: 'images/manguier-1.jpg',
-      desc: "Un entremets tout en douceur : mousse vanille aérienne, dés de mangue fraîche, biscuit moelleux.",
+      desc: "La fraîcheur de la mangue associée à la douceur de la vanille, pour un entremets frais, léger et fruité.",
       options: [{ label: "4 personnes", price: 24 }, { label: "8 personnes", price: 42 }],
-      composition: ["Biscuit (farine de blé, œufs, sucre)", "Mousse vanille", "Mangue fraîche"],
+      composition: ["Biscuit madeleine vanille", "Compotée de mangue", "Brunoise de mangue", "Ganache montée vanille", "Mangue fraîche", "Glaçage neutre"],
       allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
     { id: 'flan-pecan', cat: 'Tartes & entremets', name: 'Flan Vanille & Pécan', img: 'images/flan-pecan-1.jpg',
-      desc: "Le flan de l'enfance, revu avec exigence : appareil à la vanille, base sablée, pécans caramélisées.",
+      desc: "La douceur de la vanille et la gourmandise de la noix de pécan réunies dans un flan fondant et généreux.",
       options: [{ label: "4 personnes", price: 22 }, { label: "8 personnes", price: 40 }],
-      composition: ["Pâte sablée (farine de blé, beurre, sucre, œufs)", "Appareil à flan (lait, œufs, vanille, sucre)", "Noix de pécan"],
+      composition: ["Pâte sucrée", "Praliné pécan maison", "Appareil à flan vanille", "Ganache montée vanille", "Noix de pécan"],
       allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (pécan)"] },
 
     // ── Cakes ──
     { id: 'cake-citron-framboise', cat: 'Cakes', name: 'Cake Citron & Framboise', img: 'images/cake-citron-framboise-1.jpg',
-      desc: "Mie serrée et parfumée au citron, cœur de framboise, glaçage croquant aux amandes.",
+      desc: "La fraîcheur du citron associée à l'acidité de la framboise dans un cake moelleux, fruité et gourmand.",
       options: [{ label: "Cake 25 cm", price: 22 }],
-      composition: ["Farine de blé", "Œufs", "Beurre", "Sucre", "Citron", "Framboise", "Amandes"],
+      composition: ["Cake moelleux citron", "Crémeux framboise", "Glaçage rocher"],
       allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (amandes)"] },
     { id: 'cake-vanille-pavot', cat: 'Cakes', name: 'Cake Vanille & Pavot', img: 'images/cake-vanille-pavot-1.jpg',
-      desc: "Vanille franche et graines de pavot, sous un glaçage croquant aux amandes.",
+      desc: "La douceur de la vanille associée au caractère délicat du pavot dans un cake tendre et parfumé.",
       options: [{ label: "Cake 25 cm", price: 22 }],
-      composition: ["Farine de blé", "Œufs", "Beurre", "Sucre", "Vanille", "Graines de pavot", "Amandes"],
+      composition: ["Cake moelleux vanille pavot", "Crémeux vanille", "Glaçage rocher vanille pavot"],
       allergenes: ["Gluten (blé)", "Œufs", "Lait", "Fruits à coque (amandes)"] },
     // TODO photo : cliché dédié au cake citron nature (utilise pour l'instant celui du glacé).
     { id: 'cake-citron-nature', cat: 'Cakes', name: 'Cake Citron (nature)', img: 'images/cake-citron-framboise-1.jpg',
-      desc: "Le même cake au citron, sans glaçage. Pour le café du matin.",
+      desc: "La fraîcheur du citron dans un cake simple, généreux et délicieusement moelleux.",
       options: [{ label: "Cake 25 cm", price: 12 }],
-      composition: ["Farine de blé", "Œufs", "Beurre", "Sucre", "Citron"],
+      composition: ["Cake moelleux citron"],
       allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
     // TODO photo : cliché dédié au cake vanille-pavot nature.
     { id: 'cake-vanille-pavot-nature', cat: 'Cakes', name: 'Cake Vanille-Pavot (nature)', img: 'images/cake-vanille-pavot-1.jpg',
-      desc: "Vanille et pavot, sans glaçage. La version sobre, à trancher épais.",
+      desc: "La vanille et le pavot réunis dans un cake moelleux, délicat et naturellement parfumé.",
       options: [{ label: "Cake 25 cm", price: 14 }],
-      composition: ["Farine de blé", "Œufs", "Beurre", "Sucre", "Vanille", "Graines de pavot"],
+      composition: ["Cake moelleux vanille pavot"],
       allergenes: ["Gluten (blé)", "Œufs", "Lait"] },
     // ── Petits gâteaux ──
     { id: 'cannele', cat: 'Petits gâteaux', name: 'Cannelés Bordelais', img: 'images/cannele-1.jpg',
@@ -1177,7 +1209,6 @@ class Component extends DCLogic {
   // ── Photos supplémentaires par produit (miniatures dans la fiche) ──
   PRODUCT_IMAGES = {
     'trois-citrons': ['images/trois-citrons-1.jpg', 'images/trois-citrons-2.jpg', 'images/trois-citrons-3.jpg'],
-    'peche-verveine': ['images/peche-verveine-1.jpg', 'images/peche-verveine-2.jpg', 'images/peche-verveine-3.jpg', 'images/peche-verveine-4.jpg'],
     'choco-cacahuete': ['images/choco-cacahuete-1.jpg', 'images/choco-cacahuete-2.jpg', 'images/choco-cacahuete-3.jpg'],
     'vanille-pistache': ['images/vanille-pistache-1.jpg', 'images/vanille-pistache-2.jpg', 'images/vanille-pistache-3.jpg'],
     'manguier': ['images/manguier-1.jpg', 'images/manguier-2.jpg', 'images/manguier-3.jpg'],

@@ -23,8 +23,6 @@ const PRICES = {
   // Tartes & entremets
   'trois-citrons@4/6 personnes': 26,
   'trois-citrons@8/10 personnes': 44,
-  'peche-verveine@4/6 personnes': 24,
-  'peche-verveine@8/10 personnes': 42,
   'choco-cacahuete@4/6 personnes': 24,
   'choco-cacahuete@8/10 personnes': 42,
   'vanille-pistache@4/6 personnes': 26,
