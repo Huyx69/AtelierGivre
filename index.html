@@ -1196,10 +1196,10 @@ class Component extends DCLogic {
   GALLERY = [
     { src: 'images/kylian.jpg', caption: "À l'atelier" },
     { src: 'images/galerie-number-cake-30.jpg', caption: 'Number Cake 30 · pêche & vanille', wide: true },
+    { src: 'images/galerie-number-cake-25.jpg', caption: 'Number Cake 25 · chocolat & noisette', wide: true },
     { src: 'images/galerie-tarte-rosace.jpg', caption: 'Tarte rosace pêche & abricot' },
     { src: 'images/galerie-pavlovas.jpg', caption: 'Pavlovas aux fruits frais' },
     { src: 'images/galerie-madeleines.jpg', caption: 'Madeleines sortie de four' },
-    { src: 'images/galerie-number-cake-25.jpg', caption: 'Number Cake 25 · chocolat & noisette', wide: true },
     { src: 'images/galerie-pralines.jpg', caption: 'Pralinés maison' },
     { src: 'images/galerie-entremets-peche.jpg', caption: 'Entremets pêche, abricot & romarin' },
     { src: 'images/galerie-tropezienne.jpg', caption: 'Tarte tropézienne' },
@@ -1819,7 +1819,7 @@ class Component extends DCLogic {
       onOpen: () => { if (!g.pending) this.setState({ lightboxIndex: i }); },
     }));
     // Trois rangées visibles au premier abord (les tuiles paysage occupent deux colonnes).
-    const GALLERY_FOLD = 5; // 2 lignes visibles (ligne 1 : 1 photo + 1 large ; ligne 2 : 3 photos)
+    const GALLERY_FOLD = 4; // 2 lignes : ligne 1 (photo + Number Cake 30 large) · ligne 2 (Number Cake 25 large + photo)
     const galleryExpanded = s.galleryExpanded;
     const gallery = galleryExpanded ? galleryAll : galleryAll.slice(0, GALLERY_FOLD);
     const galleryHasMore = galleryAll.length > GALLERY_FOLD;
