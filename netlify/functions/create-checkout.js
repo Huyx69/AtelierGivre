@@ -14,7 +14,7 @@
 //    STRIPE_SECRET_KEY   → ta clé secrète Stripe (sk_test_... puis sk_live_...)
 // ════════════════════════════════════════════════════════════════════════
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const Stripe = require('stripe');
 
 // ── Catalogue de confiance : clé de ligne panier → prix unitaire en euros ──
 //   La clé suit le format du site : "id@option" ou "id@variante@option".
@@ -82,8 +82,9 @@ exports.handler = async (event) => {
     return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method not allowed' }) };
   }
   if (!process.env.STRIPE_SECRET_KEY) {
-    return { statusCode: 500, headers, body: JSON.stringify({ error: 'Stripe non configuré (STRIPE_SECRET_KEY manquant).' }) };
+    return { statusCode: 500, headers, body: JSON.stringify({ error: 'Stripe non configuré (STRIPE_SECRET_KEY manquant côté Netlify).' }) };
   }
+  const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
   let payload;
   try { payload = JSON.parse(event.body || '{}'); }
