@@ -119,7 +119,10 @@ exports.handler = async (event) => {
       const persons = Math.max(1, parseInt(m.persons, 10) || 0);
       const decors = Math.max(0, parseInt(m.decors, 10) || 0);
       const fruitsSecs = Math.max(0, parseInt(m.fruitsSecs, 10) || 0);
-      unit = persons * NC_PRICE_PER_PERSON + (decors + fruitsSecs) * ncSuppPerItem(persons);
+      // Suppléments : croustillant, gel, compotée + fruits au-delà de 1 frais + 1 sec offerts.
+      const suppCount = (m.croustillant ? 1 : 0) + (m.gel ? 1 : 0) + (m.compotee ? 1 : 0)
+        + Math.max(0, decors - 1) + Math.max(0, fruitsSecs - 1);
+      unit = persons * NC_PRICE_PER_PERSON + suppCount * ncSuppPerItem(persons);
       label = (it.name || 'Number Cake sur-mesure') + ' (' + persons + ' personnes)';
     } else {
       unit = PRICES[it.key];
