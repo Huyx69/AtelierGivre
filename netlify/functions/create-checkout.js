@@ -16,51 +16,36 @@
 
 const Stripe = require('stripe');
 
-// ── Catalogue de confiance : clé de ligne panier → prix unitaire en euros ──
-//   La clé suit le format du site : "id@option" ou "id@variante@option".
-//   ⚠️ Si tu changes un prix sur le site, mets-le à jour ICI aussi.
-const PRICES = {
-  // Tartes & entremets
-  'trois-citrons@4/6 personnes': 26,
-  'trois-citrons@8/10 personnes': 44,
-  'choco-cacahuete@4/6 personnes': 24,
-  'choco-cacahuete@8/10 personnes': 42,
-  'vanille-pistache@4/6 personnes': 26,
-  'vanille-pistache@8/10 personnes': 44,
-  'manguier@4 personnes': 24,
-  'manguier@8 personnes': 42,
-  'flan-pecan@4 personnes': 22,
-  'flan-pecan@8 personnes': 40,
-  // Cakes
-  'cake-citron-framboise@Cake 25 cm': 22,
-  'cake-vanille-pavot@Cake 25 cm': 22,
-  'cake-citron-nature@Cake 25 cm': 12,
-  'cake-vanille-pavot-nature@Cake 25 cm': 14,
-  // Cannelés (avec variantes) — + repli sans variante
-  'cannele@Sans alcool@À l\'unité': 2.40,
-  'cannele@Sans alcool@Lot de 3': 6.80,
-  'cannele@Sans alcool@Lot de 6': 13.30,
-  'cannele@Au rhum@À l\'unité': 2.60,
-  'cannele@Au rhum@Lot de 3': 7.40,
-  'cannele@Au rhum@Lot de 6': 14.40,
-  'cannele@À l\'unité': 2.40,
-  'cannele@Lot de 3': 6.80,
-  'cannele@Lot de 6': 13.30,
-  // Petits gâteaux
-  'cookie-pistache@À l\'unité': 4.20,
-  'cookie-pistache@Lot de 2': 8,
-  'cookie-pistache@Lot de 4': 15.50,
-  'cookie-pecan@À l\'unité': 4.20,
-  'cookie-pecan@Lot de 2': 8,
-  'cookie-pecan@Lot de 4': 15.50,
-  'financiers@À l\'unité': 2.40,
-  'financiers@Lot de 2': 4.60,
-  'financiers@Lot de 4': 9.20,
-  'financiers@Lot de 6': 14,
-  'madeleines@À l\'unité': 2,
-  'madeleines@Lot de 3': 5.50,
-  'madeleines@Lot de 6': 10.50,
-};
+// ── Catalogue de confiance : lu depuis Supabase (source unique de vérité) ──
+//   La clé de ligne panier suit le format du site : "id@option" ou "id@variante@option".
+const SUPABASE_URL = 'https://viuojsmxtvgxmajmpzge.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_sLOg6MB-rq1858Xw0kp9pw_eQou1lQl';
+
+// Charge les produits et renvoie une fonction prix(clé) → prix en euros (ou null si inconnu).
+async function loadPriceResolver() {
+  const r = await fetch(SUPABASE_URL + '/rest/v1/products?select=id,options,variants,active', {
+    headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY },
+  });
+  if (!r.ok) throw new Error('catalogue indisponible');
+  const byId = {};
+  (await r.json()).forEach((p) => { byId[p.id] = p; });
+  return (key) => {
+    const parts = String(key).split('@');
+    const p = byId[parts[0]];
+    if (!p || p.active === false) return null;
+    let opts, optLabel;
+    if (parts.length >= 3) {
+      const v = (p.variants || []).find((x) => x.label === parts[1]);
+      opts = v ? v.options : p.options;
+      optLabel = parts.slice(2).join('@');
+    } else {
+      opts = p.options;
+      optLabel = parts.slice(1).join('@');
+    }
+    const o = (opts || []).find((x) => x.label === optLabel);
+    return o ? Number(o.price) : null;
+  };
+}
 
 // ── Number Cake : mêmes constantes que le site ──
 const NC_PRICE_PER_PERSON = 3.5;
@@ -116,7 +101,13 @@ exports.handler = async (event) => {
     return { statusCode: 400, headers, body: JSON.stringify({ error: 'Date de retrait/livraison invalide ou trop proche (délai minimum ' + leadDays + ' jours).' }) };
   }
 
-  // ── Reconstruction du panier avec des prix DE CONFIANCE ──
+  // ── Reconstruction du panier avec des prix DE CONFIANCE (lus depuis la base) ──
+  let priceOf;
+  try {
+    priceOf = await loadPriceResolver();
+  } catch (e) {
+    return { statusCode: 503, headers, body: JSON.stringify({ error: 'Catalogue momentanément indisponible, réessayez.' }) };
+  }
   const lines = [];
   let subtotalCents = 0;
   for (const it of items) {
@@ -135,7 +126,7 @@ exports.handler = async (event) => {
       unit = persons * NC_PRICE_PER_PERSON + suppCount * ncSuppPerItem(persons);
       label = (it.name || 'Number Cake sur-mesure') + ' (' + persons + ' personnes)';
     } else {
-      unit = PRICES[it.key];
+      unit = priceOf(it.key);
       if (unit == null) {
         return { statusCode: 400, headers, body: JSON.stringify({ error: 'Article inconnu : ' + it.key }) };
       }

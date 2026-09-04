@@ -1117,6 +1117,10 @@ class Component extends DCLogic {
   CATEGORIES = ['Tartes & entremets', 'Cakes', 'Petits gâteaux', 'Confiserie'];
   // Un produit peut porter des `variants` : chaque variante remplace options,
   // composition et allergènes (ex. cannelés nature / au rhum).
+  // ── Connexion Supabase (catalogue dynamique) · clés publiques (protégées par RLS) ──
+  SUPABASE_URL = 'https://viuojsmxtvgxmajmpzge.supabase.co';
+  SUPABASE_KEY = 'sb_publishable_sLOg6MB-rq1858Xw0kp9pw_eQou1lQl';
+  // Catalogue de secours (si Supabase est injoignable). Remplacé par la base au chargement.
   PRODUCTS = [
     // ── Tartes & entremets ──
     { id: 'trois-citrons', cat: 'Tartes & entremets', name: 'Tarte aux Trois Citrons', img: 'images/trois-citrons-1.jpg',
@@ -1241,6 +1245,32 @@ class Component extends DCLogic {
   };
   imagesOf = (product) => (product && this.PRODUCT_IMAGES[product.id]) || (product ? [product.img] : []);
 
+  // ── Chargement du catalogue depuis Supabase (remplace le catalogue de secours) ──
+  loadProducts = async () => {
+    try {
+      const res = await fetch(this.SUPABASE_URL + '/rest/v1/products?select=*&active=eq.true&order=sort_order', {
+        headers: { apikey: this.SUPABASE_KEY, Authorization: 'Bearer ' + this.SUPABASE_KEY },
+      });
+      if (!res.ok) return;
+      const rows = await res.json();
+      if (!Array.isArray(rows) || !rows.length) return;
+      this.PRODUCTS = rows.map((r) => ({
+        id: r.id, cat: r.category, name: r.name, desc: r.description || '',
+        options: Array.isArray(r.options) ? r.options : [],
+        composition: Array.isArray(r.composition) ? r.composition : [],
+        allergenes: Array.isArray(r.allergenes) ? r.allergenes : [],
+        variants: (Array.isArray(r.variants) && r.variants.length) ? r.variants : undefined,
+        variantLabel: r.variant_label || undefined,
+        promo: r.promo_percent || 0,
+        img: (r.images && r.images[0]) || 'images/kylian.jpg',
+      }));
+      const im = {};
+      rows.forEach((r) => { if (r.images && r.images.length) im[r.id] = r.images; });
+      this.PRODUCT_IMAGES = im;
+      this.setState({ productsLoaded: true });
+    } catch (e) { /* on garde le catalogue de secours */ }
+  };
+
   // ── Number Cake : options de composition (valeurs choisies par défaut, à ajuster) ──
   NC_PRICE_PER_PERSON = 3.5;                 // prix par personne
   NC_PORTIONS = [10, 15, 20, 25, 30];        // parts par chiffre/lettre (niveaux de taille)
@@ -1301,10 +1331,12 @@ class Component extends DCLogic {
     deliveryTooFar: false,
     pickupDate: '',
     checkoutBusy: false,
+    productsLoaded: false,
   };
 
   // ── Cycle de vie ──
   componentDidMount() {
+    this.loadProducts(); // catalogue depuis Supabase (remplace le catalogue de secours)
     try {
       const saved = JSON.parse(localStorage.getItem('atelier-givre-cart') || '[]');
       const known = this.PRODUCTS.map((p) => p.id);
