@@ -11,13 +11,13 @@ create policy "products_admin_write"
   to authenticated
   using ( (auth.jwt() ->> 'email') in (
     'ateliergivre.contact@gmail.com',
-    'tiago270106@gmail.com'
-    -- , 'email-de-ton-pote@gmail.com'
+    'tiago270106@gmail.com',
+    'givresebastien@gmail.com'
   ) )
   with check ( (auth.jwt() ->> 'email') in (
     'ateliergivre.contact@gmail.com',
-    'tiago270106@gmail.com'
-    -- , 'email-de-ton-pote@gmail.com'
+    'tiago270106@gmail.com',
+    'givresebastien@gmail.com'
   ) );
 
 -- Photos : upload / suppression réservés aux emails autorisés
@@ -27,11 +27,11 @@ create policy "images_admin_write"
   to authenticated
   using ( bucket_id = 'product-images' and (auth.jwt() ->> 'email') in (
     'ateliergivre.contact@gmail.com',
-    'tiago270106@gmail.com'
-    -- , 'email-de-ton-pote@gmail.com'
+    'tiago270106@gmail.com',
+    'givresebastien@gmail.com'
   ) )
   with check ( bucket_id = 'product-images' and (auth.jwt() ->> 'email') in (
     'ateliergivre.contact@gmail.com',
-    'tiago270106@gmail.com'
-    -- , 'email-de-ton-pote@gmail.com'
+    'tiago270106@gmail.com',
+    'givresebastien@gmail.com'
   ) );
