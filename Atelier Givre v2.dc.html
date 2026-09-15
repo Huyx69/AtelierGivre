@@ -1273,7 +1273,12 @@ class Component extends DCLogic {
       const im = {};
       rows.forEach((r) => { if (r.images && r.images.length) im[r.id] = r.images; });
       this.PRODUCT_IMAGES = im;
-      this.setState({ productsLoaded: true });
+      // Nettoyer le panier : retirer les articles dont le produit n'existe plus au catalogue.
+      const known = this.PRODUCTS.map((p) => p.id);
+      const cur = this.state.cart || [];
+      const cleaned = cur.filter((it) => it.id === 'number-cake' || known.indexOf(it.id) !== -1);
+      if (cleaned.length !== cur.length) { this.persist(cleaned); this.setState({ cart: cleaned, productsLoaded: true }); }
+      else { this.setState({ productsLoaded: true }); }
     } catch (e) { /* on garde le catalogue de secours */ }
   };
 
@@ -1697,9 +1702,8 @@ class Component extends DCLogic {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error('checkout ' + res.status);
-      const data = await res.json();
-      if (!data || !data.url) throw new Error('no url');
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data || !data.url) throw new Error((data && data.error) ? data.error : ('Erreur ' + res.status));
       // Instantané de commande pour l'écran de confirmation au retour de Stripe.
       const total = subtotal + deliveryFee;
       const payNow = s.delivery === 'collect' ? Math.round(subtotal * 0.30 * 100) / 100 : total;
@@ -1718,7 +1722,7 @@ class Component extends DCLogic {
     } catch (e) {
       this._checkoutBusy = false;
       this.setState({ checkoutBusy: false });
-      alert("Le paiement n'a pas pu démarrer. Merci de réessayer, ou de nous contacter à ateliergivre.contact@gmail.com");
+      alert("Le paiement n'a pas pu démarrer.\n" + ((e && e.message) ? ('(' + e.message + ')') : '') + "\nMerci de réessayer, ou de nous contacter à ateliergivre.contact@gmail.com");
     }
   };
 
