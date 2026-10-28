@@ -11,3 +11,12 @@
   from = "/api/create-checkout"
   to = "/.netlify/functions/create-checkout"
   status = 200
+
+# Page « Oups… pas de gourmandise ici » pour toute adresse qui n'existe pas.
+# Netlify sert déjà 404.html tout seul ; cette règle le rend explicite.
+# Sans « force », elle ne masque aucun fichier existant, et les fonctions
+# (/.netlify/functions/…) ne sont pas concernées. Elle doit rester la dernière.
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
