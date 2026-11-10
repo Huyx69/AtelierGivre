@@ -83,6 +83,23 @@
   .switch{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;cursor:pointer;}
   .switch input{width:auto;}
   #loading{text-align:center;color:var(--muted);padding:40px;}
+
+  /* Thème du site */
+  .themes{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:18px 18px 20px;margin-bottom:26px;
+    box-shadow:0 18px 36px -30px rgba(24,41,58,.4);}
+  .themes h2{font-size:24px;margin:0 0 2px;}
+  .themes .aide{color:var(--soft);font-size:13.5px;margin:0 0 14px;}
+  .themes .alerte{background:var(--alert-soft);color:var(--alert);border-radius:8px;padding:10px 12px;font-size:13.5px;margin:0 0 12px;}
+  .themes-grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;}
+  .theme{border:2px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s;}
+  .theme.actif{border-color:var(--ok);background:var(--ok-soft);}
+  .theme .apercu-couleurs{display:flex;height:46px;border-radius:8px;overflow:hidden;}
+  .theme .apercu-couleurs span{flex:1;}
+  .theme .nom{font-family:'Cormorant Garamond',Georgia,serif;font-size:21px;font-weight:600;line-height:1.1;}
+  .theme .desc{font-size:12.5px;color:var(--soft);margin-top:2px;}
+  .theme .actions{display:flex;gap:8px;align-items:center;margin-top:auto;}
+  .theme .actions a{font-size:13px;}
+  .theme .etat{font-size:12px;font-weight:700;color:var(--ok);}
 </style>
 </head>
 <body>
@@ -108,6 +125,13 @@
     </div>
   </header>
 
+  <section class="themes" aria-labelledby="titre-themes">
+    <h2 id="titre-themes">Thème du site</h2>
+    <p class="aide">Un clic sur « Activer » change l'habillage du site pour tout le monde (les visiteurs le voient à leur prochain chargement de page). « Aperçu » ouvre le site dans ce thème sans rien changer.</p>
+    <p class="alerte" id="themes-alerte" hidden></p>
+    <div class="themes-grille" id="themes"></div>
+  </section>
+
   <div class="toolbar">
     <h2>Catalogue</h2>
     <button class="gold" id="btn-new">+ Nouveau gâteau</button>
@@ -126,7 +150,14 @@
   var SUPABASE_KEY = 'sb_publishable_sLOg6MB-rq1858Xw0kp9pw_eQou1lQl';
   // Emails autorisés à gérer le site (ajoute celui de ton pote ici + dans les règles Supabase).
   var ADMIN_EMAILS = ['ateliergivre.contact@gmail.com', 'tiago270106@gmail.com', 'givresebastien@gmail.com'];
-  var CATEGORIES = ['Tartes & entremets','Cakes','Petits gâteaux','Confiserie'];
+  var CATEGORIES = ['Tartes & entremets','Cakes','Petits gâteaux','Confiserie','Noël'];
+  // Habillages du site (fichiers site-<id>.html). Le thème actif est enregistré dans la table « site_settings ».
+  var THEMES = [
+    { id:'normal', nom:'Normal', desc:'Bleu nuit et or, toute l\'année.', couleurs:['#1A2C3D','#C9A84C','#F5F7FA','#FFFFFF'] },
+    { id:'halloween', nom:'Halloween', desc:'« Givre hanté » : nuit, toiles d\'araignée, chaudron.', couleurs:['#0A0F17','#E2701F','#2A1B47','#EEF4FA'] },
+    { id:'noel', nom:'Noël', desc:'Vert sapin, rouge et or, neige et guirlandes.', couleurs:['#173A2E','#B3262F','#C9A84C','#FBF6EE'] },
+  ];
+  var themeActif = null;
 
   var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
   var $ = function(s){ return document.querySelector(s); };
@@ -161,6 +192,7 @@
       }
       $('#view-login').hidden = true; $('#view-app').hidden = false;
       $('#who').textContent = email;
+      loadTheme();
       loadProducts();
     } else {
       $('#view-login').hidden = false; $('#view-app').hidden = true;
@@ -170,6 +202,49 @@
     sb.auth.signInWithOAuth({ provider:'google', options:{ redirectTo: location.href.split('#')[0] } });
   });
   $('#btn-logout').addEventListener('click', function(){ sb.auth.signOut(); });
+
+  // ── Thème du site ──
+  async function loadTheme(){
+    var r = await sb.from('site_settings').select('value').eq('key','theme').maybeSingle();
+    var alerte = $('#themes-alerte');
+    if(r.error){
+      alerte.hidden = false;
+      alerte.textContent = 'Les thèmes ne sont pas encore installés dans Supabase : colle le fichier supabase/reglages.sql dans Supabase → SQL Editor, puis recharge cette page.';
+      themeActif = 'normal';
+    } else {
+      alerte.hidden = true;
+      themeActif = (r.data && r.data.value) || 'normal';
+    }
+    renderThemes();
+  }
+  function renderThemes(){
+    var grille = $('#themes'); grille.innerHTML = '';
+    THEMES.forEach(function(t){
+      var actif = t.id === themeActif;
+      var el = document.createElement('div');
+      el.className = 'theme' + (actif ? ' actif' : '');
+      el.innerHTML = '<div class="apercu-couleurs">' + t.couleurs.map(function(c){ return '<span style="background:'+c+'"></span>'; }).join('') + '</div>'
+        + '<div><div class="nom">' + esc(t.nom) + '</div><div class="desc">' + esc(t.desc) + '</div></div>'
+        + '<div class="actions">'
+        + (actif ? '<span class="etat">✓ Thème actif</span>' : '<button class="primary">Activer</button>')
+        + '<a href="./?theme=' + t.id + '" target="_blank" rel="noopener">Aperçu</a></div>';
+      var b = el.querySelector('button');
+      if(b) b.addEventListener('click', function(){ activerTheme(t, b); });
+      grille.appendChild(el);
+    });
+  }
+  async function activerTheme(t, bouton){
+    bouton.disabled = true; bouton.textContent = 'Activation…';
+    var r = await sb.from('site_settings').upsert({ key:'theme', value:t.id, updated_at:new Date().toISOString() });
+    if(r.error){
+      toast('Impossible de changer le thème : ' + r.error.message, true);
+      bouton.disabled = false; bouton.textContent = 'Activer';
+      return;
+    }
+    themeActif = t.id;
+    renderThemes();
+    toast('Thème « ' + t.nom + ' » activé sur le site');
+  }
 
   // ── Chargement ──
   async function loadProducts(){

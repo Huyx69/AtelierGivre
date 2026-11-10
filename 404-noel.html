@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Oups, pas de gourmandise ici · Atelier Givre</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#173A2E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;min-height:100%;}
+  body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:radial-gradient(120% 75% at 50% 0%,#24543F 0%,#173A2E 50%,#0F2A20 100%);color:#FBF6EE;}
+  a{color:inherit;}
+  .top{display:flex;align-items:center;padding:22px 24px 0;position:relative;z-index:3;}
+  .logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;font-weight:600;letter-spacing:.5px;}
+  main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px 24px 56px;position:relative;z-index:2;}
+  .eyebrow{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:3px;text-transform:uppercase;margin:0 0 14px;color:var(--accent);}
+  .eyebrow::before,.eyebrow::after{content:"";width:28px;height:1px;background:var(--accent);}
+  h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(36px,6vw,62px);line-height:1.05;margin:0 0 16px;text-wrap:balance;}
+  h1 em{font-style:italic;color:var(--accent);}
+  p.lead{max-width:46ch;margin:0 auto 34px;font-size:16px;line-height:1.75;color:var(--corps);}
+  .actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:2px;font-size:13px;letter-spacing:1.3px;text-transform:uppercase;text-decoration:none;transition:background .3s,transform .3s,border-color .3s;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+  .fine{margin:44px 0 0;font-size:12px;letter-spacing:.6px;color:var(--muet);}
+  :root{--accent:#E1C27A;--corps:#C9D6CC;--muet:#8FA898;color-scheme:dark;}
+  .logo{color:#FBF6EE;}
+  .boule{width:min(190px,52vw);height:auto;margin-bottom:6px;overflow:visible;}
+  .boule .pendule{transform-origin:95px 0;animation:balance 4.4s ease-in-out infinite alternate;}
+  @keyframes balance{from{transform:rotate(-7deg);}to{transform:rotate(7deg);}}
+  .btn.main{background:#A8232D;color:#fff;box-shadow:0 12px 28px -12px rgba(168,35,45,.8);}
+  .btn.main:hover{background:#C4313B;}
+  .btn.ghost{border:1px solid rgba(251,246,238,.45);color:#FBF6EE;background:rgba(255,255,255,.04);}
+  .btn.ghost:hover{border-color:#FBF6EE;background:rgba(255,255,255,.1);}
+  .noeud{width:18px;height:15px;}
+  .sol{position:fixed;left:0;right:0;bottom:0;height:70px;z-index:1;pointer-events:none;}
+  #neige{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;}
+  @media (prefers-reduced-motion:reduce){.boule .pendule{animation:none;}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/" aria-label="Atelier Givre, retour à l'accueil">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg>
+    <span>Atelier Givre</span>
+  </a>
+</header>
+<main>
+<svg class="boule" viewBox="0 0 190 230" aria-hidden="true">
+  <defs>
+    <radialGradient id="verre" cx=".38" cy=".34" r=".7"><stop offset="0" stop-color="#F05A50"/><stop offset=".75" stop-color="#8E1720"/><stop offset="1" stop-color="#5E0D14"/></radialGradient>
+    <linearGradient id="capuchon" x1="0" x2="1"><stop offset="0" stop-color="#9C7B33"/><stop offset=".45" stop-color="#F1D893"/><stop offset="1" stop-color="#A9873C"/></linearGradient>
+  </defs>
+  <g class="pendule">
+    <line x1="95" y1="0" x2="95" y2="62" stroke="#D8BC7A" stroke-width="2"/>
+    <rect x="83" y="60" width="24" height="16" rx="3" fill="url(#capuchon)"/>
+    <circle cx="95" cy="146" r="72" fill="url(#verre)"/>
+    <path d="M23 140 Q95 160 167 140" fill="none" stroke="#E9CD86" stroke-width="7" opacity=".85"/>
+    <g fill="#F3DFA6" opacity=".9"><circle cx="60" cy="118" r="3"/><circle cx="130" cy="112" r="2.4"/><circle cx="96" cy="190" r="2.6"/><circle cx="140" cy="176" r="2"/></g>
+    <ellipse cx="66" cy="112" rx="16" ry="24" fill="#fff" opacity=".22" transform="rotate(28 66 112)"/>
+    <path d="M104 140 l9 -3 l-3 9 l5 7 l-9 -1 l-6 7 l-1 -9 l-8 -4 l9 -2 l1 -9 z" fill="#FBF6EE" opacity=".18"/>
+  </g>
+</svg>
+  <p class="eyebrow">Page introuvable</p>
+  <h1>Oups… pas de <em>gourmandise</em> ici.</h1>
+  <p class="lead">Le Père Noël est passé avant vous : il ne reste que des miettes de bûche. Cette page n'existe pas, ou elle a été dévorée avant votre arrivée.</p>
+  <div class="actions">
+    <a class="btn main" href="/"><svg class="noeud" viewBox="0 0 60 40" aria-hidden="true"><path d="M30 18 C20 2 4 2 6 14 C7 24 22 22 30 18Z M30 18 C40 2 56 2 54 14 C53 24 38 22 30 18Z" fill="#F3E2B0" stroke="#C9A84C" stroke-width="2"/><path d="M28 20 L18 38 L24 36 L27 40 L30 22Z M32 20 L42 38 L36 36 L33 40 L30 22Z" fill="#F3E2B0" stroke="#C9A84C" stroke-width="2"/><circle cx="30" cy="19" r="5" fill="#F3E2B0" stroke="#C9A84C" stroke-width="2"/></svg>Retour à l'accueil</a>
+    <a class="btn ghost" href="/#creations">Voir mes créations</a>
+  </div>
+  <p class="fine">Atelier Givre · pâtisserie artisanale à Belley</p>
+</main>
+<svg class="sol" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 C180 10 300 46 480 30 S800 8 960 28 S1260 50 1440 26 V70 H0Z" fill="#FBF6EE" opacity=".92"/></svg>
+<canvas id="neige" aria-hidden="true"></canvas>
+<script>
+(function () {
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var cv = document.getElementById('neige'), ctx = cv.getContext('2d'), L, H, d = Math.min(2, devicePixelRatio || 1), f = [];
+  function taille() { L = innerWidth; H = innerHeight; cv.width = L * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); }
+  taille(); addEventListener('resize', taille);
+  for (var i = 0; i < (L < 600 ? 30 : 60); i++) f.push({ x: Math.random() * L, y: Math.random() * H, r: .8 + Math.random() * 2.2, v: .3 + Math.random() * .6, p: Math.random() * 6.3, a: .5 + Math.random() * .45 });
+  (function tour(t) {
+    ctx.clearRect(0, 0, L, H);
+    for (var i = 0; i < f.length; i++) {
+      var s = f[i]; s.y += s.v; s.x += Math.sin(t / 1800 + s.p) * .3;
+      if (s.y > H + 4) { s.y = -4; s.x = Math.random() * L; }
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.283); ctx.fillStyle = 'rgba(255,255,255,' + s.a + ')'; ctx.fill();
+    }
+    requestAnimationFrame(tour);
+  })(0);
+})();
+</script>
+</body>
+</html>

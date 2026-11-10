@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Oups, pas de gourmandise ici · Atelier Givre</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F5F7FA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;min-height:100%;}
+  body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:radial-gradient(120% 80% at 50% 0%,#FFFFFF 0%,#F5F7FA 60%,#EAF0F6 100%);color:#1A2C3D;}
+  a{color:inherit;}
+  .top{display:flex;align-items:center;padding:22px 24px 0;position:relative;z-index:3;}
+  .logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;font-weight:600;letter-spacing:.5px;}
+  main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px 24px 56px;position:relative;z-index:2;}
+  .eyebrow{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:3px;text-transform:uppercase;margin:0 0 14px;color:var(--accent);}
+  .eyebrow::before,.eyebrow::after{content:"";width:28px;height:1px;background:var(--accent);}
+  h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(36px,6vw,62px);line-height:1.05;margin:0 0 16px;text-wrap:balance;}
+  h1 em{font-style:italic;color:var(--accent);}
+  p.lead{max-width:46ch;margin:0 auto 34px;font-size:16px;line-height:1.75;color:var(--corps);}
+  .actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:2px;font-size:13px;letter-spacing:1.3px;text-transform:uppercase;text-decoration:none;transition:background .3s,transform .3s,border-color .3s;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+  .fine{margin:44px 0 0;font-size:12px;letter-spacing:.6px;color:var(--muet);}
+  :root{--accent:#C9A84C;--corps:#566571;--muet:#8A98A5;}
+  .logo{color:#1A2C3D;}
+  .cloche{width:min(220px,60vw);height:auto;margin-bottom:18px;filter:drop-shadow(0 18px 30px rgba(26,44,61,.18));}
+  .btn.main{background:#1A2C3D;color:#fff;}
+  .btn.main:hover{background:#C9A84C;}
+  .btn.ghost{border:1px solid #D5DFE9;color:#1A2C3D;background:#fff;}
+  .btn.ghost:hover{border-color:#C9A84C;}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/" aria-label="Atelier Givre, retour à l'accueil">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg>
+    <span>Atelier Givre</span>
+  </a>
+</header>
+<main>
+<svg class="cloche" viewBox="0 0 220 170" aria-hidden="true">
+  <ellipse cx="110" cy="152" rx="96" ry="10" fill="#DFE8F1"/>
+  <rect x="22" y="140" width="176" height="10" rx="5" fill="#fff" stroke="#D5DFE9"/>
+  <path d="M34 140 C34 70 70 34 110 34 C150 34 186 70 186 140 Z" fill="#fff" fill-opacity=".55" stroke="#C8D8E8" stroke-width="2"/>
+  <path d="M60 128 C60 88 78 62 100 54" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+  <circle cx="110" cy="26" r="9" fill="#C9A84C"/><rect x="105" y="30" width="10" height="6" rx="2" fill="#B8912F"/>
+  <g fill="#D9B98A"><circle cx="92" cy="136" r="2.4"/><circle cx="104" cy="138" r="1.6"/><circle cx="121" cy="135" r="2"/><circle cx="131" cy="138" r="1.4"/></g>
+</svg>
+  <p class="eyebrow">Page introuvable</p>
+  <h1>Oups… pas de <em>gourmandise</em> ici.</h1>
+  <p class="lead">Il ne reste que quelques miettes sous la cloche : cette page n'existe pas, ou elle a été dévorée avant votre arrivée.</p>
+  <div class="actions">
+    <a class="btn main" href="/">Retour à l'accueil</a>
+    <a class="btn ghost" href="/#creations">Voir mes créations</a>
+  </div>
+  <p class="fine">Atelier Givre · pâtisserie artisanale à Belley</p>
+</main>
+
+</body>
+</html>
