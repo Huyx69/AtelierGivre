@@ -13,6 +13,7 @@
   var THEMES = { normal: '/404-normal.html', halloween: '/404-halloween.html', noel: '/404-noel.html' };
   var SUPABASE_URL = 'https://viuojsmxtvgxmajmpzge.supabase.co';
   var SUPABASE_KEY = 'sb_publishable_sLOg6MB-rq1858Xw0kp9pw_eQou1lQl';
+  var DEFAUT = 'noel'; // thème montré tant qu'aucun choix n'est enregistré dans l'admin
   var memo = null; try { memo = localStorage.getItem('ag-theme'); } catch (e) {}
   var fait = false;
   function afficher(t) {
@@ -21,11 +22,11 @@
       .then(function (html) { document.open(); document.write(html); document.close(); })
       .catch(function () { document.body.innerHTML = '<p style="font:18px Georgia,serif;text-align:center;margin-top:30vh">Oups… pas de gourmandise ici. <a href="/">Retour à l\'accueil</a></p>'; });
   }
-  var secours = setTimeout(function () { afficher(THEMES[memo] ? memo : 'normal'); }, 1500);
+  var secours = setTimeout(function () { afficher(THEMES[memo] ? memo : DEFAUT); }, 1500);
   fetch(SUPABASE_URL + '/rest/v1/site_settings?key=eq.theme&select=value', { headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY } })
     .then(function (r) { return r.ok ? r.json() : []; })
-    .then(function (l) { var t = l && l[0] && l[0].value; return THEMES[t] ? t : 'normal'; })
-    .catch(function () { return THEMES[memo] ? memo : 'normal'; })
+    .then(function (l) { var t = l && l[0] && l[0].value; return THEMES[t] ? t : DEFAUT; })
+    .catch(function () { return THEMES[memo] ? memo : DEFAUT; })
     .then(function (t) { clearTimeout(secours); afficher(t); });
 })();
 </script>

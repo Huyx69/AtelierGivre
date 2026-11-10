@@ -34,6 +34,6 @@ create policy "settings_admin_write"
     'givresebastien@gmail.com'
   ) );
 
--- Thème au démarrage : le site normal.
-insert into public.site_settings (key, value) values ('theme', 'normal')
+-- Thème au démarrage : Noël (on le change ensuite dans l'admin).
+insert into public.site_settings (key, value) values ('theme', 'noel')
 on conflict (key) do nothing;
