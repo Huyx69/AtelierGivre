@@ -11,8 +11,10 @@ Ce que fait le script :
   2. quelques textes de saison (accroche de l'accueil) et l'onglet « Noël »
      ouvert par défaut quand il contient des gâteaux ;
   3. décors : guirlande lumineuse, boules suspendues, neige au sol et sur les
-     cartes, houx et étoiles, boule à neige, étoiles pendues, traîneau ;
-  4. styles (outils/noel/noel.css) et animations (outils/noel/noel.js).
+     cartes, houx et étoiles, boule à neige, étoiles pendues ;
+  4. « La carte de Noël » : une grande section juste après l'accueil, avec les
+     gâteaux de la catégorie Noël (lien « Noël » dans le menu) ;
+  5. styles (outils/noel/noel.css) et animations (outils/noel/noel.js).
 
 Si le site normal change (textes, logique, prix…), relancer le script suffit
 pour mettre l'édition Noël à jour.
@@ -143,17 +145,6 @@ def sapin():
     return url(f"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>{etages}<rect x='46' y='68' width='8' height='12' fill='#6B4428'/>"
                f"<polygon points='50,0 52.5,6 59,6 54,10 56,16 50,12.5 44,16 46,10 41,6 47.5,6' fill='#F6D27A'/>{boules}</svg>")
 
-def traineau():
-    renne = ("<path d='M0 22 C4 14 14 12 22 14 L30 6 L32 0 M30 6 L36 2 M30 6 L26 0 M22 14 C26 16 28 20 26 24 "
-             "L30 34 M18 24 L20 34 M8 22 L4 34 M12 22 L12 34 M0 22 L-6 20' fill='none' stroke='#E6C878' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/>"
-             "<ellipse cx='12' cy='19' rx='13' ry='6' fill='#E6C878'/>")
-    rennes = ''.join(f"<g transform='translate({x} {y})'>{renne}</g>" for x, y in [(10, 14), (52, 10), (94, 6)])
-    return url(f"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 64'>{rennes}"
-               f"<path d='M118 22 L150 30 M64 20 L118 22' stroke='#E6C878' stroke-width='1.4'/>"
-               f"<path d='M150 24 C152 40 166 46 196 44 C214 43 220 36 222 26 L206 28 C200 34 188 34 178 30 L176 18 Z' fill='#E6C878'/>"
-               f"<path d='M146 50 C170 54 210 54 232 46' fill='none' stroke='#E6C878' stroke-width='3' stroke-linecap='round'/>"
-               f"<rect x='182' y='8' width='18' height='14' rx='2' fill='#E6C878'/><path d='M182 15 H200 M191 8 V22' stroke='#173A2E' stroke-width='2'/></svg>")
-
 FIL = url("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 24' preserveAspectRatio='none'>"
           "<path d='M0 3 Q50 17 100 3' fill='none' stroke='#2D4A3C' stroke-width='1.5' vector-effect='non-scaling-stroke'/></svg>")
 
@@ -165,7 +156,7 @@ DESSINS = {
     'NEIGE_HAUT': neige_bord(False, CREME),  # prolonge la section crème du dessus
     'ETOILES_A': etoiles(38, 4), 'ETOILES_B': etoiles(34, 9),
     'HOUX': houx(), 'NOEUD': noeud('#F3E2B0', '#C9A84C'), 'NOEUD_GRAND': noeud(ROUGE, '#7C1119'),
-    'SAPIN': sapin(), 'ETOILE': etoile_svg(), 'TRAINEAU': traineau(),
+    'SAPIN': sapin(), 'ETOILE': etoile_svg(),
 }
 
 def decor_globe():
@@ -192,15 +183,82 @@ DECORS = [
      '<span class="xm-pendu" style="--x:4%;--l:70px;--s:30px;"></span><span class="xm-pendu" style="--x:9%;--l:120px;--s:24px;--b:7s;--bt:-2s;"></span>'
      '<span class="xm-pendu" style="--x:91%;--l:96px;--s:28px;--b:6.4s;--bt:-1s;"></span><span class="xm-pendu" style="--x:96%;--l:56px;--s:22px;--b:5.6s;--bt:-3s;"></span></div>', 'apres'),
     ('<footer class="ag-sec" style="background:#1A2C3D;color:#dbe4ec;padding:70px 28px 36px;">',
-     '\n    <span class="xm-etoiles" aria-hidden="true"></span><span class="xm-neige-haut" aria-hidden="true"></span><span class="xm-traineau" aria-hidden="true"></span>', 'apres'),
+     '\n    <span class="xm-etoiles" aria-hidden="true"></span><span class="xm-neige-haut" aria-hidden="true"></span>', 'apres'),
 ]
 NOEUDS = ["Lire l'histoire", 'Composer mon Number Cake']
 
 TEXTES = [
     ('Belley, Ain — fait main', 'Belley, Ain — Noël fait main'),
     ('La passion du fait maison, au cœur de chaque bouchée.', 'Des douceurs de fêtes, faites main pour vos tables de Noël.'),
-    ("    activeCat: 'Tartes & entremets',", "    activeCat: 'Noël', // onglet ouvert par défaut (s'il est vide, la première catégorie remplie)"),
+    ("    const cats = this.CATEGORIES.filter((c) => this.PRODUCTS.some((p) => p.cat === c));",
+     "    // Édition Noël : les gâteaux de Noël ont leur propre section (« La carte de Noël »), pas d'onglet ici.\n"
+     "    const cats = this.CATEGORIES.filter((c) => c !== 'Noël' && this.PRODUCTS.some((p) => p.cat === c));"),
+    ("    const catEmpty = visibleProducts.length === 0;\n",
+     "    const catEmpty = visibleProducts.length === 0;\n"
+     "    // Édition Noël : la carte de Noël (catégorie « Noël » de l'admin).\n"
+     "    const noelProducts = this.PRODUCTS.filter((p) => p.cat === 'Noël').map((p) => ({\n"
+     "      id: p.id, name: p.name, desc: p.desc, img: p.img,\n"
+     "      priceLabel: this.priceFromLabel(p),\n"
+     "      delayShort: p.delayShort || '72 h à l’avance',\n"
+     "      onOpen: () => this.openProduct(p),\n"
+     "    }));\n"),
+    ("      catEmpty,\n", "      catEmpty,\n      noelProducts,\n      noelHas: noelProducts.length > 0,\n      noelEmpty: noelProducts.length === 0,\n"),
+    ('backdrop-filter:blur(6px);transition:background .3s ease,border-color .3s ease;" style-hover="background:rgba(255,255,255,.16);border-color:#fff;">Découvrir mes créations</a>',
+     'backdrop-filter:blur(6px);transition:background .3s ease,border-color .3s ease;" style-hover="background:rgba(255,255,255,.16);border-color:#fff;">Découvrir la carte de Noël</a>'),
 ]
+# Le bouton « Découvrir… » de l'accueil mène à la carte de Noël.
+LIEN_ACCUEIL = ('<a href="#creations" style="display:inline-flex;align-items:center;gap:10px;color:#fff;', '<a href="#noel" style="display:inline-flex;align-items:center;gap:10px;color:#fff;')
+# Lien « Noël » dans le menu (ordinateur et téléphone), avant « Mes créations ».
+MENU = [
+    ('        <a href="#creations" style="font-size:13.5px;',
+     '        <a href="#noel" style="font-size:13.5px;letter-spacing:.4px;color:#A8232D;font-weight:500;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #A8232D;">Noël</a>\n'),
+    ('      <a onClick="{{ closeMenu }}" href="#creations"',
+     '      <a onClick="{{ closeMenu }}" href="#noel" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#A8232D;font-weight:500;text-decoration:none;border-bottom:1px solid #F2F2F2;">Noël</a>\n'),
+]
+
+def section_noel():
+    carte = (
+        '          <article onClick="{{ p.onOpen }}" class="xm-carte-noel" style="background:#fff;border:1px solid #ECE3D3;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;animation:ag-cardIn .5s ease both;transition:transform .35s ease,box-shadow .35s ease;" style-hover="transform:translateY(-6px);box-shadow:0 26px 48px -26px rgba(23,58,46,.45);">\n'
+        '            <div class="ag-card-img" style="position:relative;height:270px;overflow:hidden;background:linear-gradient(150deg,#FBF6EE 0%,#F4EDE1 55%,#EEE4D3 100%);">\n'
+        '              <img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;" style-hover="transform:scale(1.04);">\n'
+        '              <span class="xm-ruban" aria-hidden="true">Noël</span>\n'
+        '            </div>\n'
+        '            <div style="padding:24px 24px 26px;display:flex;flex-direction:column;flex:1;">\n'
+        '              <h3 style="font-family:\'Cormorant Garamond\',serif;font-weight:600;font-size:25px;margin:0 0 8px;color:#173A2E;">{{ p.name }}</h3>\n'
+        '              <p style="font-size:14px;line-height:1.65;color:#7E7D73;margin:0 0 16px;flex:1;">{{ p.desc }}</p>\n'
+        '              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">\n'
+        '                <span style="font-family:\'Cormorant Garamond\',serif;font-size:26px;font-weight:600;color:#A8232D;">{{ p.priceLabel }}</span>\n'
+        '                <span style="background:#A8232D;color:#fff;font-size:12px;letter-spacing:.8px;text-transform:uppercase;padding:11px 20px;border-radius:2px;">Commander</span>\n'
+        '              </div>\n'
+        '              <p style="font-size:11.5px;letter-spacing:.4px;color:#8D968E;margin:12px 0 0;">{{ p.delayShort }}</p>\n'
+        '            </div>\n'
+        '          </article>\n')
+    return (
+        '  <!-- ════════════════ LA CARTE DE NOËL (édition Noël) ════════════════ -->\n'
+        '  <section id="noel" class="ag-sec xm-carte" style="scroll-margin-top:80px;padding:92px 28px 110px;">\n'
+        '    <span class="xm-houx g" aria-hidden="true"></span><span class="xm-houx d" aria-hidden="true"></span>\n'
+        '    <div style="max-width:1180px;margin:0 auto;position:relative;z-index:1;">\n'
+        '      <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);text-align:center;margin-bottom:46px;">\n'
+        '        <div style="display:flex;align-items:center;justify-content:center;gap:12px;color:#C9A84C;margin-bottom:16px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">Édition de fêtes</span><span style="height:1px;width:30px;background:#C9A84C;"></span></div>\n'
+        '        <h2 style="font-family:\'Cormorant Garamond\',serif;font-weight:500;font-size:clamp(44px,6.4vw,82px);line-height:1;margin:0;color:#173A2E;">La carte de <em style="font-style:italic;color:#A8232D;">Noël</em></h2>\n'
+        '        <p style="font-size:16px;line-height:1.75;color:#56625B;margin:20px auto 0;max-width:54ch;">Bûches, entremets de fêtes et douceurs à offrir&nbsp;: des créations imaginées pour vos tables de Noël, faites main à l\'atelier. Pensez à commander à l\'avance.</p>\n'
+        '      </div>\n'
+        '      <sc-if value="{{ noelHas }}" hint-placeholder-val="{{ true }}">\n'
+        '        <div class="ag-creations-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;">\n'
+        '          <sc-for list="{{ noelProducts }}" as="p" hint-placeholder-count="3">\n' + carte +
+        '          </sc-for>\n'
+        '        </div>\n'
+        '      </sc-if>\n'
+        '      <sc-if value="{{ noelEmpty }}" hint-placeholder-val="{{ false }}">\n'
+        '        <div class="xm-bientot">\n'
+        '          <p style="font-family:\'Cormorant Garamond\',serif;font-size:clamp(28px,3.4vw,38px);color:#173A2E;margin:0 0 10px;">La carte se dévoile très bientôt</p>\n'
+        '          <p style="font-size:15px;line-height:1.75;color:#56625B;margin:0 auto 26px;max-width:50ch;">Les gâteaux de Noël arrivent sur le site dans les prochains jours. Une envie particulière pour vos fêtes, un repas de famille, un cadeau&nbsp;? Écrivez-moi, je vous prépare une proposition.</p>\n'
+        '          <a href="#devis" style="display:inline-flex;align-items:center;gap:10px;background:#A8232D;color:#fff;text-decoration:none;font-size:13px;letter-spacing:1.3px;text-transform:uppercase;padding:15px 30px;border-radius:2px;"><span class="xm-noeud" aria-hidden="true"></span>Me demander un devis</a>\n'
+        '        </div>\n'
+        '      </sc-if>\n'
+        '    </div>\n'
+        '  </section>\n\n')
+
 
 
 def generer():
@@ -226,6 +284,9 @@ def generer():
         s = s.replace('>' + texte, '><span class="xm-noeud" aria-hidden="true"></span>' + texte)
     for a, b in TEXTES:
         une(a); s = s.replace(a, b)
+    une(LIEN_ACCUEIL[0]); s = s.replace(*LIEN_ACCUEIL)
+    for repere, ajout in MENU:
+        une(repere); s = s.replace(repere, ajout + repere)
 
     # Couleurs.
     for a, b in CIBLES:
@@ -234,6 +295,10 @@ def generer():
         s = re.sub(re.escape(a) + r'(?![0-9A-Fa-f])', b, s, flags=re.I)
     for a, b in RGBA.items():
         s = s.replace(a, b)
+
+    # La carte de Noël, juste après l'accueil.
+    repere = '  <!-- ════════════════ NOS CRÉATIONS'
+    une(repere); s = s.replace(repere, section_noel() + repere)
 
     # Styles et animations.
     css = (ICI / 'noel.css').read_text(encoding='utf-8')

@@ -188,6 +188,7 @@
      Ajouté par outils/generer-noel.py. Les repères entre doubles arobases sont remplacés par des
      dessins SVG générés (neige, houx, traîneau…). */
   #creations,#devis,#galerie,#contact,#number-cake{position:relative;}
+  #creations{background:#FFFFFF !important;} /* sépare « Mes créations » de la carte de Noël, crème */
   footer.ag-sec{position:relative;overflow:hidden;padding-top:124px !important;}
   ::selection{background:#A8232D;color:#fff;}
 
@@ -226,7 +227,9 @@
       linear-gradient(180deg,transparent 45%,rgba(255,226,150,.85) 45% 52%,transparent 52%),
       radial-gradient(circle at 38% 34%,var(--c1),var(--c2) 72%);
     box-shadow:inset -7px -9px 16px rgba(0,0,0,.32),0 12px 24px -10px rgba(0,0,0,.6);}
-  .xm-boule:hover{animation-duration:1.1s;}
+  /* Survol : la boule grossit un peu, sans toucher au balancement (changer sa durée le ferait sauter). */
+  .xm-boule::after{transition:transform .35s ease,filter .35s ease;}
+  .xm-boule:hover::after{transform:scale(1.1);filter:brightness(1.12);}
   .xm-boule.rouge{--c1:#F05A50;--c2:#7C1119;}
   .xm-boule.or{--c1:#FBE3A1;--c2:#94701F;}
   .xm-boule.vert{--c1:#4DAF7C;--c2:#0D3524;}
@@ -285,12 +288,19 @@
     background:url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23F6E3A4'/%3E%3Cstop offset='1' stop-color='%23D9B65A'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='50.0%2C2.0 61.8%2C33.8 95.7%2C35.2 69.0%2C56.2 78.2%2C88.8 50.0%2C70.0 21.8%2C88.8 31.0%2C56.2 4.3%2C35.2 38.2%2C33.8' fill='url%28%23g%29' stroke='%23A9863A' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;filter:drop-shadow(0 6px 8px rgba(150,115,30,.35));}
   @media (max-width:760px){ .xm-pendu:nth-child(n+3){display:none;} }
 
-  /* ── Pied de page : ciel étoilé, neige et traîneau ── */
+  /* ── Pied de page : ciel étoilé et neige ── */
   .xm-neige-haut{position:absolute;left:0;right:0;top:-1px;height:clamp(22px,3vw,40px);pointer-events:none;background:url("data:image/svg+xml,%3Csvg width='400' height='20' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 20' preserveAspectRatio='none'%3E%3Cpath d='M0 0 H400 V9 Q389.4 12.4 378.8 9 Q368.0 12.0 357.3 9 Q348.8 12.1 340.4 9 Q327.0 9.6 313.7 9 Q305.9 13.9 298.2 9 Q290.9 14.9 283.5 9 C278.7 12.7 274.3 14.7 273.3 18.7 A2.6 2.6 0 0 1 268.3 18.7 C268.3 14.7 264.0 12.7 259.1 9 C256.2 12.2 255.0 14.2 254.0 18.2 A2.6 2.6 0 0 1 249.0 18.2 C249.0 14.2 247.7 12.2 244.8 9 C241.4 10.5 239.3 12.5 238.3 16.5 A2.6 2.6 0 0 1 233.3 16.5 C233.3 12.5 231.2 10.5 227.8 9 Q217.1 11.6 206.4 9 Q195.2 12.8 184.1 9 Q171.8 11.7 159.5 9 Q144.5 15.0 129.5 9 Q116.8 10.9 104.2 9 Q94.9 9.4 85.6 9 Q75.4 14.1 65.2 9 C59.3 14.1 53.5 16.1 52.5 20.1 A2.6 2.6 0 0 1 47.5 20.1 C47.5 16.1 41.7 14.1 35.8 9 Q27.1 14.5 18.5 9 C12.5 11.4 12.2 13.4 11.2 17.4 A2.6 2.6 0 0 1 6.2 17.4 C6.2 13.4 5.9 11.4 0.0 9 Z' fill='%23FBF6EE'/%3E%3C/svg%3E") left top/auto 100% repeat-x;}
-  .xm-traineau{position:absolute;top:46px;left:0;width:230px;height:62px;pointer-events:none;opacity:.85;background:url("data:image/svg+xml,%3Csvg width='240' height='64' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 64'%3E%3Cg transform='translate%2810 14%29'%3E%3Cpath d='M0 22 C4 14 14 12 22 14 L30 6 L32 0 M30 6 L36 2 M30 6 L26 0 M22 14 C26 16 28 20 26 24 L30 34 M18 24 L20 34 M8 22 L4 34 M12 22 L12 34 M0 22 L-6 20' fill='none' stroke='%23E6C878' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cellipse cx='12' cy='19' rx='13' ry='6' fill='%23E6C878'/%3E%3C/g%3E%3Cg transform='translate%2852 10%29'%3E%3Cpath d='M0 22 C4 14 14 12 22 14 L30 6 L32 0 M30 6 L36 2 M30 6 L26 0 M22 14 C26 16 28 20 26 24 L30 34 M18 24 L20 34 M8 22 L4 34 M12 22 L12 34 M0 22 L-6 20' fill='none' stroke='%23E6C878' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cellipse cx='12' cy='19' rx='13' ry='6' fill='%23E6C878'/%3E%3C/g%3E%3Cg transform='translate%2894 6%29'%3E%3Cpath d='M0 22 C4 14 14 12 22 14 L30 6 L32 0 M30 6 L36 2 M30 6 L26 0 M22 14 C26 16 28 20 26 24 L30 34 M18 24 L20 34 M8 22 L4 34 M12 22 L12 34 M0 22 L-6 20' fill='none' stroke='%23E6C878' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cellipse cx='12' cy='19' rx='13' ry='6' fill='%23E6C878'/%3E%3C/g%3E%3Cpath d='M118 22 L150 30 M64 20 L118 22' stroke='%23E6C878' stroke-width='1.4'/%3E%3Cpath d='M150 24 C152 40 166 46 196 44 C214 43 220 36 222 26 L206 28 C200 34 188 34 178 30 L176 18 Z' fill='%23E6C878'/%3E%3Cpath d='M146 50 C170 54 210 54 232 46' fill='none' stroke='%23E6C878' stroke-width='3' stroke-linecap='round'/%3E%3Crect x='182' y='8' width='18' height='14' rx='2' fill='%23E6C878'/%3E%3Cpath d='M182 15 H200 M191 8 V22' stroke='%23173A2E' stroke-width='2'/%3E%3C/svg%3E") center/contain no-repeat;
-    animation:xm-vol 26s linear 4s infinite;transform:translateX(-260px);}
-  @keyframes xm-vol{0%{transform:translate(-260px,30px) rotate(-4deg);}50%{transform:translate(50vw,-6px) rotate(-2deg);}
-    70%,100%{transform:translate(calc(100vw + 40px),10px) rotate(-5deg);}}
+  /* ── La carte de Noël (section juste après l'accueil) ── */
+  .xm-carte{position:relative;overflow:hidden;background:radial-gradient(90% 60% at 50% 0%,#FFFDF8 0%,#FBF6EE 55%,#F6EEDF 100%);}
+  .xm-carte .xm-houx.g{left:-40px;bottom:-46px;}
+  .xm-carte .xm-houx.d{right:-40px;top:-30px;}
+  .xm-ruban{position:absolute;top:18px;left:-36px;z-index:3;width:140px;padding:6px 0;transform:rotate(-38deg);text-align:center;
+    background:#A8232D;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;box-shadow:0 6px 14px -6px rgba(0,0,0,.45);
+    border-top:1px solid #E1C27A;border-bottom:1px solid #E1C27A;}
+  .xm-carte-noel .ag-card-img::after{height:22px;}
+  .xm-bientot{max-width:720px;margin:0 auto;text-align:center;background:#fff;border:1px solid #ECE3D3;border-radius:16px;padding:44px 32px 46px;position:relative;
+    box-shadow:0 30px 60px -40px rgba(23,58,46,.45);}
+  .xm-bientot::before{content:'';position:absolute;top:-18px;left:50%;width:60px;height:40px;margin-left:-30px;background:url("data:image/svg+xml,%3Csvg width='60' height='40' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'%3E%3Cpath d='M30 18 C20 2 4 2 6 14 C7 24 22 22 30 18Z M30 18 C40 2 56 2 54 14 C53 24 38 22 30 18Z' fill='%23A8232D' stroke='%237C1119' stroke-width='2'/%3E%3Cpath d='M28 20 L18 38 L24 36 L27 40 L30 22Z M32 20 L42 38 L36 36 L33 40 L30 22Z' fill='%23A8232D' stroke='%237C1119' stroke-width='2'/%3E%3Ccircle cx='30' cy='19' r='5' fill='%23A8232D' stroke='%237C1119' stroke-width='2'/%3E%3C/svg%3E") center/contain no-repeat;}
 
   /* ── Bouton neige (activer / couper) ── */
   .xm-bouton-neige{position:fixed;left:16px;bottom:16px;z-index:70;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.4);
@@ -300,8 +310,7 @@
   .xm-etincelle{position:fixed;width:6px;height:6px;border-radius:50%;pointer-events:none;z-index:90;background:#F6D27A;box-shadow:0 0 8px 2px rgba(246,210,122,.8);}
 
   @media (prefers-reduced-motion:reduce){
-    .xm-guirlande i::after,.xm-boule,.xm-pendu,.xm-etoiles,.xm-globe-verre i,.xm-traineau{animation:none !important;}
-    .xm-traineau{display:none;}
+    .xm-guirlande i::after,.xm-boule,.xm-pendu,.xm-etoiles,.xm-globe-verre i{animation:none !important;}
   }
 </style>
 <!-- Stripe.js — chargé depuis le CDN officiel (intégration : voir initStripe() dans la logique). -->
@@ -319,6 +328,7 @@
       </a>
       <nav class="ag-nav" style="display:flex;align-items:center;gap:30px;">
         <a href="#accueil" style="font-size:13.5px;letter-spacing:.4px;color:#173A2E;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Accueil</a>
+        <a href="#noel" style="font-size:13.5px;letter-spacing:.4px;color:#A8232D;font-weight:500;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #A8232D;">Noël</a>
         <a href="#creations" style="font-size:13.5px;letter-spacing:.4px;color:#173A2E;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Mes créations</a>
         <a href="#number-cake" style="font-size:13.5px;letter-spacing:.4px;color:#173A2E;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Number Cake</a>
         <a href="#devis" style="font-size:13.5px;letter-spacing:.4px;color:#173A2E;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Devis</a>
@@ -344,6 +354,7 @@
     <div onClick="{{ closeMenu }}" style="position:fixed;inset:0;z-index:55;background:rgba(10,26,20,.35);animation:ag-fadeIn .25s ease;"></div>
     <div class="ag-mobilemenu" style="position:fixed;top:74px;left:0;right:0;z-index:58;background:#fff;border-bottom:1px solid #ECE3D3;box-shadow:0 14px 32px -18px rgba(23,58,46,.45);display:flex;flex-direction:column;padding:6px 0;animation:ag-fadeIn .25s ease;">
       <a onClick="{{ closeMenu }}" href="#accueil" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#173A2E;text-decoration:none;border-bottom:1px solid #F3ECE0;">Accueil</a>
+      <a onClick="{{ closeMenu }}" href="#noel" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#A8232D;font-weight:500;text-decoration:none;border-bottom:1px solid #F3ECE0;">Noël</a>
       <a onClick="{{ closeMenu }}" href="#creations" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#173A2E;text-decoration:none;border-bottom:1px solid #F3ECE0;">Mes créations</a>
       <a onClick="{{ closeMenu }}" href="#number-cake" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#173A2E;text-decoration:none;border-bottom:1px solid #F3ECE0;">Number Cake</a>
       <a onClick="{{ closeMenu }}" href="#devis" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#173A2E;text-decoration:none;border-bottom:1px solid #F3ECE0;">Devis</a>
@@ -379,7 +390,7 @@
 
         <div class="ag-hero-cta" style="display:flex;flex-wrap:wrap;gap:13px;margin-bottom:clamp(18px,2.6vh,30px);animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .28s both;">
           <button onClick="{{ openStory }}" style="display:inline-flex;align-items:center;gap:11px;background:#A8232D;color:#fff;border:1px solid #A8232D;cursor:pointer;font-size:13px;letter-spacing:1.3px;text-transform:uppercase;padding:15px 30px;border-radius:2px;transition:background .3s ease,transform .3s ease,box-shadow .3s ease;box-shadow:0 12px 30px -10px rgba(201,168,76,.55);" style-hover="background:#fff;color:#173A2E;transform:translateY(-2px);"><span class="xm-noeud" aria-hidden="true"></span>Lire l'histoire <span style="font-size:15px;">→</span></button>
-          <a href="#creations" style="display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:13px;letter-spacing:1.3px;text-transform:uppercase;padding:15px 28px;border:1px solid rgba(255,255,255,.5);border-radius:2px;background:rgba(255,255,255,.06);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .3s ease,border-color .3s ease;" style-hover="background:rgba(255,255,255,.16);border-color:#fff;">Découvrir mes créations</a>
+          <a href="#noel" style="display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:13px;letter-spacing:1.3px;text-transform:uppercase;padding:15px 28px;border:1px solid rgba(255,255,255,.5);border-radius:2px;background:rgba(255,255,255,.06);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .3s ease,border-color .3s ease;" style-hover="background:rgba(255,255,255,.16);border-color:#fff;">Découvrir la carte de Noël</a>
         </div>
 
         <div class="ag-hero-facts" style="display:grid;grid-template-columns:repeat(3,auto);gap:0;border-top:1px solid rgba(255,255,255,.2);padding-top:clamp(14px,2vh,22px);max-width:520px;animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .36s both;">
@@ -399,6 +410,46 @@
       </div>
     </div>
     <span class="xm-neige-sol" aria-hidden="true"></span>
+  </section>
+
+  <!-- ════════════════ LA CARTE DE NOËL (édition Noël) ════════════════ -->
+  <section id="noel" class="ag-sec xm-carte" style="scroll-margin-top:80px;padding:92px 28px 110px;">
+    <span class="xm-houx g" aria-hidden="true"></span><span class="xm-houx d" aria-hidden="true"></span>
+    <div style="max-width:1180px;margin:0 auto;position:relative;z-index:1;">
+      <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);text-align:center;margin-bottom:46px;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:12px;color:#C9A84C;margin-bottom:16px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">Édition de fêtes</span><span style="height:1px;width:30px;background:#C9A84C;"></span></div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(44px,6.4vw,82px);line-height:1;margin:0;color:#173A2E;">La carte de <em style="font-style:italic;color:#A8232D;">Noël</em></h2>
+        <p style="font-size:16px;line-height:1.75;color:#56625B;margin:20px auto 0;max-width:54ch;">Bûches, entremets de fêtes et douceurs à offrir&nbsp;: des créations imaginées pour vos tables de Noël, faites main à l'atelier. Pensez à commander à l'avance.</p>
+      </div>
+      <sc-if value="{{ noelHas }}" hint-placeholder-val="{{ true }}">
+        <div class="ag-creations-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;">
+          <sc-for list="{{ noelProducts }}" as="p" hint-placeholder-count="3">
+          <article onClick="{{ p.onOpen }}" class="xm-carte-noel" style="background:#fff;border:1px solid #ECE3D3;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;animation:ag-cardIn .5s ease both;transition:transform .35s ease,box-shadow .35s ease;" style-hover="transform:translateY(-6px);box-shadow:0 26px 48px -26px rgba(23,58,46,.45);">
+            <div class="ag-card-img" style="position:relative;height:270px;overflow:hidden;background:linear-gradient(150deg,#FBF6EE 0%,#F4EDE1 55%,#EEE4D3 100%);">
+              <img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;" style-hover="transform:scale(1.04);">
+              <span class="xm-ruban" aria-hidden="true">Noël</span>
+            </div>
+            <div style="padding:24px 24px 26px;display:flex;flex-direction:column;flex:1;">
+              <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:25px;margin:0 0 8px;color:#173A2E;">{{ p.name }}</h3>
+              <p style="font-size:14px;line-height:1.65;color:#7E7D73;margin:0 0 16px;flex:1;">{{ p.desc }}</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#A8232D;">{{ p.priceLabel }}</span>
+                <span style="background:#A8232D;color:#fff;font-size:12px;letter-spacing:.8px;text-transform:uppercase;padding:11px 20px;border-radius:2px;">Commander</span>
+              </div>
+              <p style="font-size:11.5px;letter-spacing:.4px;color:#8D968E;margin:12px 0 0;">{{ p.delayShort }}</p>
+            </div>
+          </article>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ noelEmpty }}" hint-placeholder-val="{{ false }}">
+        <div class="xm-bientot">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.4vw,38px);color:#173A2E;margin:0 0 10px;">La carte se dévoile très bientôt</p>
+          <p style="font-size:15px;line-height:1.75;color:#56625B;margin:0 auto 26px;max-width:50ch;">Les gâteaux de Noël arrivent sur le site dans les prochains jours. Une envie particulière pour vos fêtes, un repas de famille, un cadeau&nbsp;? Écrivez-moi, je vous prépare une proposition.</p>
+          <a href="#devis" style="display:inline-flex;align-items:center;gap:10px;background:#A8232D;color:#fff;text-decoration:none;font-size:13px;letter-spacing:1.3px;text-transform:uppercase;padding:15px 30px;border-radius:2px;"><span class="xm-noeud" aria-hidden="true"></span>Me demander un devis</a>
+        </div>
+      </sc-if>
+    </div>
   </section>
 
   <!-- ════════════════ NOS CRÉATIONS ════════════════ -->
@@ -555,7 +606,7 @@
 
   <!-- ════════════════ FOOTER ════════════════ -->
   <footer class="ag-sec" style="background:#173A2E;color:#E6DCCB;padding:70px 28px 36px;">
-    <span class="xm-etoiles" aria-hidden="true"></span><span class="xm-neige-haut" aria-hidden="true"></span><span class="xm-traineau" aria-hidden="true"></span>
+    <span class="xm-etoiles" aria-hidden="true"></span><span class="xm-neige-haut" aria-hidden="true"></span>
     <div class="ag-footer" style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1.2fr 1fr;gap:44px;">
       <div>
         <div style="display:flex;align-items:center;gap:11px;margin-bottom:18px;">
@@ -1443,7 +1494,7 @@ class Component extends DCLogic {
 
   state = {
     cart: [],
-    activeCat: 'Noël', // onglet ouvert par défaut (s'il est vide, la première catégorie remplie)
+    activeCat: 'Tartes & entremets',
     nc: { open: false, text: '', plevel: 2, preset: -1, base: '', croustillant: '', cremeux: '', compotee: '', gel: '', mousse: '', decors: [], fruitsSecs: [] },
     cartOpen: false,
     delivery: 'collect',
@@ -1984,7 +2035,8 @@ class Component extends DCLogic {
   renderVals() {
     const s = this.state;
     // Onglets : seulement les catégories qui ont des produits ; sinon on retombe sur la première.
-    const cats = this.CATEGORIES.filter((c) => this.PRODUCTS.some((p) => p.cat === c));
+    // Édition Noël : les gâteaux de Noël ont leur propre section (« La carte de Noël »), pas d'onglet ici.
+    const cats = this.CATEGORIES.filter((c) => c !== 'Noël' && this.PRODUCTS.some((p) => p.cat === c));
     const activeCat = cats.indexOf(s.activeCat) !== -1 ? s.activeCat : (cats[0] || s.activeCat);
     const tabs = cats.map((c) => ({
       label: c,
@@ -2001,6 +2053,13 @@ class Component extends DCLogic {
       onOpen: () => this.openProduct(p),
     }));
     const catEmpty = visibleProducts.length === 0;
+    // Édition Noël : la carte de Noël (catégorie « Noël » de l'admin).
+    const noelProducts = this.PRODUCTS.filter((p) => p.cat === 'Noël').map((p) => ({
+      id: p.id, name: p.name, desc: p.desc, img: p.img,
+      priceLabel: this.priceFromLabel(p),
+      delayShort: p.delayShort || '72 h à l’avance',
+      onOpen: () => this.openProduct(p),
+    }));
 
     const cartItems = s.cart.map((it) => ({
       ...it,
@@ -2121,6 +2180,9 @@ class Component extends DCLogic {
       modalSizes,
       modalOptLabel: modalOpt ? modalOpt.label : '',
       catEmpty,
+      noelProducts,
+      noelHas: noelProducts.length > 0,
+      noelEmpty: noelProducts.length === 0,
       modalComposition,
       modalVariants,
       modalHasVariants: modalVariants.length > 0,
@@ -2310,12 +2372,12 @@ class Component extends DCLogic {
     l = window.innerWidth; h = window.innerHeight;
     canvas.width = l * dpr; canvas.height = h * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var n = l < 700 ? 34 : 70;
+    var n = l < 700 ? 16 : 32; // neige légère
     while (flocons.length < n) flocons.push(nouveau(true));
     flocons.length = n;
   }
   function nouveau(partout) {
-    var r = 1 + Math.random() * 2.6;
+    var r = 0.8 + Math.random() * 1.9;
     return { x: Math.random() * l, y: partout ? Math.random() * h : -10, r: r, v: 0.35 + r * 0.22, o: Math.random() * 6.28, a: 0.5 + Math.random() * 0.45 };
   }
   var dernier = 0; var boucle = null;
@@ -2393,7 +2455,8 @@ class Component extends DCLogic {
     // Boule : un tour sur elle-même et des étincelles.
     var b = ev.target.closest && ev.target.closest('.xm-boule');
     if (b) {
-      b.animate([{ transform: 'rotate(0deg)' }, { transform: 'rotate(-22deg)' }, { transform: 'rotate(16deg)' }, { transform: 'rotate(-8deg)' }, { transform: 'rotate(0deg)' }], { duration: 1100, easing: 'ease-out' });
+      // « add » : le tour s'ajoute au balancement en cours au lieu de le remplacer (pas de saut).
+      b.animate([{ transform: 'rotate(0deg)' }, { transform: 'rotate(-22deg)' }, { transform: 'rotate(16deg)' }, { transform: 'rotate(-8deg)' }, { transform: 'rotate(0deg)' }], { duration: 1100, easing: 'ease-out', composite: 'add' });
       etincelles(ev.clientX, ev.clientY, 12);
       return;
     }

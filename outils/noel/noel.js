@@ -23,12 +23,12 @@
     l = window.innerWidth; h = window.innerHeight;
     canvas.width = l * dpr; canvas.height = h * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var n = l < 700 ? 34 : 70;
+    var n = l < 700 ? 16 : 32; // neige légère
     while (flocons.length < n) flocons.push(nouveau(true));
     flocons.length = n;
   }
   function nouveau(partout) {
-    var r = 1 + Math.random() * 2.6;
+    var r = 0.8 + Math.random() * 1.9;
     return { x: Math.random() * l, y: partout ? Math.random() * h : -10, r: r, v: 0.35 + r * 0.22, o: Math.random() * 6.28, a: 0.5 + Math.random() * 0.45 };
   }
   var dernier = 0; var boucle = null;
@@ -106,7 +106,8 @@
     // Boule : un tour sur elle-même et des étincelles.
     var b = ev.target.closest && ev.target.closest('.xm-boule');
     if (b) {
-      b.animate([{ transform: 'rotate(0deg)' }, { transform: 'rotate(-22deg)' }, { transform: 'rotate(16deg)' }, { transform: 'rotate(-8deg)' }, { transform: 'rotate(0deg)' }], { duration: 1100, easing: 'ease-out' });
+      // « add » : le tour s'ajoute au balancement en cours au lieu de le remplacer (pas de saut).
+      b.animate([{ transform: 'rotate(0deg)' }, { transform: 'rotate(-22deg)' }, { transform: 'rotate(16deg)' }, { transform: 'rotate(-8deg)' }, { transform: 'rotate(0deg)' }], { duration: 1100, easing: 'ease-out', composite: 'add' });
       etincelles(ev.clientX, ev.clientY, 12);
       return;
     }
