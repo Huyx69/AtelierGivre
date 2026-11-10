@@ -1,0 +1,8 @@
+# Atelier Givre — https://ateliergivre.fr
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /outils/
+Disallow: /supabase/
+
+Sitemap: https://ateliergivre.fr/sitemap.xml

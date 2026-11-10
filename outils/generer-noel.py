@@ -42,7 +42,7 @@ PALETTE = {
     '#EEF3F8': '#F6F0E6', '#E8EFF6': '#F3ECE1', '#DFE8F1': '#ECE2D2', '#DCE3EA': '#E6DDCF',
     '#D5DFE9': '#E2D6C4', '#CFD8E1': '#DDD2C1', '#C4D0DC': '#D6C9B5', '#B3BFC9': '#C2BBAD',
     '#93A2B0': '#A39D90', '#8FA1B3': '#A0998B', '#7D8E9D': '#8B887E', '#728290': '#7E7D73',
-    '#3C4A57': '#36443C', '#FBFCFD': '#FFFDF9',
+    '#3C4A57': '#36443C', '#FBFCFD': '#FFFDF9', '#6B7B89': '#6B7369',
 }
 RGBA = {
     'rgba(26,44,61,': 'rgba(23,58,46,', 'rgba(16,28,39,': 'rgba(13,34,26,', 'rgba(13,22,31,': 'rgba(10,26,20,',
@@ -188,7 +188,8 @@ DECORS = [
 NOEUDS = ["Lire l'histoire", 'Composer mon Number Cake']
 
 TEXTES = [
-    ('Belley, Ain — fait main', 'Belley, Ain — Noël fait main'),
+    ('Pâtisserie artisanale à Belley · fait main', 'Pâtisserie artisanale à Belley · Noël fait main'),
+    ('<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n', '<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n<meta name="theme-color" content="#173A2E">\n'),
     ('La passion du fait maison, au cœur de chaque bouchée.', 'Des douceurs de fêtes, faites main pour vos tables de Noël.'),
     ("    const cats = this.CATEGORIES.filter((c) => this.PRODUCTS.some((p) => p.cat === c));",
      "    // Édition Noël : les gâteaux de Noël ont leur propre section (« La carte de Noël »), pas d'onglet ici.\n"
@@ -220,7 +221,7 @@ def section_noel():
     carte = (
         '          <article onClick="{{ p.onOpen }}" class="xm-carte-noel" style="background:#fff;border:1px solid #ECE3D3;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;animation:ag-cardIn .5s ease both;transition:transform .35s ease,box-shadow .35s ease;" style-hover="transform:translateY(-6px);box-shadow:0 26px 48px -26px rgba(23,58,46,.45);">\n'
         '            <div class="ag-card-img" style="position:relative;height:270px;overflow:hidden;background:linear-gradient(150deg,#FBF6EE 0%,#F4EDE1 55%,#EEE4D3 100%);">\n'
-        '              <img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;" style-hover="transform:scale(1.04);">\n'
+        '              <img src="{{ p.img }}" alt="{{ p.name }}" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;" style-hover="transform:scale(1.04);">\n'
         '              <span class="xm-ruban" aria-hidden="true">Noël</span>\n'
         '            </div>\n'
         '            <div style="padding:24px 24px 26px;display:flex;flex-direction:column;flex:1;">\n'

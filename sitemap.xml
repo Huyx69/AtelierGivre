@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://ateliergivre.fr/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <image:image><image:loc>https://ateliergivre.fr/images/kylian.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ateliergivre.fr/images/galerie-number-cake-30.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ateliergivre.fr/images/galerie-number-cake-25.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ateliergivre.fr/images/galerie-tarte-rosace.jpg</image:loc></image:image>
+  </url>
+</urlset>

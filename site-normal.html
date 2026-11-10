@@ -1,44 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <title>Atelier Givre — Pâtisserie & chocolaterie artisanale à Belley (Ain)</title>
-<meta name="description" content="Atelier Givre, pâtisserie et chocolaterie artisanale dans l'Ain. Tartes, entremets, cannelés, cookies et number cakes sur-mesure. Retrait à Belley et livraison dans un rayon de 20 km.">
-<meta name="keywords" content="Atelier Givre, pâtisserie Belley, chocolaterie Ain, number cake Ain, Kylian Givre, pâtissier Belley, tarte artisanale Bugey">
+<meta name="description" content="Pâtisserie et chocolaterie artisanale à Belley (Ain) : tartes, entremets, number cakes sur-mesure. Retrait gratuit, livraison dans un rayon de 20 km.">
 <meta name="author" content="Kylian Givre">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://huyx69.github.io/Atelier-givre/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://ateliergivre.fr/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Atelier Givre">
 <meta property="og:title" content="Atelier Givre — Pâtisserie & chocolaterie artisanale à Belley">
 <meta property="og:description" content="Tartes, entremets, cannelés et number cakes entièrement réalisés à la main. Belley, Ain. Retrait gratuit et livraison 20 km.">
-<meta property="og:url" content="https://huyx69.github.io/Atelier-givre/">
-<meta property="og:image" content="https://huyx69.github.io/Atelier-givre/images/kylian.jpg">
+<meta property="og:url" content="https://ateliergivre.fr/">
+<meta property="og:image" content="https://ateliergivre.fr/images/partage.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kylian Givre, pâtissier-chocolatier, à l'Atelier Givre de Belley">
 <meta name="twitter:card" content="summary_large_image">
-<!-- Fiche établissement pour Google (données structurées schema.org). -->
+<meta name="twitter:image" content="https://ateliergivre.fr/images/partage.jpg">
+<!-- Fiche établissement et questions fréquentes pour Google (données structurées schema.org). -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Bakery",
+  "@id": "https://ateliergivre.fr/#atelier",
   "name": "Atelier Givre",
   "description": "Pâtisserie et chocolaterie artisanale dans l'Ain. Tartes, entremets, cannelés et number cakes faits main. Retrait à Belley, livraison dans un rayon de 20 km.",
-  "image": "https://huyx69.github.io/Atelier-givre/images/kylian.jpg",
-  "url": "https://huyx69.github.io/Atelier-givre/",
+  "url": "https://ateliergivre.fr/",
+  "logo": "https://ateliergivre.fr/apple-touch-icon.png",
+  "image": [
+    "https://ateliergivre.fr/images/partage.jpg",
+    "https://ateliergivre.fr/images/kylian.jpg"
+  ],
   "email": "ateliergivre.contact@gmail.com",
   "telephone": "+33629368117",
-  "founder": { "@type": "Person", "name": "Kylian Givre", "jobTitle": "Pâtissier-chocolatier" },
-  "address": { "@type": "PostalAddress", "streetAddress": "196 rue du Promenoir", "addressLocality": "Belley", "postalCode": "01300", "addressRegion": "Ain", "addressCountry": "FR" },
-  "openingHours": ["Mo-Sa 09:00-19:00", "Su 09:00-13:00"],
-  "areaServed": { "@type": "GeoCircle", "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 45.7594, "longitude": 5.6889 }, "geoRadius": 20000 },
+  "founder": {
+    "@type": "Person",
+    "name": "Kylian Givre",
+    "jobTitle": "Pâtissier-chocolatier"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "196 rue du Promenoir",
+    "addressLocality": "Belley",
+    "postalCode": "01300",
+    "addressRegion": "Ain",
+    "addressCountry": "FR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.762056,
+    "longitude": 5.68827
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "09:00",
+      "closes": "13:00"
+    }
+  ],
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 45.762056,
+      "longitude": 5.68827
+    },
+    "geoRadius": 20000
+  },
   "servesCuisine": "Pâtisserie",
   "priceRange": "€€",
+  "hasMenu": "https://ateliergivre.fr/#creations",
   "sameAs": [
     "https://instagram.com/ateliergivre01",
     "https://www.tiktok.com/@ateliergivre01",
@@ -46,6 +97,67 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Combien de temps à l'avance faut-il commander ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Comptez 72 heures avant le retrait pour les pâtisseries de la carte, et 10 jours pour un number cake ou une création sur-mesure. Tout est fabriqué à la commande."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Où et quand retirer ma commande ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le retrait est gratuit (click & collect) à l'atelier, 196 rue du Promenoir à Belley, du lundi au samedi de 9 h à 19 h et le dimanche de 9 h à 13 h. Vous choisissez la date au moment de commander."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Livrez-vous à domicile ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, autour de Belley : jusqu'à 20 km, la livraison coûte 1 € par kilomètre et elle est offerte dès 60 € d'achat. Au-delà et jusqu'à 50 km, elle reste possible avec un supplément calculé au moment de la commande."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment se passe le paiement ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le paiement se fait en ligne par carte bancaire, de façon sécurisée. En click & collect, vous réglez un acompte de 30 % à la commande et le solde au retrait ; en livraison, la commande est réglée en totalité."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Puis-je composer mon propre number cake ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui : chiffre ou lettre, nombre de parts, base, croustillant, crémeux, inserts fruités, ganache montée et décors se choisissent en ligne, ou partez d'une recette signature. Il se commande 10 jours à l'avance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment connaître les allergènes ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La composition et les allergènes de chaque gâteau sont indiqués sur sa fiche. Pour une allergie ou une demande particulière, écrivez-moi avant de commander : ateliergivre.contact@gmail.com."
+      }
+    }
+  ]
+}
+</script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
@@ -183,9 +295,8 @@
     #accueil{min-height:auto !important;}
     .ag-hero-copy{padding-top:104px !important;padding-bottom:44px !important;}
   }
+  @media (max-width:860px){ .ag-atelier-grille{grid-template-columns:1fr !important;gap:34px !important;} }
 </style>
-<!-- Stripe.js — chargé depuis le CDN officiel (intégration : voir initStripe() dans la logique). -->
-<script src="https://js.stripe.com/v3/"></script>
 </helmet>
 
 <div ref="{{ setRoot }}" style="position:relative;overflow-x:hidden;">
@@ -203,7 +314,7 @@
         <a href="#number-cake" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Number Cake</a>
         <a href="#devis" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Devis</a>
         <a href="#galerie" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Galerie</a>
-        <a onClick="{{ openStory }}" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;cursor:pointer;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Histoire</a>
+        <a href="#atelier" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;cursor:pointer;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Histoire</a>
         <a href="#contact" style="font-size:13.5px;letter-spacing:.4px;color:#1A2C3D;text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s ease;" style-hover="border-bottom:1px solid #C9A84C;">Contact</a>
       </nav>
       <div style="display:flex;align-items:center;gap:6px;">
@@ -227,7 +338,7 @@
       <a onClick="{{ closeMenu }}" href="#number-cake" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Number Cake</a>
       <a onClick="{{ closeMenu }}" href="#devis" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Devis</a>
       <a onClick="{{ closeMenu }}" href="#galerie" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;">Galerie</a>
-      <a onClick="{{ openStory }}" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;cursor:pointer;">Histoire</a>
+      <a onClick="{{ closeMenu }}" href="#atelier" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;border-bottom:1px solid #F2F2F2;cursor:pointer;">Histoire</a>
       <a onClick="{{ closeMenu }}" href="#contact" style="padding:15px 24px;font-size:15px;letter-spacing:.3px;color:#1A2C3D;text-decoration:none;">Contact</a>
     </div>
   </sc-if>
@@ -236,7 +347,7 @@
   <section id="accueil" class="ag-hero" style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:#101C27;">
 
     <!-- photo plein écran -->
-    <img class="ag-hero-photo" src="images/kylian.jpg" alt="Kylian Givre, pâtissier-chocolatier, au travail à l'Atelier Givre" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 15%;display:block;animation:ag-heroImg 1.6s cubic-bezier(.22,.61,.36,1) both;">
+    <img class="ag-hero-photo" fetchpriority="high" src="images/kylian.jpg" alt="Kylian Givre, pâtissier-chocolatier, au travail à l'Atelier Givre" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 15%;display:block;animation:ag-heroImg 1.6s cubic-bezier(.22,.61,.36,1) both;">
     <div class="ag-scrim" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(96deg,rgba(16,28,39,.95) 0%,rgba(16,28,39,.88) 24%,rgba(16,28,39,.62) 44%,rgba(16,28,39,.18) 68%,rgba(16,28,39,.06) 100%);"></div>
     <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(16,28,39,.5) 0%,rgba(16,28,39,0) 24%,rgba(16,28,39,0) 62%,rgba(16,28,39,.42) 100%);"></div>
 
@@ -244,10 +355,10 @@
       <div style="max-width:610px;">
         <div style="display:flex;align-items:center;gap:13px;color:#C9A84C;margin-bottom:clamp(14px,2.4vh,26px);animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) both;">
           <span style="height:1px;width:40px;background:#C9A84C;"></span>
-          <span style="font-size:11.5px;letter-spacing:3.4px;text-transform:uppercase;">Belley, Ain — fait main</span>
+          <h1 style="font-family:inherit;font-size:11.5px;font-weight:400;line-height:1.4;letter-spacing:3.4px;text-transform:uppercase;color:inherit;margin:0;">Pâtisserie artisanale à Belley · fait main</h1>
         </div>
 
-        <h1 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(44px,5.4vw,86px);line-height:.95;letter-spacing:-1.5px;margin:0 0 clamp(16px,2.4vh,28px);color:#FFFFFF;text-shadow:0 2px 30px rgba(16,28,39,.45);animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .08s both;">Là où le dessert<br><em style="font-style:italic;font-weight:400;color:#C9A84C;">devient souvenir</em></h1>
+        <p style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(44px,5.4vw,86px);line-height:.95;letter-spacing:-1.5px;margin:0 0 clamp(16px,2.4vh,28px);color:#FFFFFF;text-shadow:0 2px 30px rgba(16,28,39,.45);animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .08s both;">Là où le dessert<br><em style="font-style:italic;font-weight:400;color:#C9A84C;">devient souvenir</em></p>
 
         <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,1.9vw,24px);line-height:1.4;color:#C9A84C;margin:0 0 clamp(10px,1.4vh,16px);max-width:24ch;animation:ag-heroUp .85s cubic-bezier(.22,.61,.36,1) .12s both;">La passion du fait maison, au cœur de chaque bouchée.</p>
 
@@ -301,14 +412,14 @@
         <sc-for list="{{ visibleProducts }}" as="p" hint-placeholder-count="6">
           <article onClick="{{ p.onOpen }}" style="background:#fff;border:1px solid #E8E8E8;border-radius:13px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;animation:ag-cardIn .5s ease both;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;" style-hover="transform:translateY(-6px);box-shadow:0 24px 44px -26px rgba(26,44,61,.4);border-color:#C9A84C;">
             <div class="ag-card-img" style="position:relative;height:215px;overflow:hidden;background:linear-gradient(150deg,#F5F7FA 0%,#EAF0F6 55%,#E2EAF2 100%);">
-              <img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;" style-hover="transform:scale(1.04);">
+              <img src="{{ p.img }}" alt="{{ p.name }}" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;" style-hover="transform:scale(1.04);">
             </div>
             <div style="padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;">
               <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:21px;margin:0 0 8px;color:#1A2C3D;">{{ p.name }}</h3>
               <p style="font-size:13.5px;line-height:1.65;color:#728290;margin:0 0 14px;flex:1;">{{ p.desc }}</p>
-              <p style="display:flex;align-items:center;gap:7px;font-size:11.5px;letter-spacing:.4px;color:#8a98a5;margin:0 0 16px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>{{ p.delayShort }}</p>
+              <p style="display:flex;align-items:center;gap:7px;font-size:11.5px;letter-spacing:.4px;color:#6B7B89;margin:0 0 16px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>{{ p.delayShort }}</p>
               <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-                <span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#C9A84C;">{{ p.priceLabel }}</span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#9A7B22;">{{ p.priceLabel }}</span>
                 <span style="background:#C9A84C;color:#fff;border:1px solid #C9A84C;font-size:12px;letter-spacing:.8px;text-transform:uppercase;padding:10px 18px;border-radius:2px;transition:background .28s ease,color .28s ease;" style-hover="background:#fff;color:#C9A84C;">Voir</span>
               </div>
             </div>
@@ -375,7 +486,7 @@
         <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="10">
           <button onClick="{{ g.onOpen }}" style="{{ g.tileStyle }}" style-hover="filter:brightness(.97);">
             <sc-if value="{{ g.hasPhoto }}" hint-placeholder-val="{{ true }}">
-              <img src="{{ g.src }}" alt="{{ g.caption }}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.03);">
+              <img src="{{ g.src }}" alt="{{ g.caption }}" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.03);">
               <span style="position:absolute;bottom:0;left:0;right:0;padding:22px 18px 16px;font-size:13px;letter-spacing:.6px;color:#fff;text-align:left;background:linear-gradient(transparent,rgba(16,28,39,.72));">{{ g.caption }}</span>
             </sc-if>
             <sc-if value="{{ g.pending }}" hint-placeholder-val="{{ false }}">
@@ -396,6 +507,31 @@
           </button>
         </div>
       </sc-if>
+    </div>
+  </section>
+
+  <!-- ════════════════ L'ATELIER · QUI SUIS-JE ════════════════ -->
+  <section id="atelier" class="ag-sec" style="scroll-margin-top:80px;padding:104px 28px;background:#F5F7FA;">
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);max-width:1080px;margin:0 auto;" class="ag-contact">
+      <div style="display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:start;" class="ag-atelier-grille">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;color:#9A7B22;margin-bottom:16px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">L’atelier</span></div>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,4vw,48px);margin:0 0 22px;line-height:1.1;color:#1A2C3D;">Kylian Givre, pâtissier-chocolatier à Belley</h2>
+          <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 18px;">Je m’appelle Kylian Givre et la cuisine fait partie de mon quotidien depuis l’enfance : mes parents ont toujours travaillé dans la restauration. Ce qui n’était qu’un plaisir est devenu une passion, puis mon métier.</p>
+          <p style="font-size:15.5px;line-height:1.85;color:#566571;margin:0 0 28px;">Chez Atelier Givre, tout est fait maison, jusqu’aux pralinés. Exigence, élégance, gourmandise et créativité : une belle pâtisserie doit donner envie quand on la regarde, et surtout laisser un souvenir quand on la déguste.</p>
+          <button onClick="{{ openStory }}" style="display:inline-flex;align-items:center;gap:10px;background:transparent;color:#1A2C3D;border:1px solid #1A2C3D;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;padding:14px 26px;border-radius:2px;cursor:pointer;transition:background .3s ease,color .3s ease;" style-hover="background:#1A2C3D;color:#fff;">Lire toute l’histoire <span style="font-size:15px;">→</span></button>
+        </div>
+        <ul style="list-style:none;margin:6px 0 0;padding:0;border-bottom:1px solid #E8E8E8;" aria-label="Parcours"><li style="display:flex;flex-direction:column;gap:2px;padding:14px 0;border-top:1px solid #E8E8E8;"><span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#1A2C3D;">CAP Pâtissier</span><span style="font-size:13px;letter-spacing:.3px;color:#6B7B89;">Ambérieu-en-Bugey</span></li><li style="display:flex;flex-direction:column;gap:2px;padding:14px 0;border-top:1px solid #E8E8E8;"><span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#1A2C3D;">CAP Chocolatier</span><span style="font-size:13px;letter-spacing:.3px;color:#6B7B89;">Dardilly, près de Lyon</span></li><li style="display:flex;flex-direction:column;gap:2px;padding:14px 0;border-top:1px solid #E8E8E8;"><span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#1A2C3D;">Mention complémentaire pâtisserie, glacerie et confiserie</span><span style="font-size:13px;letter-spacing:.3px;color:#6B7B89;">Gap</span></li><li style="display:flex;flex-direction:column;gap:2px;padding:14px 0;border-top:1px solid #E8E8E8;"><span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#1A2C3D;">Chocolaterie et confiserie chez BARZ</span><span style="font-size:13px;letter-spacing:.3px;color:#6B7B89;">Genève</span></li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ QUESTIONS FRÉQUENTES ════════════════ -->
+  <section id="faq" class="ag-sec" style="scroll-margin-top:80px;padding:96px 28px;background:#FFFFFF;">
+    <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);max-width:860px;margin:0 auto;">
+      <div style="display:flex;align-items:center;gap:12px;color:#9A7B22;margin-bottom:16px;"><span style="height:1px;width:30px;background:#C9A84C;"></span><span style="font-size:12px;letter-spacing:3px;text-transform:uppercase;">Questions fréquentes</span></div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,4vw,48px);margin:0 0 22px;line-height:1.1;color:#1A2C3D;">Commander chez Atelier Givre</h2>
+      <div style="border-bottom:1px solid #E8E8E8;margin-top:10px;"><details style="border-top:1px solid #E8E8E8;padding:4px 0;"><summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-family:'Cormorant Garamond',serif;font-size:21px;color:#1A2C3D;">Combien de temps à l'avance faut-il commander ?<span aria-hidden="true" style="color:#9A7B22;font-family:'DM Sans',sans-serif;font-size:20px;">+</span></summary><p style="font-size:15px;line-height:1.8;color:#566571;margin:0 0 20px;max-width:68ch;">Comptez 72 heures avant le retrait pour les pâtisseries de la carte, et 10 jours pour un number cake ou une création sur-mesure. Tout est fabriqué à la commande.</p></details><details style="border-top:1px solid #E8E8E8;padding:4px 0;"><summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-family:'Cormorant Garamond',serif;font-size:21px;color:#1A2C3D;">Où et quand retirer ma commande ?<span aria-hidden="true" style="color:#9A7B22;font-family:'DM Sans',sans-serif;font-size:20px;">+</span></summary><p style="font-size:15px;line-height:1.8;color:#566571;margin:0 0 20px;max-width:68ch;">Le retrait est gratuit (click & collect) à l'atelier, 196 rue du Promenoir à Belley, du lundi au samedi de 9 h à 19 h et le dimanche de 9 h à 13 h. Vous choisissez la date au moment de commander.</p></details><details style="border-top:1px solid #E8E8E8;padding:4px 0;"><summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-family:'Cormorant Garamond',serif;font-size:21px;color:#1A2C3D;">Livrez-vous à domicile ?<span aria-hidden="true" style="color:#9A7B22;font-family:'DM Sans',sans-serif;font-size:20px;">+</span></summary><p style="font-size:15px;line-height:1.8;color:#566571;margin:0 0 20px;max-width:68ch;">Oui, autour de Belley : jusqu'à 20 km, la livraison coûte 1 € par kilomètre et elle est offerte dès 60 € d'achat. Au-delà et jusqu'à 50 km, elle reste possible avec un supplément calculé au moment de la commande.</p></details><details style="border-top:1px solid #E8E8E8;padding:4px 0;"><summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-family:'Cormorant Garamond',serif;font-size:21px;color:#1A2C3D;">Comment se passe le paiement ?<span aria-hidden="true" style="color:#9A7B22;font-family:'DM Sans',sans-serif;font-size:20px;">+</span></summary><p style="font-size:15px;line-height:1.8;color:#566571;margin:0 0 20px;max-width:68ch;">Le paiement se fait en ligne par carte bancaire, de façon sécurisée. En click & collect, vous réglez un acompte de 30 % à la commande et le solde au retrait ; en livraison, la commande est réglée en totalité.</p></details><details style="border-top:1px solid #E8E8E8;padding:4px 0;"><summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-family:'Cormorant Garamond',serif;font-size:21px;color:#1A2C3D;">Puis-je composer mon propre number cake ?<span aria-hidden="true" style="color:#9A7B22;font-family:'DM Sans',sans-serif;font-size:20px;">+</span></summary><p style="font-size:15px;line-height:1.8;color:#566571;margin:0 0 20px;max-width:68ch;">Oui : chiffre ou lettre, nombre de parts, base, croustillant, crémeux, inserts fruités, ganache montée et décors se choisissent en ligne, ou partez d'une recette signature. Il se commande 10 jours à l'avance.</p></details><details style="border-top:1px solid #E8E8E8;padding:4px 0;"><summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-family:'Cormorant Garamond',serif;font-size:21px;color:#1A2C3D;">Comment connaître les allergènes ?<span aria-hidden="true" style="color:#9A7B22;font-family:'DM Sans',sans-serif;font-size:20px;">+</span></summary><p style="font-size:15px;line-height:1.8;color:#566571;margin:0 0 20px;max-width:68ch;">La composition et les allergènes de chaque gâteau sont indiqués sur sa fiche. Pour une allergie ou une demande particulière, écrivez-moi avant de commander : ateliergivre.contact@gmail.com.</p></details></div>
     </div>
   </section>
 
@@ -443,6 +579,8 @@
           <a href="#accueil" style="color:#dbe4ec;text-decoration:none;font-size:14px;transition:color .25s ease;" style-hover="color:#C9A84C;">Accueil</a>
           <a href="#creations" style="color:#dbe4ec;text-decoration:none;font-size:14px;transition:color .25s ease;" style-hover="color:#C9A84C;">Mes créations</a>
           <a href="#galerie" style="color:#dbe4ec;text-decoration:none;font-size:14px;transition:color .25s ease;" style-hover="color:#C9A84C;">Galerie</a>
+          <a href="#atelier" style="color:#dbe4ec;text-decoration:none;font-size:14px;transition:color .25s ease;" style-hover="color:#C9A84C;">L’atelier</a>
+          <a href="#faq" style="color:#dbe4ec;text-decoration:none;font-size:14px;transition:color .25s ease;" style-hover="color:#C9A84C;">Questions fréquentes</a>
         </div>
       </div>
       <div>
@@ -458,7 +596,7 @@
         <div style="display:flex;gap:12px;">
           <a href="https://instagram.com/ateliergivre01" target="_blank" rel="noopener" aria-label="Instagram" style="width:38px;height:38px;border:1px solid rgba(219,228,236,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#dbe4ec;text-decoration:none;transition:border-color .25s ease,color .25s ease;" style-hover="border-color:#C9A84C;color:#C9A84C;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
           <a href="https://www.tiktok.com/@ateliergivre01" target="_blank" rel="noopener" aria-label="TikTok" style="width:38px;height:38px;border:1px solid rgba(219,228,236,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#dbe4ec;text-decoration:none;font-size:11.5px;letter-spacing:.5px;font-weight:600;transition:border-color .25s ease,color .25s ease;" style-hover="border-color:#C9A84C;color:#C9A84C;">TT</a>
-          <a href="https://facebook.com/ateliergivre01" target="_blank" rel="noopener" aria-label="Facebook" style="width:38px;height:38px;border:1px solid rgba(219,228,236,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#dbe4ec;text-decoration:none;transition:border-color .25s ease,color .25s ease;" style-hover="border-color:#C9A84C;color:#C9A84C;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8.5V7a1.5 1.5 0 0 1 1.5-1.5H17V3h-2.2A4 4 0 0 0 11 7v1.5H9V11h2v10h3V11h2.2l.4-2.5H14Z"/></svg></a>
+          <a href="https://www.facebook.com/profile.php?id=61592670929567" target="_blank" rel="noopener" aria-label="Facebook" style="width:38px;height:38px;border:1px solid rgba(219,228,236,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#dbe4ec;text-decoration:none;transition:border-color .25s ease,color .25s ease;" style-hover="border-color:#C9A84C;color:#C9A84C;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8.5V7a1.5 1.5 0 0 1 1.5-1.5H17V3h-2.2A4 4 0 0 0 11 7v1.5H9V11h2v10h3V11h2.2l.4-2.5H14Z"/></svg></a>
         </div>
         <a href="mailto:ateliergivre.contact@gmail.com" style="display:inline-block;margin-top:18px;color:#dbe4ec;text-decoration:none;font-size:13.5px;border-bottom:1px solid rgba(201,168,76,.5);padding-bottom:2px;transition:color .25s ease;" style-hover="color:#C9A84C;">ateliergivre.contact@gmail.com</a>
       </div>

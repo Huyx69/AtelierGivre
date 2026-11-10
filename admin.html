@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>Atelier Givre — Administration</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -134,7 +137,10 @@
 
   <div class="toolbar">
     <h2>Catalogue</h2>
-    <button class="gold" id="btn-new">+ Nouveau gâteau</button>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button id="btn-alleger" title="Réduit le poids des photos déjà en ligne pour que le site s'affiche plus vite">Alléger les photos</button>
+      <button class="gold" id="btn-new">+ Nouveau gâteau</button>
+    </div>
   </div>
 
   <div id="loading">Chargement…</div>
@@ -256,6 +262,61 @@
     render();
   }
 
+  // ── Photos : réduites avant l'envoi (1600 px au plus, WebP) pour que le site reste rapide ──
+  // Une photo de téléphone (3 à 5 Mo) descend ainsi vers 150-300 Ko, sans perte visible à l'écran.
+  var COTE_MAX = 1600;
+  async function compresser(blob){
+    try {
+      var bmp = await createImageBitmap(blob);
+      var k = Math.min(1, COTE_MAX / Math.max(bmp.width, bmp.height));
+      var c = document.createElement('canvas');
+      c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+      c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+      var versBlob = function(type, q){ return new Promise(function(ok){ c.toBlob(ok, type, q); }); };
+      var sortie = await versBlob('image/webp', 0.82);
+      if(!sortie || sortie.type !== 'image/webp') sortie = await versBlob('image/jpeg', 0.85);
+      if(!sortie || sortie.size >= blob.size) return { blob: blob, ext: null }; // pas plus léger : on garde l'original
+      return { blob: sortie, ext: sortie.type === 'image/webp' ? '.webp' : '.jpg' };
+    } catch(e){ return { blob: blob, ext: null }; } // format non lu par le navigateur : original
+  }
+  var DOSSIER = '/storage/v1/object/public/product-images/';
+
+  // Allège les photos déjà en ligne : chaque photo de plus de 350 Ko est réduite, renvoyée
+  // sous un nouveau nom, et la fiche du gâteau pointe vers la nouvelle version.
+  $('#btn-alleger').addEventListener('click', async function(){
+    if(!confirm('Réduire le poids des photos déjà en ligne ? Les gâteaux garderont les mêmes photos, en plus léger. Cela peut prendre une minute.')) return;
+    var bouton = this; bouton.disabled = true;
+    var avant = 0, apres = 0, faites = 0, erreurs = 0, n = 0;
+    var total = products.reduce(function(a, p){ return a + (p.images || []).filter(function(u){ return u.indexOf(DOSSIER) !== -1; }).length; }, 0);
+    for(var i = 0; i < products.length; i++){
+      var p = products[i]; var imgs = (p.images || []).slice(); var change = false;
+      for(var j = 0; j < imgs.length; j++){
+        if(imgs[j].indexOf(DOSSIER) === -1) continue;
+        n++; bouton.textContent = 'Photo ' + n + '/' + total + '…';
+        try {
+          var r = await fetch(imgs[j], { cache: 'no-store' }); if(!r.ok) throw new Error(r.status);
+          var original = await r.blob();
+          if(original.size < 350 * 1024) continue;
+          var c = await compresser(original);
+          if(!c.ext || c.blob.size > original.size * 0.8) continue;
+          var chemin = p.id + '/' + Date.now() + '-allegee' + c.ext;
+          var up = await sb.storage.from('product-images').upload(chemin, c.blob, { upsert:false, contentType: c.blob.type });
+          if(up.error) throw up.error;
+          imgs[j] = sb.storage.from('product-images').getPublicUrl(chemin).data.publicUrl;
+          avant += original.size; apres += c.blob.size; faites++; change = true;
+        } catch(e){ erreurs++; }
+      }
+      if(change){
+        var maj = await sb.from('products').update({ images: imgs, updated_at: new Date().toISOString() }).eq('id', p.id);
+        if(maj.error) erreurs++; else p.images = imgs;
+      }
+    }
+    bouton.disabled = false; bouton.textContent = 'Alléger les photos';
+    var mo = function(o){ return (o / 1048576).toFixed(1).replace('.', ',') + ' Mo'; };
+    toast(faites ? (faites + ' photo(s) allégée(s) : ' + mo(avant) + ' → ' + mo(apres) + (erreurs ? ' · ' + erreurs + ' erreur(s)' : '')) : (erreurs ? 'Aucune photo allégée (' + erreurs + ' erreur(s))' : 'Les photos sont déjà légères'), !!erreurs && !faites);
+    render();
+  });
+
   // ── Rendu de la liste ──
   function render(){
     var list = $('#list'); list.innerHTML='';
@@ -338,9 +399,11 @@
     renderImgs();
     body.querySelector('.f-file').addEventListener('change', async function(e){
       var file=e.target.files[0]; if(!file) return;
+      toast('Préparation de la photo…');
+      var c = await compresser(file);
       toast('Envoi de la photo…');
-      var path = p.id + '/' + Date.now() + '-' + slugify(file.name.replace(/\.[^.]+$/,'')) + (file.name.match(/\.[^.]+$/)||[''])[0];
-      var up = await sb.storage.from('product-images').upload(path, file, { upsert:false });
+      var path = p.id + '/' + Date.now() + '-' + slugify(file.name.replace(/\.[^.]+$/,'')) + (c.ext || (file.name.match(/\.[^.]+$/)||[''])[0]);
+      var up = await sb.storage.from('product-images').upload(path, c.blob, { upsert:false, contentType: c.blob.type || file.type });
       if(up.error){ toast('Upload échoué : '+up.error.message, true); return; }
       var pub = sb.storage.from('product-images').getPublicUrl(path);
       imgs.push(pub.data.publicUrl); renderImgs(); toast('Photo ajoutée (pense à Enregistrer).');

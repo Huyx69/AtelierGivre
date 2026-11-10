@@ -53,8 +53,9 @@ netlify/functions/create-checkout.js
 
 ## 4. Publier le site
 
-La logique de paiement est dans la maquette `Atelier Givre v2.dc.html`. **Publie / synchronise**
-la maquette pour régénérer `index.html`, puis laisse Netlify redéployer (ou pousse sur `main`).
+La logique de paiement est dans les fichiers du site : `site-normal.html` et `site-halloween.html`
+(`site-noel.html` se régénère avec `python3 outils/generer-noel.py`). Pousse sur `main` : Netlify
+redéploie tout seul. (Les anciennes maquettes `.dc.html` sont rangées dans `outils/archives/`.)
 
 ---
 

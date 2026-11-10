@@ -5,6 +5,37 @@
   publish = "."
   functions = "netlify/functions"
 
+# En-têtes de sécurité pour toutes les pages, et cache long pour les fichiers qui changent peu.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/favicon.*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/apple-touch-icon.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/admin.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# La page d'accueil est servie dans le thème actif par netlify/edge-functions/theme.js.
+
 # Alias plus court optionnel : /api/create-checkout → la fonction.
 # (Le site appelle /.netlify/functions/create-checkout, qui marche déjà sans ça.)
 [[redirects]]
